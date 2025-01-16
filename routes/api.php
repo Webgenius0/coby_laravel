@@ -20,5 +20,6 @@ Route::middleware('api')->group(function () {
     Route::get('/page/single/{page_id}', [DynamicPageController::class, 'single']);
 
     Route::post('/contact/send', [ContactController::class, 'messageSend']);
+    Route::post('/country/list', [CountryController::class, 'index']);
     
 });
