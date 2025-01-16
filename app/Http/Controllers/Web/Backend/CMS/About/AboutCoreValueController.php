@@ -23,14 +23,6 @@ class AboutCoreValueController extends Controller
             $data = CMS::where('page', PageEnum::ABOUT)->where('section', SectionEnum::CORE_VALUES)->latest()->get();
             return DataTables::of($data)
                 ->addIndexColumn()
-                ->addColumn('image', function ($data) {
-                    if ($data->image) {
-                        $url = asset($data->image);
-                        return '<img src="' . $url . '" alt="image" width="50px" height="50px" style="margin-left:20px;">';
-                    } else {
-                        return '<span>No Image Available</span>';
-                    }
-                })
                 ->addColumn('status', function ($data) {
                     $backgroundColor = $data->status == "active" ? '#4CAF50' : '#ccc';
                     $sliderTranslateX = $data->status == "active" ? '26px' : '2px';
@@ -80,7 +72,6 @@ class AboutCoreValueController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|string|max:250',
             'description' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         try {
@@ -92,10 +83,6 @@ class AboutCoreValueController extends Controller
             
             if ($counting >= 3) {
                 return redirect()->back()->with('t-error', 'Maximum 3 Item You Can Add');
-            }
-
-            if ($request->hasFile('image')) {
-                $validatedData['image'] = Helper::fileUpload($request->file('image'), 'core', time() . '_' . getFileName($request->file('image')));
             }
 
             // Create or update the CMS entry
@@ -134,7 +121,6 @@ class AboutCoreValueController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|string|max:250',
             'description' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         try {
@@ -144,17 +130,6 @@ class AboutCoreValueController extends Controller
             // Update the page and section if necessary
             $validatedData['page'] = PageEnum::ABOUT->value;
             $validatedData['section'] = SectionEnum::CORE_VALUES->value;
-
-            // Check if an image is being uploaded
-            if ($request->hasFile('image')) {
-                // If there is an existing image, delete it
-                if ($Review->image && file_exists(public_path($Review->image))) {
-                    Helper::fileDelete(public_path($Review->image));
-                }
-
-                // Upload the new image
-                $validatedData['image'] = Helper::fileUpload($request->file('image'), 'core', time() . '_' . getFileName($request->file('image')));
-            }
 
             // Update the CMS entry with the validated data
             $Review->update($validatedData);

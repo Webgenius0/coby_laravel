@@ -92,7 +92,6 @@
                                         <tr>
                                             <th class="wd-15p border-bottom-0">#</th>
                                             <th class="wd-15p border-bottom-0">Title</th>
-                                            <th class="wd-15p border-bottom-0">Image</th>
                                             <th class="wd-20p border-bottom-0">Status</th>
                                             <th class="wd-15p border-bottom-0">Action</th>
                                         </tr>
@@ -162,12 +161,6 @@
                     {
                         data: 'title',
                         name: 'title',
-                        orderable: true,
-                        searchable: true
-                    },
-                    {
-                        data: 'image',
-                        name: 'image',
                         orderable: true,
                         searchable: true
                     },

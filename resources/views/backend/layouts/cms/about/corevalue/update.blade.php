@@ -58,20 +58,6 @@
                                             </div>
                                         </div>
 
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label for="image" class="form-label">Side Image:</label>
-                                                    <input type="file" class="dropify @error('image') is-invalid @enderror" name="image"
-                                                        id="image"
-                                                        data-default-file="{{ isset($corevalues->image) ? asset($corevalues->image) : '' }}">
-                                                    @error('image')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                        </div>
-
                                         <div class="row mt-4">
                                             <div class="col-md-12 text-center">
                                                 <button class="btn btn-primary" type="submit">Submit</button>
