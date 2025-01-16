@@ -81,7 +81,7 @@ class AboutCoreValueController extends Controller
 
             $counting = CMS::where('page', $validatedData['page'])->where('section', $validatedData['section'])->count(); 
             
-            if ($counting >= 3) {
+            if ($counting >= 6) {
                 return redirect()->back()->with('t-error', 'Maximum 3 Item You Can Add');
             }
 
