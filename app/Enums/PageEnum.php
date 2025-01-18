@@ -10,5 +10,6 @@ enum PageEnum: string
     case CONTACT            = 'contact_us';
     case TERMSCONDITIONS    = 'Terms & Conditions';
     case PRIVACYPOLICY      = 'Privacy Statment';
+    case FORM               = 'form';
     case COMMON             = 'common';
 }

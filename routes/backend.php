@@ -10,6 +10,7 @@ use App\Http\Controllers\Web\Backend\CMS\About\AboutArticleTwoController;
 use App\Http\Controllers\Web\Backend\CMS\About\AboutCoreValueController;
 use App\Http\Controllers\Web\Backend\CMS\About\AboutMissionVisionController;
 use App\Http\Controllers\Web\Backend\CMS\CommonFooterController;
+use App\Http\Controllers\Web\Backend\CMS\FormPageControler;
 use App\Http\Controllers\Web\Backend\CMS\Home\HomeBannerController;
 use App\Http\Controllers\Web\Backend\CMS\Home\HomeFaqController;
 use App\Http\Controllers\Web\Backend\CMS\Home\HomeHowItWorksController;
@@ -223,6 +224,18 @@ Route::prefix('cms')->name('cms.')->group(function () {
     Route::controller(CommonFooterController::class)->group(function () {
         Route::get('/footer', 'index')->name('common.footer.index');
         Route::put('/common/footer', 'update')->name('common.footer.update');
+    });
+
+
+    Route::controller(FormPageControler::class)->group(function () {
+        Route::get('/form/pdf', 'index')->name('form.pdf.index');
+        Route::get('/form/pdf/create', 'create')->name('form.pdf.create');
+        Route::post('/form/pdf', 'store')->name('form.pdf.store');
+        Route::get('/form/pdf/{id}', 'show')->name('form.pdf.show');
+        Route::get('/form/pdf/{id}/edit', 'edit')->name('form.pdf.edit');
+        Route::patch('/form/{id}', 'update')->name('form.pdf.update');
+        Route::delete('/form/pdf/{id}', 'destroy')->name('form.pdf.destroy');
+        Route::get('/form/pdf/{id}/status', 'status')->name('form.pdf.status');   
     });
 
 

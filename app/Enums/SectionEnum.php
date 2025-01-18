@@ -22,6 +22,8 @@ enum SectionEnum: string
     case CORE_VALUE = 'core_value';
     case CORE_VALUES = 'core_values';
 
+    case FORM_PDF = 'form_pdf';
+
     //Footer
     case FOOTER = 'footer';
 
@@ -56,6 +58,13 @@ enum SectionEnum: string
             self::MISSION_VISSION->value => ['item' => 2, 'type' => 'get'],
             self::CORE_VALUE->value => ['item' => 1, 'type' => 'first'],
             self::CORE_VALUES->value => ['item' => 6, 'type' => 'get'],
+        ];
+    }
+
+    public static function FormPage()
+    {
+        return [
+            self::FORM_PDF->value => ['item' => 4, 'type' => 'get'],
         ];
     }
 
