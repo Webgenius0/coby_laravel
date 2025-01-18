@@ -24,5 +24,6 @@ Route::middleware('api')->group(function () {
 
     Route::post('/contact/send', [ContactController::class, 'messageSend']);
     Route::get('/country/list', [CountryController::class, 'index']);
-    
+
+    Route::post('/booking/form/submit', [FormController::class, 'store']);
 });
