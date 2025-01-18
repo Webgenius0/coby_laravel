@@ -20,4 +20,19 @@ Route::get('/run-migrate-fresh', function () {
     }
 });
 
+Route::get('/run-migrate', function () {
+    try {
+        $output = Artisan::call('migrate');
+        return response()->json([
+            'message' => 'Migrations executed.',
+            'output' => nl2br($output)
+        ], 200);
+    } catch (\Exception $e) {
+        return response()->json([
+            'message' => 'An error occurred while running migrations.',
+            'error' => $e->getMessage(),
+        ], 500);
+    }
+});
+
 require __DIR__.'/auth.php';
