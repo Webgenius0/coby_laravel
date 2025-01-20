@@ -21,6 +21,13 @@ class FormController extends Controller
             $cms[$key] = (clone $query)->where('section', $key)->latest()->take($section['item'])->{$section['type']}();
         }
         //cms end
+        foreach($cms['form_pdf'] as $key => $value){
+            $pdf = json_decode($value->metadata, true);
+            $pdf['pdf'] = asset($pdf['pdf']);
+            $value->metadata = json_encode($pdf);
+            $cms['form_pdf'][$key] = $value;
+        }
+
         $data = [
             'cms' => $cms
         ];

@@ -37,6 +37,18 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
+                                                    <label for="title" class="form-label">Title:</label>
+                                                    <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" placeholder="Enter here title" id="title" value="{{ $pdf->title ?? '' }}">
+                                                    @error('title')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
                                                     <label for="pdf" class="form-label">Form PDF:</label>
                                                     <input type="file" class="dropify @error('pdf') is-invalid @enderror" name="pdf"
                                                         id="pdf"

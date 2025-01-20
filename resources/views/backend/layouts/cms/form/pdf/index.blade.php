@@ -47,6 +47,7 @@
                                     <thead>
                                         <tr>
                                             <th class="wd-15p border-bottom-0">#</th>
+                                            <th class="wd-15p border-bottom-0">Title</th>
                                             <th class="wd-15p border-bottom-0">PDF</th>
                                             <th class="wd-20p border-bottom-0">Status</th>
                                             <th class="wd-15p border-bottom-0">Action</th>
@@ -113,6 +114,12 @@
                         name: 'DT_RowIndex',
                         orderable: false,
                         searchable: false
+                    },
+                    {
+                        data: 'title',
+                        name: 'title',
+                        orderable: true,
+                        searchable: true
                     },
                     {
                         data: 'pdf',

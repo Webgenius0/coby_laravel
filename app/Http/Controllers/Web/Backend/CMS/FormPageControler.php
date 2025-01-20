@@ -74,6 +74,7 @@ class FormPageControler extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
             'pdf' => 'required|mimes:pdf|max:2048',
         ]);
 
@@ -131,6 +132,7 @@ class FormPageControler extends Controller
     {
 
         $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
             'pdf' => 'required|mimes:pdf|max:2048',
         ]);
 

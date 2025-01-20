@@ -29,7 +29,7 @@ Route::middleware('api')->group(function () {
 });
 
 //stripe
-Route::controller(StripeController::class)->prefix('payment/stripe')->name('payment.stripe.')->group(function () {
+/* Route::controller(StripeController::class)->prefix('payment/stripe')->name('payment.stripe.')->group(function () {
     Route::post('/intent', [StripeController::class, 'createPaymentIntent']);
     Route::post('/webhook', [StripeController::class, 'handleWebhook']);
-});
+}); */
