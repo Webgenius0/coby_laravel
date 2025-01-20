@@ -38,7 +38,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="copyright" class="form-label">Copy Right:</label>
-                                                    <input type="text" class="form-control @error('copyright') is-invalid @enderror" name="copyright" placeholder="Enter here copy right" id="copyright" value="{{ json_decode($footer->metadata)->copyright ?? '' }}">
+                                                    <input type="text" class="form-control @error('copyright') is-invalid @enderror" name="copyright" placeholder="Enter here copy right" id="copyright" value="{{ isset($footer->metadata) ? json_decode($footer->metadata)->copyright : '' }}">
                                                     @error('copyright')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror

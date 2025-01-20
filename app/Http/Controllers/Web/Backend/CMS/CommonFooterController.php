@@ -15,7 +15,7 @@ class CommonFooterController extends Controller
 
     public function index()
     {
-        $footer = CMS::where('page', PageEnum::ABOUT->value)->where('section', SectionEnum::FOOTER->value)->first();
+        $footer = CMS::where('page', PageEnum::COMMON->value)->where('section', SectionEnum::FOOTER->value)->first();
         return view('backend.layouts.cms.footer', compact('footer'));
     }
     public function update(Request $request)
@@ -26,7 +26,7 @@ class CommonFooterController extends Controller
         ]);
         
         try {
-            $validatedData['page'] = PageEnum::ABOUT->value;
+            $validatedData['page'] = PageEnum::COMMON->value;
             $validatedData['section'] = SectionEnum::FOOTER->value;
 
             $validatedData['metadata'] = json_encode(['copyright' => $validatedData['copyright']]);
