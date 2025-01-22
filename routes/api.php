@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\Frontend\DynamicPageController;
 use App\Http\Controllers\Api\Frontend\Page\FormController;
 use App\Http\Controllers\Api\Frontend\Page\HomeController;
 use App\Http\Controllers\Api\Frontend\SettingsController;
+use App\Http\Controllers\Api\StripeController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -29,7 +30,7 @@ Route::middleware('api')->group(function () {
 });
 
 //stripe
-/* Route::controller(StripeController::class)->prefix('payment/stripe')->name('payment.stripe.')->group(function () {
-    Route::post('/intent', [StripeController::class, 'createPaymentIntent']);
-    Route::post('/webhook', [StripeController::class, 'handleWebhook']);
-}); */
+Route::controller(StripeController::class)->prefix('payment/stripe')->name('payment.stripe.')->group(function () {
+    Route::post('/intent', [StripeController::class, 'intent']);
+    Route::post('/webhook', [StripeController::class, 'webhook']);
+});
