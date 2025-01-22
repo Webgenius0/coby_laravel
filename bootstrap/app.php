@@ -20,6 +20,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
         then: function () {
             Route::middleware(['web', 'auth', 'admin'])->prefix('admin')->group(base_path('routes/backend.php'));
+            Route::prefix('api')->group(base_path('routes/stripe.php'));
         }
     )
     ->withBroadcasting(

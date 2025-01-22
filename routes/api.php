@@ -8,7 +8,6 @@ use App\Http\Controllers\Api\Frontend\DynamicPageController;
 use App\Http\Controllers\Api\Frontend\Page\FormController;
 use App\Http\Controllers\Api\Frontend\Page\HomeController;
 use App\Http\Controllers\Api\Frontend\SettingsController;
-use App\Http\Controllers\Api\StripeController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -27,10 +26,4 @@ Route::middleware('api')->group(function () {
     Route::get('/country/list', [CountryController::class, 'index']);
 
     Route::post('/booking/form/submit', [FormController::class, 'store']);
-});
-
-//stripe
-Route::controller(StripeController::class)->prefix('payment/stripe')->name('payment.stripe.')->group(function () {
-    Route::post('/intent', [StripeController::class, 'intent']);
-    Route::post('/webhook', [StripeController::class, 'webhook']);
 });
