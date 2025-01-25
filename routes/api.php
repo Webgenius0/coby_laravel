@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\Frontend\Page\CommonController;
 use App\Http\Controllers\Api\Frontend\DynamicPageController;
 use App\Http\Controllers\Api\Frontend\Page\FormController;
 use App\Http\Controllers\Api\Frontend\Page\HomeController;
+use App\Http\Controllers\Api\Frontend\PriceController;
 use App\Http\Controllers\Api\Frontend\SettingsController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,8 @@ Route::middleware('api')->group(function () {
 
     Route::post('/contact/send', [ContactController::class, 'messageSend']);
     Route::get('/country/list', [CountryController::class, 'index']);
+
+    Route::post('/price/list', [PriceController::class, 'getPrice']);
 
     Route::post('/booking/form/submit', [FormController::class, 'store']);
 });

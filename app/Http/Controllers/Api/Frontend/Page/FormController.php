@@ -33,6 +33,7 @@ class FormController extends Controller
         ];
         return Helper::jsonResponse(true, 'Home Page', 200, $data);
     }
+
     public function store(Request $request)
     {
         $validatedData = $request->validate([

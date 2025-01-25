@@ -88,7 +88,7 @@ class StripeController extends Controller
             $data = [
                 'client_secret' => $paymentIntent->client_secret
             ];
-            return Helper::jsonResponse(true, 'Payment intent created successfully', 200, $paymentIntent);
+            return Helper::jsonResponse(true, 'Payment intent created successfully', 200, $data);
         } catch (ApiErrorException $e) {
             return Helper::jsonResponse(false, $e->getMessage(), 500, []);
         } catch (Exception $e) {
