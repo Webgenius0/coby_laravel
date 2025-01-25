@@ -33,18 +33,24 @@ class LogicController extends Controller
     public function update(Request $request): RedirectResponse
     {
         $request->validate([
-            'winter_sprots'           => ['required', 'numeric', 'min:1'],
-            'adventure_sprots_multi'  => ['required', 'numeric', 'min:1'],
-            'adventure_sprots_single' => ['required', 'numeric', 'min:1'],
-            'cancel_cost'             => ['required', 'numeric', 'min:1']
+            'multi_trip_standard'               => ['required', 'numeric', 'min:1'],
+            'multi_trip_extended'               => ['required', 'numeric', 'min:1'],
+            'cancellation_coverage_standard'    => ['required', 'numeric', 'min:1'],
+            'cancellation_coverage_increased'   => ['required', 'numeric', 'min:1'],
+            'winter_sprots'                     => ['required', 'numeric', 'min:1'],
+            'adventure_sprots_multi'            => ['required', 'numeric', 'min:1'],
+            'adventure_sprots_single'           => ['required', 'numeric', 'min:1']
         ]);
         try {
             $logic = Logic::firstOrNew(['id' => 1]);
             $logic->fill($request->only([
+                'multi_trip_standard',
+                'multi_trip_extended',
+                'cancellation_coverage_standard',
+                'cancellation_coverage_increased',
                 'winter_sprots',
                 'adventure_sprots_multi',
-                'adventure_sprots_single',
-                'cancel_cost'
+                'adventure_sprots_single'
             ]));
             $logic->save();
             return back()->with('t-success', 'Updated successfully');

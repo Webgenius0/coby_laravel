@@ -33,6 +33,63 @@
 
                                 <div class="row mb-4">
 
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="multi_trip_standard" class="form-label">Multi Trip Standard:</label>
+                                                <input type="number" class="form-control @error('multi_trip_standard') is-invalid @enderror"
+                                                    name="multi_trip_standard" placeholder="Multi Trip Standard" id="multi_trip_standard"
+                                                    value="{{ $logic->multi_trip_standard ?? old('multi_trip_standard') ?? '' }}"
+                                                    min="1">
+                                                @error('multi_trip_standard')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="multi_trip_extended" class="form-label">Multi Trip Extended:</label>
+                                                <input type="number" class="form-control @error('multi_trip_extended') is-invalid @enderror"
+                                                    name="multi_trip_extended" placeholder="Multi Trip Extended" id="multi_trip_extended"
+                                                    value="{{ $logic->multi_trip_extended ?? old('multi_trip_extended') ?? '' }}"
+                                                    min="1">
+                                                @error('multi_trip_extended')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="cancellation_coverage_standard" class="form-label">Cancellation Coverage Standard:</label>
+                                                <input type="number" class="form-control @error('cancellation_coverage_standard') is-invalid @enderror"
+                                                    name="cancellation_coverage_standard" placeholder="Cancellation Coverage Standard" id="cancellation_coverage_standard"
+                                                    value="{{ $logic->cancellation_coverage_standard ?? old('cancellation_coverage_standard') ?? '' }}"
+                                                    min="1">
+                                                @error('cancellation_coverage_standard')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="cancellation_coverage_increased" class="form-label">Cancellation Coverage Increased:</label>
+                                                <input type="number" class="form-control @error('cancellation_coverage_increased') is-invalid @enderror"
+                                                    name="cancellation_coverage_increased" placeholder="Cancellation Coverage Increased" id="cancellation_coverage_increased"
+                                                    value="{{ $logic->cancellation_coverage_increased ?? old('cancellation_coverage_increased') ?? '' }}"
+                                                    min="1">
+                                                @error('cancellation_coverage_increased')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                
+                                
                                     <div class="form-group">
                                         <label for="winter_sprots" class="form-label">Winter Sprots:</label>
                                         <input type="number" class="form-control @error('winter_sprots') is-invalid @enderror"
@@ -43,7 +100,6 @@
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
-
                                     <div class="form-group">
                                         <label for="adventure_sprots_multi" class="form-label">Adventure Sprots Multi:</label>
                                         <input type="number" class="form-control @error('adventure_sprots_multi') is-invalid @enderror"
@@ -54,7 +110,6 @@
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
-
                                     <div class="form-group">
                                         <label for="adventure_sprots_single" class="form-label">Adventure Sprots Single:</label>
                                         <input type="number" class="form-control @error('adventure_sprots_single') is-invalid @enderror"
@@ -62,17 +117,6 @@
                                             value="{{ $logic->adventure_sprots_single ?? old('adventure_sprots_single') ?? '' }}"
                                             min="1">
                                         @error('adventure_sprots_single')
-                                        <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="cancel_cost" class="form-label">Cancel Cost:</label>
-                                        <input type="number" class="form-control @error('cancel_cost') is-invalid @enderror"
-                                            name="cancel_cost" placeholder="Cancel Cost" id="cancel_cost"
-                                            value="{{ $logic->cancel_cost ?? old('cancel_cost') ?? '' }}"
-                                            min="1">
-                                        @error('cancel_cost')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
