@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('code');
             $table->string('nationality')->nullable();
+            $table->string('continent')->nullable();
             $table->timestamps();
         });
     }

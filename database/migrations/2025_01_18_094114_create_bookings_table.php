@@ -35,9 +35,9 @@ return new class extends Migration
             $table->string('how_know');
             $table->longText('comments')->nullable();
             $table->float('total_price', 8, 2)->default(0);
-            $table->enum('status', ['pending', 'paid', 'failed'])->default('pending');
+            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->string('transaction_id')->nullable();
-            $table->enum('payment_status', ['pending', 'approved', 'rejected'])->default('pending');
+            $table->enum('payment_status', ['pending', 'paid', 'failed'])->default('pending');
             $table->timestamps();
         });
     }

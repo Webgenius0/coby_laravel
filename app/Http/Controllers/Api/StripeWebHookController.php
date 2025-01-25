@@ -16,58 +16,8 @@ use Stripe\Exception\SignatureVerificationException;
 use Stripe\PaymentIntent;
 use UnexpectedValueException;
 
-class StripeController extends Controller
+class StripeWebHookController extends Controller
 {
-    /* public function checkout(Request $request)
-    {
-        // Validate the request
-        $validatedData = $request->validate([
-            'booking_id' => ['required', 'integer', 'exists:bookings,id']
-        ]);
-
-        try {
-            // Find the booking or fail with a 404
-            $booking = Booking::findOrFail($validatedData['booking_id']);
-
-            // Ensure the total_price is valid
-            if ($booking->total_price <= 0) {
-                return Helper::jsonResponse(false, 'Invalid total price', 400, []);
-            }
-
-            // Set the Stripe API key
-            Stripe::setApiKey(env('STRIPE_SECRET'));
-
-            // Define the redirect URLs
-            $redirectUrl = route('payment.stripe.success') . '?token={CHECKOUT_SESSION_ID}&order=' . $booking->id;
-            $cancelUrl = route('payment.stripe.cancel');
-
-            // Create the Stripe checkout session
-            $session = \Stripe\Checkout\Session::create([
-                'payment_method_types' => ['card'],
-                'line_items' => [[
-                    'price_data' => [
-                        'currency' => 'usd',
-                        'product_data' => [
-                            'name' => 'Order ' . $booking->id,
-                        ],
-                        'unit_amount' => $booking->total_price * 100, // Convert to cents
-                    ],
-                    'quantity' => 1,
-                ]],
-                'mode' => 'payment',
-                'success_url' => $redirectUrl,
-                'cancel_url' => $cancelUrl,
-            ]);
-
-            // Return the success response with session details
-            return Helper::jsonResponse(true, 'Checkout session created successfully', 200, $session);
-        } catch (ModelNotFoundException $e) {
-            return Helper::jsonResponse(false, 'Booking not found', 404, []);
-        } catch (ApiErrorException $e) {
-            return Helper::jsonResponse(false, $e->getMessage(), 500, []);
-        }
-    } */
-
     public function intent(Request $request): JsonResponse
     {
         $request->validate([
@@ -140,7 +90,7 @@ class StripeController extends Controller
         if ($booking) {
             $booking->update([
                 'transaction_id' => $trx_id,
-                'status' => 'paid'
+                'payment_status' => 'paid'
             ]);
         }
     }
@@ -152,7 +102,7 @@ class StripeController extends Controller
         if ($booking) {
             $booking->update([
                 'transaction_id' => "",
-                'status' => 'failed'
+                'payment_status' => 'failed'
             ]);
         }
     }
