@@ -81,6 +81,7 @@
                         <span class="side-menu__label">Settings</span><i class="angle fa fa-angle-right"></i>
                     </a>
                     <ul class="slide-menu">
+                        <li><a href="{{ route('setting.logic.index') }}" class="slide-item">logic Settings</a></li>
                         <li><a href="{{ route('setting.general.index') }}" class="slide-item">General Settings</a></li>
                         <li><a href="{{ route('setting.profile.index') }}" class="slide-item">Profile Settings</a></li>
                         <li><a href="{{ route('setting.mail.index') }}" class="slide-item">Mail Settings</a></li>

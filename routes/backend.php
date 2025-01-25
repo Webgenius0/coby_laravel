@@ -29,6 +29,7 @@ use App\Http\Controllers\Web\Backend\Settings\GoogleMapController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\Backend\DashboardController;
 use App\Http\Controllers\Web\Backend\PageController;
+use App\Http\Controllers\Web\Backend\Settings\LogicController;
 
 Route::controller(DashboardController::class)->group(function () {
     Route::get('dashboard', 'index')->name('dashboard');
@@ -98,6 +99,11 @@ Route::controller(SocialController::class)->prefix('setting/social')->name('sett
 Route::controller(SettingController::class)->group(function () {
     Route::get('setting/general', 'index')->name('setting.general.index');
     Route::patch('setting/general', 'update')->name('setting.general.update');
+});
+
+Route::controller(LogicController::class)->group(function () {
+    Route::get('setting/logic', 'index')->name('setting.logic.index');
+    Route::post('setting/logic', 'update')->name('setting.logic.update');
 });
 
 //! Route for Google Map Settings
