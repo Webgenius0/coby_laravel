@@ -84,11 +84,11 @@
                         <li><a href="{{ route('setting.logic.index') }}" class="slide-item">logic Settings</a></li>
                         <li><a href="{{ route('setting.general.index') }}" class="slide-item">General Settings</a></li>
                         <li><a href="{{ route('setting.profile.index') }}" class="slide-item">Profile Settings</a></li>
-                        <li><a href="{{ route('setting.mail.index') }}" class="slide-item">Mail Settings</a></li>
+                        <!-- <li><a href="{{ route('setting.mail.index') }}" class="slide-item">Mail Settings</a></li> -->
                         <li><a href="{{ route('setting.stripe.index') }}" class="slide-item">Stripe Settings</a></li>
-                        <li><a href="{{ route('setting.firebase.index') }}" class="slide-item">Firebase Settings</a></li>
+                        <!-- <li><a href="{{ route('setting.firebase.index') }}" class="slide-item">Firebase Settings</a></li>
                         <li><a href="{{ route('setting.social.index') }}" class="slide-item">Social Settings</a></li>
-                        <li><a href="{{ route('setting.google.map.index') }}" class="slide-item">Google Map Settings</a></li>
+                        <li><a href="{{ route('setting.google.map.index') }}" class="slide-item">Google Map Settings</a></li> -->
                     </ul>
                 </li>
                 <li>

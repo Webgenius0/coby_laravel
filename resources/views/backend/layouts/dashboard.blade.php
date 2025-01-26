@@ -25,13 +25,13 @@
 
             <!-- ROW-1 -->
             <div class="row">
-                <div class="col-lg-6 col-sm-12 col-md-6 col-xl-3">
+                <div class="col-lg-6 col-sm-12 col-md-6 col-xl-6">
                     <div class="card overflow-hidden">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h3 class="mb-2 fw-semibold">23</h3>
-                                    <p class="text-muted fs-13 mb-0">All Trainers</p>
+                                    <h3 class="mb-2 fw-semibold">{{ $booking_count ?? "N/A" }}</h3>
+                                    <p class="text-muted fs-13 mb-0">Total Booking</p>
                                 </div>
                                 <div class="col col-auto top-icn dash">
                                     <div class="counter-icon bg-primary dash ms-auto box-shadow-primary">
@@ -45,13 +45,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-sm-12 col-md-6 col-xl-3">
+                <div class="col-lg-6 col-sm-12 col-md-6 col-xl-6">
                     <div class="card overflow-hidden">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h3 class="mb-2 fw-semibold">45</h3>
-                                    <p class="text-muted fs-13 mb-0">Total Category</p>
+                                    <h3 class="mb-2 fw-semibold">{{ $booking_price ?? "N/A" }}</h3>
+                                    <p class="text-muted fs-13 mb-0">Total Amount</p>
                                 </div>
                                 <div class="col col-auto top-icn dash">
                                     <div
@@ -65,278 +65,23 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-sm-12 col-md-6 col-xl-3">
-                    <div class="card overflow-hidden">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col">
-                                    <h3 class="mb-2 fw-semibold">45</h3>
-                                    <p class="text-muted fs-13 mb-0">Total Service</p>
-                                </div>
-                                <div class="col col-auto top-icn dash">
-                                    <div class="counter-icon bg-info dash ms-auto box-shadow-info">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="fill-white" enable-background="new 0 0 24 24" viewBox="0 0 16 16">
-                                            <path d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
-                                            <path d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.4 5.4 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2z" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-sm-12 col-md-6 col-xl-3">
-                    <div class="card overflow-hidden">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col">
-                                    <h3 class="mb-2 fw-semibold">65</h3>
-                                    <p class="text-muted fs-13 mb-0">Today Booking</p>
-                                </div>
-                                <div class="col col-auto top-icn dash">
-                                    <div class="counter-icon bg-warning dash ms-auto box-shadow-warning">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="fill-white" enable-background="new 0 0 24 24" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd" d="M6 1h6v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8z" />
-                                            <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2" />
-                                            <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <!-- ROW-1 END-->
 
             <!-- ROW-2 -->
-            <!-- <div class="row">
-                <div class="col-sm-12 col-md-12 col-xl-4 col-lg-6">
-                    <div class="row">
-                        <div class="col-lg-12 col-xl-12 col-md-6 col-sm-12">
-                            <div class="card">
-                                <div class="card-body pb-2">
-                                    <div class="title-head mb-3">
-                                        <h3 class="mb-5 card-title">Revenue By channel</h3>
-                                        <div class="storage-percent">
-                                            <div class="progress fileprogress h-auto ps-0 shadow1">
-                                                <span class="progress-bar progress-bar-xs wd-15p received"
-                                                    role="progressbar" aria-valuenow="25"
-                                                    aria-valuemin="0" aria-valuemax="100"></span>
-                                                <span class="progress-bar progress-bar-xs wd-15p download"
-                                                    role="progressbar" aria-valuenow="25"
-                                                    aria-valuemin="0" aria-valuemax="100"></span>
-                                                <span class="progress-bar progress-bar-xs wd-15p shared"
-                                                    role="progressbar" aria-valuenow="25"
-                                                    aria-valuemin="0" aria-valuemax="100"></span>
-                                                <span
-                                                    class="progress-bar progress-bar-xs wd-15p my-images"
-                                                    role="progressbar" aria-valuenow="25"
-                                                    aria-valuemin="0" aria-valuemax="100"></span>
-                                            </div>
-                                            <div class="remaining-storage">
-                                                <div class="text-muted fs-13 mb-1 mt-3">Total Revenue
-                                                    Earned</div>
-                                                <div class="fw-semibold fs-14 mb-1 mt-3">$345,3467.72
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="content-main mt-5">
-                                        <ul class="task-list1 row mx-auto">
-                                            <li class="col-xl-6">
-                                                <span class="mb-0 fs-13 me-1"><i
-                                                        class="task-icon1 bg-primary me-3"></i>Direct</span>
-                                                <span class="text-success fw-semibold fs-12">
-                                                    <span class="mx-1"><i
-                                                            class="fa fa-caret-up"></i></span>
-                                                    <span class="">(42.34%)</span>
-                                                </span>
-                                            </li>
-                                            <li class="col-xl-6">
-                                                <span class="mb-0 fs-13 me-1"><i
-                                                        class="task-icon1 bg-secondary"></i>Referral</span>
-                                                <span class="text-danger fw-semibold fs-12">
-                                                    <span class="mx-1"><i
-                                                            class="fa fa-caret-down"></i></span>
-                                                    <span class="">(13%)</span>
-                                                </span>
-                                            </li>
-                                            <li class="col-xl-6">
-                                                <span class="mb-0 fs-13 me-1"><i
-                                                        class="task-icon1 bg-custom-yellow"></i>Social</span>
-                                                <span class="text-success fw-semibold fs-12">
-                                                    <span class="mx-1"><i
-                                                            class="fa fa-caret-up"></i></span>
-                                                    <span class="">(62%)</span>
-                                                </span>
-                                            </li>
-                                            <li class="col-xl-6 mb-xl-0">
-                                                <span class="mb-0 fs-13 me-1"><i
-                                                        class="task-icon1 bg-teritary"></i>Organic
-                                                    Search</span>
-                                                <span class="text-success fw-semibold fs-12">
-                                                    <span class="mx-1"><i
-                                                            class="fa fa-caret-up"></i></span>
-                                                    <span class="">(22.46%)</span>
-                                                </span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12">
-                            <div class="card overflow-hidden">
-                                <div class="card-header border-bottom">
-                                    <h4 class="card-title fw-semibold">Latest Transactions</h4>
-                                    <a href="#" class="ms-auto">View All</a>
-                                </div>
-                                <div class="card-body p-0 customers mt-1">
-                                    <div class="list-group py-1">
-                                        <a href="javascript:void(0);" class="border-0">
-                                            <div class="list-group-item border-0">
-                                                <div class="media mt-0 align-items-center">
-                                                    <div class="transaction-icon"><i
-                                                            class="fe fe-chevrons-right"></i>
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="mt-0">
-                                                                <h5
-                                                                    class="mb-1 fs-13 fw-normal text-dark">
-                                                                    To Bel Bcron Bank<span
-                                                                        class="fs-13 fw-semibold ms-1">Savings
-                                                                        Section</span></h5>
-                                                                <p class="mb-0 fs-12 text-muted">Transfer
-                                                                    4.53pm</p>
-                                                            </div>
-                                                            <span class="ms-auto fs-13">
-                                                                <span
-                                                                    class="float-end text-dark">-$2,543</span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="javascript:void(0);" class="border-0">
-                                            <div class="list-group-item border-0">
-                                                <div class="media mt-0 align-items-center">
-                                                    <div class="transaction-icon">
-                                                        <i class="fe fe-briefcase"></i>
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="mt-0">
-                                                                <h5
-                                                                    class="mb-1 fs-13 fw-normal text-dark">
-                                                                    Payment For <span
-                                                                        class="fs-13 fw-semibold ms-1">Day
-                                                                        Job</span></h5>
-                                                                <p class="mb-0 fs-12 text-muted">Received
-                                                                    2.45pm</p>
-                                                            </div>
-                                                            <span class="ms-auto fs-13">
-                                                                <span
-                                                                    class="float-end text-dark">+$32,543</span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="javascript:void(0);" class="border-0">
-                                            <div class="list-group-item border-0">
-                                                <div class="media mt-0 align-items-center">
-                                                    <div class="transaction-icon"><i
-                                                            class="fe fe-dollar-sign"></i>
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="mt-0">
-                                                                <h5
-                                                                    class="mb-1 fs-13 fw-normal text-dark">
-                                                                    Bought items from<span
-                                                                        class="fs-13 fw-semibold ms-1">Ecommerce
-                                                                        site</span></h5>
-                                                                <p class="mb-0 fs-12 text-muted">Payment
-                                                                    8.00am</p>
-                                                            </div>
-                                                            <span class="ms-auto fs-13">
-                                                                <span
-                                                                    class="float-end text-dark">-$256</span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="javascript:void(0);" class="border-0">
-                                            <div class="list-group-item border-0">
-                                                <div class="media mt-0 align-items-center">
-                                                    <div class="transaction-icon"><i
-                                                            class="fe fe-file-text"></i>
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="mt-0">
-                                                                <h5
-                                                                    class="mb-1 fs-13 fw-normal text-dark">
-                                                                    Paid Monthly Expenses<span
-                                                                        class="fs-13 fw-semibold ms-1">Bills
-                                                                        & Loans</span></h5>
-                                                                <p class="mb-0 fs-12 text-muted">Payment
-                                                                    6.43am</p>
-                                                            </div>
-                                                            <span class="ms-auto fs-13">
-                                                                <span
-                                                                    class="float-end text-dark">-$1,298</span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="row">
 
-                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-8">
+                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-12">
                     <div class="card">
                         <div class="card-header border-bottom">
                             <h3 class="card-title">Sales</h3>
-                            <div class="ms-auto">
-                                <div class="btn-group p-0 ms-auto">
-                                    <button class="btn btn-primary-light btn-sm disabled"
-                                        type="button">2021</button>
-                                    <button class="btn btn-primary-light btn-sm"
-                                        type="button">2022</button>
-                                    <button class="btn btn-primary-light btn-sm disabled"
-                                        type="button">2023</button>
-                                </div>
-                            </div>
                         </div>
                         <div class="card-body">
-                            <div class="sales-stats d-flex">
-                                <div>
-                                    <div class="text-muted fs-13">Total Sales
-                                        <span class="p-2 br-5 text-success"><i
-                                                class="fe fe-arrow-up-right"></i></span>
-                                    </div>
-                                    <h3 class="fw-semibold">$582,857.97</h3>
-                                    <div><span class="text-success fs-13 me-1">32%</span>Increase Since
-                                        last Year</div>
-                                </div>
-                            </div>
-                            <div id="chartD"></div>
+                            <div id="chart"></div>
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
             <!-- ROW-2 END -->
 
             <!-- ROW-3 -->
@@ -981,30 +726,61 @@
 @endsection
 
 @push('scripts')
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts@3.36.3/dist/apexcharts.min.js"></script>
+
 <script>
-   /* document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function () {
+    try {
+        // Fetch JSON data
+        const response = await fetch('/booking_chart.json'); // Adjust the path if necessary
+        const bookingData = await response.json();
 
-        Echo.private('chat.1').listen('MessageSent', (e) => {
-            console.log('Message Receiver:', e.message);
-            if ($('#ReceiverId').val()) {
-                getMessage($('#ReceiverId').val());
+        // Extract data for the chart
+        const categories = Object.keys(bookingData); // ["january", "february", ..., "december"]
+        const seriesData = Object.values(bookingData).map(value => parseFloat(value)); // Convert to numbers
+
+        // Configure the chart
+        var options = {
+            series: [{
+                name: "Bookings",
+                data: seriesData
+            }],
+            chart: {
+                height: 400,
+                type: 'line',
+                zoom: {
+                    enabled: false
+                }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: 'straight'
+            },
+            title: {
+                text: 'Monthly Booking Trends',
+                align: 'left'
+            },
+            grid: {
+                row: {
+                    colors: ['#f3f3f3', 'transparent'], // Alternating grid colors
+                    opacity: 0.5
+                },
+            },
+            xaxis: {
+                categories: categories.map(month => month.charAt(0).toUpperCase() + month.slice(1)), // Capitalize month names
             }
-        });
+        };
 
-        Echo.private('chat.2').listen('MessageSent', (e) => {
-            console.log('Message Receiver:', e.message);
-            if ($('#ReceiverId').val()) {
-                getMessage($('#ReceiverId').val());
-            }
-        });
+        // Render the chart
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
 
-        Echo.private('chat.3').listen('MessageSent', (e) => {
-            console.log('Message Receiver:', e.message);
-            if ($('#ReceiverId').val()) {
-                getMessage($('#ReceiverId').val());
-            }
-        });
-
-    }); */
+    } catch (error) {
+        console.error('Error fetching or processing JSON data:', error);
+    }
+});
 </script>
 @endpush
