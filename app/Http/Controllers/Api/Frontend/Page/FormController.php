@@ -8,6 +8,7 @@ use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use App\Models\CMS;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
 class FormController extends Controller
@@ -21,7 +22,7 @@ class FormController extends Controller
             $cms[$key] = (clone $query)->where('section', $key)->latest()->take($section['item'])->{$section['type']}();
         }
         //cms end
-        foreach($cms['form_pdf'] as $key => $value){
+        foreach ($cms['form_pdf'] as $key => $value) {
             $pdf = json_decode($value->metadata, true);
             $pdf['pdf'] = asset($pdf['pdf']);
             $value->metadata = json_encode($pdf);
@@ -71,6 +72,7 @@ class FormController extends Controller
             'how_know' => 'nullable|string|max:255',
             'comments' => 'nullable|string|max:1000',
             'total_price' => 'required|numeric|min:0',
+            'currency' => 'required|in:USD,GBP',
         ]);
 
         $validatedData['created_at'] = date('Y-m-d H:i:s');
@@ -80,7 +82,7 @@ class FormController extends Controller
         } while (Booking::where('unique_id', $unique_id)->exists());
 
         $validatedData['unique_id'] = $unique_id;
-        
+
         $validatedData['travel_type'] = json_encode($validatedData['travel_type']);
         $validatedData['adults'] = json_encode($validatedData['adults']);
         $validatedData['children'] = json_encode($validatedData['children'] ?? []);
@@ -90,6 +92,6 @@ class FormController extends Controller
 
         $data = Booking::create($validatedData);
 
-        return Helper::jsonResponse(true, 'Form submitted successfully', 200, $data);
+        return redirect()->route('payment.stripe.checkout', $data->id);
     }
 }

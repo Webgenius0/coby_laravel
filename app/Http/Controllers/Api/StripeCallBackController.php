@@ -13,14 +13,14 @@ use Stripe\Exception\ApiErrorException;
 
 class StripeCallBackController extends Controller
 {
-    public function checkout(Request $request)
+    public function checkout($booking_id)
     {
-        $validatedData = $request->validate([
+        /* $validatedData = $request->validate([
             'booking_id' => ['required', 'integer', 'exists:bookings,id']
-        ]);
+        ]); */
 
         try {
-            $booking = Booking::findOrFail($validatedData['booking_id']);
+            $booking = Booking::findOrFail($booking_id);
 
             if ($booking->total_price <= 0) {
                 return Helper::jsonResponse(false, 'Invalid total price', 400, []);
@@ -35,7 +35,7 @@ class StripeCallBackController extends Controller
                 'payment_method_types' => ['card'],
                 'line_items' => [[
                     'price_data' => [
-                        'currency' => 'usd',
+                        'currency' => $booking->currency == 'USD' ? 'usd' : 'gbp',
                         'product_data' => [
                             'name' => 'Order ' . $booking->id,
                         ],

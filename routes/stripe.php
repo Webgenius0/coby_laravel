@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 //stripe
 Route::controller(StripeCallBackController::class)->prefix('payment/stripe')->name('payment.stripe.')->group(function () {
-    Route::post('/checkout', [StripeCallBackController::class, 'checkout'])->name('checkout');
+    Route::get('/checkout/{booking_id}', [StripeCallBackController::class, 'checkout'])->name('checkout');
     Route::get('/success', [StripeCallBackController::class, 'success'])->name('success');
     Route::get('/cancel', [StripeCallBackController::class, 'cancel'])->name('cancel');
 });

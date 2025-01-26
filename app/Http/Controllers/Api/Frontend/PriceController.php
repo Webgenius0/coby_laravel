@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pricing;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Helpers\Helper;
 
@@ -45,9 +46,14 @@ class PriceController extends Controller
             return Helper::jsonResponse(false, 'Price not found', 404);
         }
 
+        $client = new Client();
+        $response = $client->get('https://api.exchangerate-api.com/v4/latest/GBP');
+        $data = json_decode($response->getBody(), true);
+        $rate = $data['rates']['USD'];
+
         $data = [
-            'price_in_pound' => $price->base_premium,
-            'price_in_dollar' => $price->base_premium * 3.6
+            'price_in_pound' => $price->base_premium, 
+            'price_in_dollar' => $price->base_premium * $rate //GBP to USD
         ];
 
         return Helper::jsonResponse(true, 'Price', 200, $data);
