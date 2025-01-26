@@ -103,7 +103,7 @@
                                     <div class="form-group">
                                         <label for="adventure_sprots_multi" class="form-label">Adventure Sprots Multi:</label>
                                         <input type="number" class="form-control @error('adventure_sprots_multi') is-invalid @enderror"
-                                            name="adventure_sprots_multi" placeholder="Winter Sprots" id="winter_sprots"
+                                            name="adventure_sprots_multi" placeholder="Winter Sprots" id="adventure_sprots_multi"
                                             value="{{ $logic->adventure_sprots_multi ?? old('adventure_sprots_multi') ?? '' }}"
                                             min="1">
                                         @error('adventure_sprots_multi')
@@ -113,10 +113,22 @@
                                     <div class="form-group">
                                         <label for="adventure_sprots_single" class="form-label">Adventure Sprots Single:</label>
                                         <input type="number" class="form-control @error('adventure_sprots_single') is-invalid @enderror"
-                                            name="adventure_sprots_single" placeholder="Adventure Sprots Single" id="winter_sprots"
+                                            name="adventure_sprots_single" placeholder="Adventure Sprots Single" id="adventure_sprots_single"
                                             value="{{ $logic->adventure_sprots_single ?? old('adventure_sprots_single') ?? '' }}"
                                             min="1">
                                         @error('adventure_sprots_single')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="charge" class="form-label">Administrator Charge:</label>
+                                        <input type="number" class="form-control @error('charge') is-invalid @enderror"
+                                            name="charge" placeholder="Administrator Charge" id="charge"
+                                            value="{{ $logic->charge ?? old('charge') ?? '' }}"
+                                            min="1"
+                                            step="0.01">
+                                        @error('charge')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>

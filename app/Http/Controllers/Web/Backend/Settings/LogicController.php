@@ -39,7 +39,8 @@ class LogicController extends Controller
             'cancellation_coverage_increased'   => ['required', 'numeric', 'min:1'],
             'winter_sprots'                     => ['required', 'numeric', 'min:1'],
             'adventure_sprots_multi'            => ['required', 'numeric', 'min:1'],
-            'adventure_sprots_single'           => ['required', 'numeric', 'min:1']
+            'adventure_sprots_single'           => ['required', 'numeric', 'min:1'],
+            'charge'                            => ['required', 'numeric', 'between:0,9999999.99'],
         ]);
         try {
             $logic = Logic::firstOrNew(['id' => 1]);
@@ -50,7 +51,8 @@ class LogicController extends Controller
                 'cancellation_coverage_increased',
                 'winter_sprots',
                 'adventure_sprots_multi',
-                'adventure_sprots_single'
+                'adventure_sprots_single',
+                'charge',
             ]));
             $logic->save();
             return back()->with('t-success', 'Updated successfully');

@@ -30,6 +30,22 @@
                         <span class="side-menu__label">Dashboard</span>
                     </a>
                 </li>
+                <li class="slide">
+                    <a class="side-menu__item {{  request()->routeIs('insurance') ? 'has-link' : '' }}" href="{{ route('insurance.booking.index') }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="side-menu__icon" viewBox="0 0 16 16">
+                            <path d="M15 14l-5-5-5 5v-3l10 -10z" />
+                        </svg>
+                        <span class="side-menu__label">Insurance Application</span>
+                    </a>
+                </li>
+                <li class="slide">
+                    <a class="side-menu__item {{  request()->routeIs('contact') ? 'has-link' : '' }}" href="{{ route('contact.index') }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="side-menu__icon" viewBox="0 0 16 16">
+                            <path d="M15 14l-5-5-5 5v-3l10 -10z" />
+                        </svg>
+                        <span class="side-menu__label">Contact</span>
+                    </a>
+                </li>
                 <!-- <li class="slide">
                     <a class="side-menu__item {{  request()->routeIs('category') ? 'has-link' : '' }}" href="{{ route('category.index') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="side-menu__icon" viewBox="0 0 16 16">
@@ -41,22 +57,6 @@
                 </li> -->
                 <li>
                     <h3>Components</h3>
-                </li>
-                <li class="slide">
-                    <a class="side-menu__item {{  request()->routeIs('page') ? 'has-link' : '' }}" href="{{ route('page.index') }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="side-menu__icon" viewBox="0 0 16 16">
-                            <path d="M15 14l-5-5-5 5v-3l10 -10z" />
-                        </svg>
-                        <span class="side-menu__label">Dynamic Page</span>
-                    </a>
-                </li>
-                <li class="slide">
-                    <a class="side-menu__item {{  request()->routeIs('contact') ? 'has-link' : '' }}" href="{{ route('contact.index') }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="side-menu__icon" viewBox="0 0 16 16">
-                            <path d="M15 14l-5-5-5 5v-3l10 -10z" />
-                        </svg>
-                        <span class="side-menu__label">Contact</span>
-                    </a>
                 </li>
                 <!-- <li class="slide">
                     <a class="side-menu__item" data-bs-toggle="slide" href="#">
@@ -93,6 +93,14 @@
                 </li>
                 <li>
                     <h3>CMS</h3>
+                </li>
+                <li class="slide">
+                    <a class="side-menu__item {{  request()->routeIs('page') ? 'has-link' : '' }}" href="{{ route('page.index') }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="side-menu__icon" viewBox="0 0 16 16">
+                            <path d="M15 14l-5-5-5 5v-3l10 -10z" />
+                        </svg>
+                        <span class="side-menu__label">Dynamic Page</span>
+                    </a>
                 </li>
                 <li class="slide">
                     <a class="side-menu__item" data-bs-toggle="slide" href="#">

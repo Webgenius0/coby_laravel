@@ -16,6 +16,8 @@ return new class extends Migration
             $table->enum('policy_currency', ['British Pounds', 'USA Dollers'])->default('British Pounds');
             $table->string('country_of_residence');
             $table->enum('insurance_type', ['multi-trip', 'single-trip'])->default('multi-trip');
+            $table->enum('policy_type', ['standard', 'extended'])->nullable();
+            $table->enum('coverage_type', ['standard', 'increased '])->nullable();
             $table->enum('area_of_travel', ['worldwide', 'excluding USA, Canada & Caribbean'])->default('worldwide');
             $table->date('start_date');
             $table->date('end_date');
@@ -35,9 +37,10 @@ return new class extends Migration
             $table->string('how_know');
             $table->longText('comments')->nullable();
             $table->float('total_price', 8, 2)->default(0);
-            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
+            $table->enum('status', ['active', 'inactive'])->default('inactive');
             $table->string('transaction_id')->nullable();
             $table->enum('payment_status', ['pending', 'paid', 'failed'])->default('pending');
+            $table->string('unique_id');
             $table->timestamps();
         });
     }

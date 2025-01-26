@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('winter_sprots')->default(2)->comment("(w + 100) / 100");
             $table->integer('adventure_sprots_multi')->default(2)->comment("(am + 100) / 100");
             $table->integer('adventure_sprots_single')->default(2)->comment("(as + 100) / 100");
+            $table->float('charge')->default(2)->comment("(100 * c) / 100");
             $table->timestamps();
         });
     }

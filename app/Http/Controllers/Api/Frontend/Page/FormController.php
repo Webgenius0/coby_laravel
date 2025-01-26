@@ -40,6 +40,8 @@ class FormController extends Controller
             'policy_currency' => 'required|string|max:50',
             'country_of_residence' => 'required|string|max:100',
             'insurance_type' => 'required|string|max:50',
+            'policy_type' => 'nullable|string|max:50',
+            'coverage_type' => 'nullable|string|max:50',
             'area_of_travel' => 'required|string|max:50',
             'age' => 'required|string|max:50',
             'start_date' => 'required|date|before_or_equal:end_date',
@@ -71,11 +73,19 @@ class FormController extends Controller
             'total_price' => 'required|numeric|min:0',
         ]);
 
+        $validatedData['created_at'] = date('Y-m-d H:i:s');
+
+        do {
+            $unique_id = uniqid('bk_', true);
+        } while (Booking::where('unique_id', $unique_id)->exists());
+
+        $validatedData['unique_id'] = $unique_id;
+        
         $validatedData['travel_type'] = json_encode($validatedData['travel_type']);
         $validatedData['adults'] = json_encode($validatedData['adults']);
         $validatedData['children'] = json_encode($validatedData['children'] ?? []);
 
-        $validatedData['status'] = 'pending';
+        $validatedData['status'] = 'inactive';
         $validatedData['payment_status'] = 'pending';
 
         $data = Booking::create($validatedData);
