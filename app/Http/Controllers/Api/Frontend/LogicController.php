@@ -22,7 +22,7 @@ class LogicController extends Controller
             'cancellation_coverage_extended' => $logic->cancellation_coverage_extended ? ($logic->cancellation_coverage_extended / 100) + 1 : 0,
             'winter_sports' => $logic->winter_sports ? ($logic->winter_sports + 100) / 100 : 0,
             'adventure_sports_multi' => $logic->adventure_sports_multi ? ($logic->adventure_sports_multi + 100) / 100 : 0,
-            'adventure_sports_single' => $logic->adventure_sports_single ? ($logic->adventure_sports_single + 100) / 100 : 0,
+            'adventure_sports_single' => $logic->adventure_sports_single,
             'charge' => $logic->charge ? $logic->charge : 0,
         ];
         return Helper::jsonResponse(true, 'Logic', 200, $data);
