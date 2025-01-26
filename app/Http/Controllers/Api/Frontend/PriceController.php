@@ -46,8 +46,8 @@ class PriceController extends Controller
         }
 
         $data = [
-            'price_in_ero' => $price->base_premium,
-            'price_in_usd' => $price->base_premium * 3.6
+            'price_in_pound' => $price->base_premium,
+            'price_in_dollar' => $price->base_premium * 3.6
         ];
 
         return Helper::jsonResponse(true, 'Price', 200, $data);
