@@ -74,8 +74,8 @@ class StripeCallBackController extends Controller
                 $booking->save();
 
                 return Helper::jsonResponse(true, 'Payment successful', 200, [
-                    'booking_id' => $booking->id,
-                    'payment_status' => $booking->status,
+                    'booking_id' => $booking->unique_id,
+                    'payment_status' => $booking->payment_status,
                 ]);
             }
 
@@ -105,8 +105,8 @@ class StripeCallBackController extends Controller
             $booking->update(['payment_status' => 'failed']);
 
             return Helper::jsonResponse(false, 'Payment canceled', 200, [
-                'booking_id' => $booking->id,
-                'payment_status' => $booking->status,
+                'booking_id' => $booking->unique_id,
+                'payment_status' => $booking->payment_status,
             ]);
         } catch (ModelNotFoundException $e) {
             return Helper::jsonResponse(false, 'Booking not found', 404, []);
