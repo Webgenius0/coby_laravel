@@ -34,7 +34,7 @@ class PriceController extends Controller
             $priceQuery->where('max_duration', 10);
         } elseif ($request->max_duration >= 11 && $request->max_duration <= 18) { //11-18 = 18
             $priceQuery->where('max_duration', 18);
-        } elseif ($request->max_duration >= 18 && $request->max_duration <= 24) { //18-24 = 24
+        } elseif ($request->max_duration >= 19 && $request->max_duration <= 24) { //19-24 = 24
             $priceQuery->where('max_duration', 24);
         } elseif ($request->max_duration >= 25 && $request->max_duration <= 30) { //25-30 = 30
             $priceQuery->where('max_duration', 30);
