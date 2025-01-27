@@ -28,10 +28,12 @@ class PriceController extends Controller
 
         if ($request->max_duration > 30) {
             return Helper::jsonResponse(false, 'Price not found', 404);
-        } elseif ($request->max_duration > 1 && $request->max_duration <= 10) { //1-10 = 10
+        } elseif ($request->max_duration > 1 && $request->max_duration <= 7) { //1-7 = 7
+            $priceQuery->where('max_duration', 7);
+        } elseif ($request->max_duration > 8 && $request->max_duration <= 10) { //8-10 = 10
             $priceQuery->where('max_duration', 10);
         } elseif ($request->max_duration >= 11 && $request->max_duration <= 18) { //11-18 = 18
-            $priceQuery->where('max_duration', 10);
+            $priceQuery->where('max_duration', 18);
         } elseif ($request->max_duration >= 18 && $request->max_duration <= 24) { //18-24 = 24
             $priceQuery->where('max_duration', 24);
         } elseif ($request->max_duration >= 25 && $request->max_duration <= 30) { //25-30 = 30

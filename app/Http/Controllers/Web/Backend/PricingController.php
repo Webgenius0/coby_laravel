@@ -59,7 +59,7 @@ class PricingController extends Controller
         $validate = $request->validate([
             'is_annual' => 'required|boolean',
             'destination' => 'required|in:ex_usa,europe,worldwide',
-            'max_duration' => 'required|in:0,10,18,24,30',
+            'max_duration' => 'required|in:0,7,10,18,24,30',
             'age_group' => 'required|in:49,50-59,60-64,65-69,70-74,80-84',
             'party_type' => 'required|in:individual,couple,family',
             'base_premium' => 'required|numeric|min:1',
@@ -104,7 +104,7 @@ class PricingController extends Controller
         $validate = $request->validate([
             'is_annual' => 'required|boolean',
             'destination' => 'required|in:ex_usa,europe,worldwide',
-            'max_duration' => 'required|in:0,10,18,24,30',
+            'max_duration' => 'required|in:0,7,10,18,24,30',
             'age_group' => 'required|in:49,50-59,60-64,65-69,70-74,80-84',
             'party_type' => 'required|in:individual,couple,family',
             'base_premium' => 'required|numeric|min:1',

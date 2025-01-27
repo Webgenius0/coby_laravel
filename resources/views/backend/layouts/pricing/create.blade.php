@@ -62,6 +62,7 @@
                                                 <select class="form-control @error('max_duration') is-invalid @enderror" name="max_duration" id="max_duration">
                                                     <option value="" selected disabled hidden>Select</option>
                                                     <option value="0" {{ old('max_duration', 0) == 0 ? 'selected' : '' }}>0</option>
+                                                    <option value="7" {{ old('max_duration', 7) == 7 ? 'selected' : '' }}>7</option>
                                                     <option value="10" {{ old('max_duration', 10) == 10 ? 'selected' : '' }}>10</option>
                                                     <option value="18" {{ old('max_duration', 18) == 18 ? 'selected' : '' }}>18</option>
                                                     <option value="24" {{ old('max_duration', 24) == 24 ? 'selected' : '' }}>24</option>
