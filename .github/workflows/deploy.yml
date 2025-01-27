@@ -16,4 +16,4 @@ jobs:
         with:
           server: ftp.gb.stackcp.com
           username: project@project.journeyman-services.com
-          password: "oz,Nsn£U:+8""
+          password: "oz,Nsn£U:+8"
