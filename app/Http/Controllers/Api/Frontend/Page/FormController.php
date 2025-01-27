@@ -38,9 +38,9 @@ class FormController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'policy_currency' => 'required|string|max:50',
+            'policy_currency' => 'required|in:British Pounds,USA Dollers',
             'country_of_residence' => 'required|string|max:100',
-            'insurance_type' => 'required|string|max:50',
+            'insurance_type' => 'required|in:single-trip,multi-trip',
             'policy_type' => 'nullable|string|max:50',
             'coverage_type' => 'nullable|string|max:50',
             'area_of_travel' => 'required|string|max:50',

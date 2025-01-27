@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->enum('policy_currency', ['British Pounds', 'USA Dollers'])->default('British Pounds');
             $table->string('country_of_residence');
-            $table->enum('insurance_type', ['multi-trip', 'single-trip'])->default('multi-trip');
+            $table->enum('insurance_type', ['multi-trip', 'single-trip'])->default('single-trip');
             $table->enum('policy_type', ['standard', 'extended'])->nullable();
             $table->enum('coverage_type', ['standard', 'increased '])->nullable();
             $table->enum('area_of_travel', ['worldwide', 'excluding USA, Canada & Caribbean'])->default('worldwide');
