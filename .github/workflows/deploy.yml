@@ -14,6 +14,6 @@ jobs:
       - name: FTP-Deploy-Action
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
-          server: ftp.softvencefsd.xyz
-          username: app@coby.softvencefsd.xyz
-          password: "STvWzbCuY$vi"
+          server: ftp.gb.stackcp.com
+          username: project@project.journeyman-services.com
+          password: "oz,Nsn£U:+8""
