@@ -17,7 +17,7 @@ return new class extends Migration
             $table->enum('destination', ['ex_usa', 'europe', 'worldwide']);
             $table->integer('max_duration');
             $table->string('age_group');
-            $table->enum('party_type', ['individual', 'couple', 'family']);
+            $table->enum('party_type', ['individual', 'couple', 'family', 'child']);
             $table->float('base_premium');
             $table->timestamps();
         });
