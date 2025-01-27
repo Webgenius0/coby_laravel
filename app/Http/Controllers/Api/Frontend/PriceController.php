@@ -16,8 +16,8 @@ class PriceController extends Controller
             'is_annual' => 'required|boolean',
             'destination' => 'required|string|in:europe,ex_usa,worldwide',
             'max_duration' => 'required|integer',
-            'age_group' => 'required|string|in:49, 50-59, 60-64, 65-69, 70-74, 80-84',
-            'party_type' => 'required|string|in:individual, couple, family'
+            'age_group' => 'required|string|in:49,50-59,60-64,65-69,70-74,80-84',
+            'party_type' => 'required|string|in:individual,couple,family'
         ]);
 
         if ($validation->fails()) {

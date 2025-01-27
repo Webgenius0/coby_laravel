@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('pricings', function (Blueprint $table) {
             $table->id();
             $table->boolean('is_annual');
-            $table->string('destination');
+            $table->enum('destination', ['ex_usa', 'europe', 'worldwide']);
             $table->integer('max_duration');
             $table->string('age_group');
-            $table->string('party_type');
+            $table->enum('party_type', ['individual', 'couple', 'family']);
             $table->float('base_premium');
             $table->timestamps();
         });

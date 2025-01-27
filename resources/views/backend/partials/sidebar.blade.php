@@ -91,6 +91,14 @@
                         <li><a href="{{ route('setting.google.map.index') }}" class="slide-item">Google Map Settings</a></li> -->
                     </ul>
                 </li>
+                <li class="slide">
+                    <a class="side-menu__item {{  request()->routeIs('pricing') ? 'has-link' : '' }}" href="{{ route('pricing.index') }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="side-menu__icon" viewBox="0 0 16 16">
+                            <path d="M15 14l-5-5-5 5v-3l10 -10z" />
+                        </svg>
+                        <span class="side-menu__label">Pricing</span>
+                    </a>
+                </li>
                 <li>
                     <h3>CMS</h3>
                 </li>

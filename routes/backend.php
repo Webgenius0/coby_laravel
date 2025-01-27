@@ -30,7 +30,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\Backend\DashboardController;
 use App\Http\Controllers\Web\Backend\InsuranceBookingController;
 use App\Http\Controllers\Web\Backend\PageController;
+use App\Http\Controllers\Web\Backend\PricingController;
 use App\Http\Controllers\Web\Backend\Settings\LogicController;
+use App\Models\Pricing;
 
 Route::controller(DashboardController::class)->group(function () {
     Route::get('dashboard', 'index')->name('dashboard');
@@ -39,6 +41,15 @@ Route::controller(DashboardController::class)->group(function () {
 Route::resource('users', UserController::class);
 Route::resource('permissions', PermissionController::class);
 Route::resource('roles', RoleController::class);
+
+Route::controller(PricingController::class)->prefix('pricing')->name('pricing.')->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/create', 'create')->name('create');
+    Route::post('/store', 'store')->name('store');
+    Route::get('/edit/{id}', 'edit')->name('edit');
+    Route::post('/update/{id}', 'update')->name('update');
+    Route::delete('/delete/{id}', 'destroy')->name('destroy');
+});
 
 Route::controller(CategoryController::class)->prefix('category')->name('category.')->group(function () {
     Route::get('/', 'index')->name('index');
