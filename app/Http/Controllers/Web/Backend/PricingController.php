@@ -21,6 +21,9 @@ class PricingController extends Controller
             $data = Pricing::all();
             return DataTables::of($data)
                 ->addIndexColumn()
+                ->addColumn('is_annual', function ($data) {
+                    return $data->is_annual ? 'Multi' : 'single';
+                })
                 ->addColumn('action', function ($data) {
                     return '<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
 
