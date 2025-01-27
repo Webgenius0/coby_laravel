@@ -52,14 +52,14 @@ class FormController extends Controller
             'adults.*.name' => 'required|string|max:255',
             'adults.*.forename' => 'required|string|max:100',
             'adults.*.surname' => 'required|string|max:100',
-            'adults.*.birth_day' => 'required|date_format:d.m.Y',
+            'adults.*.birth_day' => 'required',
             'adults.*.nationality' => 'required|string|max:50',
             'number_of_children' => 'nullable|integer|min:0',
             'children' => 'nullable|array',
             'children.*.name' => 'required_with:children|string|max:255',
             'children.*.forename' => 'required_with:children|string|max:100',
             'children.*.surname' => 'required_with:children|string|max:100',
-            'children.*.birth_day' => 'required|date_format:d.m.Y',
+            'children.*.birth_day' => 'required',
             'children.*.nationality' => 'required_with:children|string|max:50',
             'travel_type' => 'required|array|min:1',
             'address_one' => 'required|string|max:255',
@@ -76,7 +76,7 @@ class FormController extends Controller
         ]);
 
         $validatedData['created_at'] = date('Y-m-d H:i:s');
-        
+
 
         do {
             $unique_id = uniqid('bk_', true);
