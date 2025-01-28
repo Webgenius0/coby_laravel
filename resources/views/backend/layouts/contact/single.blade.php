@@ -1,4 +1,4 @@
-@extends('backend.app', ['title' => 'Update Page'])
+@extends('backend.app', ['title' => 'Update Contact'])
 
 @section('content')
 
@@ -11,11 +11,11 @@
 
             <div class="page-header">
                 <div>
-                    <h1 class="page-title">Page</h1>
+                    <h1 class="page-title">Contact</h1>
                 </div>
                 <div class="ms-auto pageheader-btn">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0);">Page</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0);">Contact</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Update</li>
                     </ol>
                 </div>
@@ -28,41 +28,33 @@
                         <div class="tab-pane active show" id="editProfile">
                             <div class="card">
                                 <div class="card-body border-0">
-                                    <form class="form-horizontal" method="post" action="{{ route('page.update', $page->id) }}" enctype="multipart/form-data">
-                                        @csrf
-                                        @method('POST')
-                                        <div class="row mb-4">
-
-                                            <div class="form-group">
-                                                <label for="username" class="form-label">Name:</label>
-                                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Name" id="" value="{{ $page->name }}">
-                                                @error('name')
-                                                <span class="text-danger">{{ $message }}</span>
-                                                @enderror
+                                    <div class="contact-info">
+                                        <h2 class="contact-info__title">Contact Information</h2>
+                                        <div class="contact-info__item">
+                                            <div>
+                                                <p class="contact-info__label">Name:</p>
+                                                <p class="contact-info__text">{{ $contact->name ?? '' }}</p>
                                             </div>
-
-                                            <div class="form-group">
-                                                <label for="title" class="form-label">Title:</label>
-                                                <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" placeholder="Title" id="" value="{{ $page->title }}">
-                                                @error('title')
-                                                <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="content" class="form-label">Content:</label>
-                                                <textarea class="form-control @error('content') is-invalid @enderror description" name="content" placeholder="Content" id="" rows="6">{{ $page->content }}</textarea>
-                                                @error('content')
-                                                <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-
-                                            <div class="form-group">
-                                                <button class="btn btn-primary" type="submit">Submit</button>
-                                            </div>
-
                                         </div>
-                                    </form>
+                                        <div class="contact-info__item">
+                                            <div>
+                                                <p class="contact-info__label">Email:</p>
+                                                <p class="contact-info__text">{{ $contact->email ?? '' }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="contact-info__item">
+                                            <div>
+                                                <p class="contact-info__label">Phone:</p>
+                                                <p class="contact-info__text">{{ $contact->phone ?? '' }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="contact-info__item">
+                                            <div>
+                                                <p class="contact-info__label">Message:</p>
+                                                <p class="contact-info__text">{{ $contact->message ?? '' }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
