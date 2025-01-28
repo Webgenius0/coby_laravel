@@ -43,7 +43,7 @@ class FormController extends Controller
             'insurance_type' => 'required|in:single-trip,multi-trip',
             'policy_type' => 'nullable|string|max:50',
             'coverage_type' => 'nullable|string|max:50',
-            'area_of_travel' => 'required|string|max:50',
+            'area_of_travel' => 'required|in:europe,ex_usa,worldwide',
             'age' => 'required|string|max:50',
             'start_date' => 'required|date|before_or_equal:end_date',
             'end_date' => 'required|date|after_or_equal:start_date',
