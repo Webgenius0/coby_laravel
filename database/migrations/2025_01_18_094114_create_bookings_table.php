@@ -18,7 +18,7 @@ return new class extends Migration
             $table->enum('insurance_type', ['multi-trip', 'single-trip'])->default('single-trip');
             $table->enum('policy_type', ['standard', 'extended'])->nullable();
             $table->enum('coverage_type', ['standard', 'increased '])->nullable();
-            $table->enum('area_of_travel', ['worldwide', 'excluding USA, Canada & Caribbean'])->default('worldwide');
+            $table->enum('area_of_travel', ['worldwide', 'ex_usa', 'europe'])->default('worldwide');
             $table->date('start_date');
             $table->date('end_date');
             $table->integer('number_of_adults');
