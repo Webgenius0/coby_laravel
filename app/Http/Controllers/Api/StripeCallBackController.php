@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enums\StripPayment;
 use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
@@ -50,9 +51,9 @@ class StripeCallBackController extends Controller
 
             return Helper::jsonResponse(true, 'Checkout session created successfully', 200, $session->url);
         } catch (ModelNotFoundException $e) {
-            return Helper::jsonResponse(false, 'Booking not found', 404, []);
+            return redirect()->intended(url(StripPayment::FAIL));
         } catch (ApiErrorException $e) {
-            return Helper::jsonResponse(false, $e->getMessage(), 500, []);
+            return redirect()->intended(url(StripPayment::FAIL));
         }
     }
 
@@ -73,21 +74,23 @@ class StripeCallBackController extends Controller
                 $booking->transaction_id = $session->payment_intent;
                 $booking->save();
 
-                return Helper::jsonResponse(true, 'Payment successful', 200, [
+                /* return Helper::jsonResponse(true, 'Payment successful', 200, [
                     'booking_id' => $booking->unique_id,
                     'payment_status' => $booking->payment_status,
-                ]);
+                ]); */
+
+                return redirect()->intended(url(StripPayment::SUCCESS));
             }
 
             if ($session->payment_status === 'unpaid' || $session->payment_status === 'no_payment_required') {
-                return Helper::jsonResponse(false, 'Payment not completed', 400, []);
+                return redirect()->intended(url(StripPayment::FAIL));
             }
 
-            return Helper::jsonResponse(false, 'Payment failed', 400, []);
+            return redirect()->intended(url(StripPayment::FAIL));
         } catch (ApiErrorException $e) {
-            return Helper::jsonResponse(false, $e->getMessage(), 500, []);
+            return redirect()->intended(url(StripPayment::FAIL));
         } catch (ModelNotFoundException $e) {
-            return Helper::jsonResponse(false, 'Booking not found', 404, []);
+            return redirect()->intended(url(StripPayment::FAIL));
         }
     }
 
@@ -97,19 +100,22 @@ class StripeCallBackController extends Controller
         $orderId = $request->query('order');
 
         if (!$orderId) {
-            return Helper::jsonResponse(false, 'Invalid order ID', 400, []);
+            return redirect()->intended(url(StripPayment::FAIL));
         }
 
         try {
             $booking = Booking::findOrFail($orderId);
             $booking->update(['payment_status' => 'failed']);
 
-            return Helper::jsonResponse(false, 'Payment canceled', 200, [
+            /* return Helper::jsonResponse(false, 'Payment canceled', 200, [
                 'booking_id' => $booking->unique_id,
                 'payment_status' => $booking->payment_status,
-            ]);
+            ]); */
+
+            return redirect()->intended(url(StripPayment::FAIL));
+            
         } catch (ModelNotFoundException $e) {
-            return Helper::jsonResponse(false, 'Booking not found', 404, []);
+            return redirect()->intended(url(StripPayment::FAIL));
         }
     }
 
