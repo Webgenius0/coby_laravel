@@ -51,9 +51,9 @@ class StripeCallBackController extends Controller
 
             return Helper::jsonResponse(true, 'Checkout session created successfully', 200, $session->url);
         } catch (ModelNotFoundException $e) {
-            return redirect()->intended(url(StripPayment::FAIL));
+            return redirect()->to(StripPayment::FAIL->value);
         } catch (ApiErrorException $e) {
-            return redirect()->intended(url(StripPayment::FAIL));
+            return redirect()->to(StripPayment::FAIL->value);
         }
     }
 
@@ -79,18 +79,18 @@ class StripeCallBackController extends Controller
                     'payment_status' => $booking->payment_status,
                 ]); */
 
-                return redirect()->intended(url(StripPayment::SUCCESS));
+                return redirect()->to(StripPayment::SUCCESS->value);
             }
 
             if ($session->payment_status === 'unpaid' || $session->payment_status === 'no_payment_required') {
-                return redirect()->intended(url(StripPayment::FAIL));
+                return redirect()->to(StripPayment::FAIL->value);
             }
 
-            return redirect()->intended(url(StripPayment::FAIL));
+            return redirect()->to(StripPayment::FAIL->value);
         } catch (ApiErrorException $e) {
-            return redirect()->intended(url(StripPayment::FAIL));
+            return redirect()->to(StripPayment::FAIL->value);
         } catch (ModelNotFoundException $e) {
-            return redirect()->intended(url(StripPayment::FAIL));
+            return redirect()->to(StripPayment::FAIL->value);
         }
     }
 
@@ -100,7 +100,7 @@ class StripeCallBackController extends Controller
         $orderId = $request->query('order');
 
         if (!$orderId) {
-            return redirect()->intended(url(StripPayment::FAIL));
+            return redirect()->to(StripPayment::FAIL->value);
         }
 
         try {
@@ -112,10 +112,10 @@ class StripeCallBackController extends Controller
                 'payment_status' => $booking->payment_status,
             ]); */
 
-            return redirect()->intended(url(StripPayment::FAIL));
-            
+            return redirect()->to(StripPayment::FAIL->value);
+
         } catch (ModelNotFoundException $e) {
-            return redirect()->intended(url(StripPayment::FAIL));
+            return redirect()->to(StripPayment::FAIL->value);
         }
     }
 
