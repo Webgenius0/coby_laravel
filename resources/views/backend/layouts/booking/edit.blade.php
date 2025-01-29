@@ -258,6 +258,7 @@
                             <div class="tab-pane active show" id="editProfile">
                                 <div class="card">
                                     <div class="card-body border-0">
+
                                         <div class="form-group">
                                             <label for="number_of_adults" class="form-label">Number of Adults:</label>
                                             <input type="number" class="form-control @error('number_of_adults') is-invalid @enderror" name="number_of_adults" placeholder="1" id="" value="{{ $booking->number_of_adults ?? old('number_of_adults') }}" min="1">
@@ -265,13 +266,15 @@
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
+
                                         <div class="form-group">
-                                            <label for="number_of_adults" class="form-label">Number of Adults:</label>
-                                            <input type="number" class="form-control @error('number_of_adults') is-invalid @enderror" name="number_of_adults" placeholder="1" id="" value="{{ $booking->number_of_adults ?? old('number_of_adults') }}" min="1">
-                                            @error('number_of_adults')
+                                            <label for="number_of_children" class="form-label">Number of Children:</label>
+                                            <input type="number" class="form-control @error('number_of_children') is-invalid @enderror" name="number_of_children" placeholder="1" id="" value="{{ $booking->number_of_children ?? old('number_of_children') }}" min="1">
+                                            @error('number_of_children')
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
