@@ -93,6 +93,19 @@
                                                 <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
+
+                                            <div class="form-group">
+                                                <label for="area_of_travel" class="form-label">Area of Travel:</label>
+                                                <select class="form-control @error('area_of_travel') is-invalid @enderror" name="area_of_travel" id="area_of_travel">
+                                                    <option value="" selected disabled hidden>Select</option>
+                                                    <option value="worldwide" {{ old('area_of_travel', $booking->area_of_travel) == 'worldwide' ? 'selected' : '' }}>worldwide</option>
+                                                    <option value="ex_usa" {{ old('area_of_travel', $booking->area_of_travel) == 'ex_usa' ? 'selected' : '' }}>ex_usa</option>
+                                                    <option value="europe" {{ old('area_of_travel', $booking->area_of_travel) == 'europe' ? 'selected' : '' }}>europe</option>
+                                                </select>
+                                                @error('area_of_travel')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
                                         
                                             <div class="form-group">
                                                 <label for="country_of_residence" class="form-label">Country of Residence:</label>
