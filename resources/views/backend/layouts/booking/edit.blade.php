@@ -46,38 +46,6 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="area_of_travel" class="form-label">Area of Travel:</label>
-                                            <select class="form-control @error('area_of_travel') is-invalid @enderror" name="area_of_travel" id="area_of_travel">
-                                                <option value="" selected disabled hidden>Select</option>
-                                                <option value="worldwide" {{ old('area_of_travel', $booking->area_of_travel) == 'worldwide' ? 'selected' : '' }}>worldwide</option>
-                                                <option value="ex_usa" {{ old('area_of_travel', $booking->area_of_travel) == 'ex_usa' ? 'selected' : '' }}>ex_usa</option>
-                                                <option value="europe" {{ old('area_of_travel', $booking->area_of_travel) == 'europe' ? 'selected' : '' }}>europe</option>
-                                            </select>
-                                            @error('area_of_travel')
-                                            <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="travel_type" class="form-label">Travel Type:</label>
-                                            <div class="d-flex align-items-center">
-                                                <div class="form-check mr-3">
-                                                    <input type="checkbox" class="form-check-input @error('travel_type') is-invalid @enderror" name="travel_type[]" value="adventure" {{ is_array(old('travel_type', json_decode($booking->travel_type))) && in_array('adventure', old('travel_type', json_decode($booking->travel_type))) ? 'checked' : '' }}>
-                                                </div>
-                                                <label class="form-check-label">Winter Sports?</label>
-                                            </div>
-                                            <div class="d-flex align-items-center">
-                                                <div class="form-check mr-3">
-                                                    <input type="checkbox" class="form-check-input @error('travel_type') is-invalid @enderror" name="travel_type[]" value="leisure" {{ is_array(old('travel_type', json_decode($booking->travel_type))) && in_array('leisure', old('travel_type', json_decode($booking->travel_type))) ? 'checked' : '' }}>
-                                                </div>
-                                                <label class="form-check-label">Adventure Sports?</label>
-                                            </div>
-                                            @error('travel_type')
-                                            <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-
-                                        <div class="form-group">
                                             <label for="how_know" class="form-label">How to Know:</label>
                                             <input type="text" class="form-control @error('how_know') is-invalid @enderror" name="how_know" placeholder="How know" id="how_know" value="{{ $booking->how_know ?? old('how_know') }}">
                                             @error('how_know')
@@ -92,11 +60,26 @@
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
+
                                     </div>
                                 </div>
 
                                 <div class="card">
                                     <div class="card-body border-0">
+
+                                        <div class="form-group">
+                                            <label for="area_of_travel" class="form-label">Area of Travel:</label>
+                                            <select class="form-control @error('area_of_travel') is-invalid @enderror" name="area_of_travel" id="area_of_travel">
+                                                <option value="" selected disabled hidden>Select</option>
+                                                <option value="worldwide" {{ old('area_of_travel', $booking->area_of_travel) == 'worldwide' ? 'selected' : '' }}>worldwide</option>
+                                                <option value="ex_usa" {{ old('area_of_travel', $booking->area_of_travel) == 'ex_usa' ? 'selected' : '' }}>ex_usa</option>
+                                                <option value="europe" {{ old('area_of_travel', $booking->area_of_travel) == 'europe' ? 'selected' : '' }}>europe</option>
+                                            </select>
+                                            @error('area_of_travel')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
                                         <div class="form-group">
                                             <label for="insurance_type" class="form-label">Insurance Type:</label>
                                             <select class="form-control @error('insurance_type') is-invalid @enderror" name="insurance_type" id="insurance_type">
@@ -147,6 +130,26 @@
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="travel_type" class="form-label">Travel Type:</label>
+                                            <div class="d-flex align-items-center">
+                                                <div class="form-check mr-3">
+                                                    <input type="checkbox" class="form-check-input @error('travel_type') is-invalid @enderror" name="travel_type[]" value="adventure" {{ is_array(old('travel_type', json_decode($booking->travel_type))) && in_array('adventure', old('travel_type', json_decode($booking->travel_type))) ? 'checked' : '' }}>
+                                                </div>
+                                                <label class="form-check-label">Winter Sports?</label>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <div class="form-check mr-3">
+                                                    <input type="checkbox" class="form-check-input @error('travel_type') is-invalid @enderror" name="travel_type[]" value="leisure" {{ is_array(old('travel_type', json_decode($booking->travel_type))) && in_array('leisure', old('travel_type', json_decode($booking->travel_type))) ? 'checked' : '' }}>
+                                                </div>
+                                                <label class="form-check-label">Adventure Sports?</label>
+                                            </div>
+                                            @error('travel_type')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        
                                     </div>
                                 </div>
 
