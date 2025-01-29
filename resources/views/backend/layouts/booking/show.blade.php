@@ -195,7 +195,7 @@
                                         </tr>
                                         <tr>
                                             <th>Total Price</th>
-                                            <td>{{ $booking->total_price ?? "N/A" }}</td>
+                                            <td>{{ $booking->total_price ?? "N/A" }} {{ $booking->currency ?? "N/A" }}</td>
                                         </tr>
                                         <tr>
                                             <th>Status</th>
