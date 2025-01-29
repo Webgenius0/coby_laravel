@@ -62,7 +62,7 @@
                                                 <label for="insurance_type" class="form-label">Insurance Type:</label>
                                                 <select class="form-control @error('insurance_type') is-invalid @enderror" name="insurance_type" id="insurance_type">
                                                     <option value="" selected disabled hidden>Select</option>
-                                                    <option value="single-trip" {{ old('insurance_type', $booking->insurance_type) == 'single-trip' ? 'selected' : '' }}>single-trip</option>
+                                                    <option value="multi-trip" {{ old('insurance_type', $booking->insurance_type) == 'multi-trip' ? 'selected' : '' }}>multi-trip</option>
                                                     <option value="single-trip" {{ old('insurance_type', $booking->insurance_type) == 'single-trip' ? 'selected' : '' }}>single-trip</option>
                                                 </select>
                                                 @error('insurance_type')
