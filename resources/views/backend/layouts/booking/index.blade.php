@@ -35,7 +35,7 @@
                         <div class="card-header border-bottom">
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <a href="{{ route('insurance.booking.index', 'paid') }}" class="btn btn-primary {{ request()->routeIs('insurance.booking.index', 'paid') ? 'active' : '' }}">Paid</a>
-                                <a href="{{ route('insurance.booking.index', 'unpaid') }}" class="btn btn-primary {{ request()->routeIs('insurance.booking.index', 'unpaid') ? 'active' : '' }}">Unpaid</a>
+                                <a href="{{ route('insurance.booking.index', 'pending') }}" class="btn btn-primary {{ request()->routeIs('insurance.booking.index', 'unpaid') ? 'active' : '' }}">Unpaid / Saved</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -103,7 +103,7 @@
                 pagingType: "full_numbers",
                 dom: "<'row justify-content-between table-topbar'<'col-md-4 col-sm-3'l><'col-md-5 col-sm-5 px-0'f>>tipr",
                 ajax: {
-                    url: "{{ route('insurance.booking.index') }}",
+                    url: "{{ route('insurance.booking.index', request()->status ?? 'paid') }}",
                     type: "GET",
                 },
 
