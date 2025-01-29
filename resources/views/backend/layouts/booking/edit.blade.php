@@ -149,7 +149,7 @@
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
-                                        
+
                                     </div>
                                 </div>
 
@@ -228,7 +228,6 @@
 
                                 <div class="card">
                                     <div class="card-body border-0">
-                                        <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100">Total Price</h3>
                                         <div class="form-group">
                                             <label for="policy_currency" class="form-label">Policy Currency:</label>
                                             <select class="form-control @error('policy_currency') is-invalid @enderror" name="policy_currency" id="policy_currency">
@@ -263,7 +262,6 @@
 
                                 <div class="card">
                                     <div class="card-body border-0">
-                                        <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100">Adult Information</h3>
                                         <div class="form-group">
                                             <label for="number_of_adults" class="form-label">Number of Adults:</label>
                                             <input type="number" class="form-control @error('number_of_adults') is-invalid @enderror" name="number_of_adults" placeholder="1" id="" value="{{ $booking->number_of_adults ?? old('number_of_adults') }}" min="1">
@@ -276,7 +274,6 @@
 
                                 <div class="card">
                                     <div class="card-body border-0">
-                                        <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100">Children Information</h3>
                                         <div class="form-group">
                                             <label for="number_of_children" class="form-label">Number of Children:</label>
                                             <input type="number" class="form-control @error('number_of_children') is-invalid @enderror" name="number_of_children" placeholder="1" id="" value="{{ $booking->number_of_children ?? old('number_of_children') }}" min="1">
