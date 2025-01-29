@@ -258,7 +258,8 @@
                             <div class="tab-pane active show" id="editProfile">
                                 <div class="card">
                                     <div class="card-body border-0">
-                                        <h1>Adult Information</h1>
+
+                                        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">Adult Information</h2>
                                         <div class="form-group">
                                             <label for="number_of_adults" class="form-label">Number of Adults:</label>
                                             <input type="number" class="form-control @error('number_of_adults') is-invalid @enderror" name="number_of_adults" placeholder="1" id="" value="{{ $booking->number_of_adults ?? old('number_of_adults') }}" min="1">
@@ -267,7 +268,7 @@
                                             @enderror
                                         </div>
 
-                                        <h1>Children Information</h1>
+                                        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">Children Information</h2>
                                         <div class="form-group">
                                             <label for="number_of_children" class="form-label">Number of Children:</label>
                                             <input type="number" class="form-control @error('number_of_children') is-invalid @enderror" name="number_of_children" placeholder="1" id="" value="{{ $booking->number_of_children ?? old('number_of_children') }}" min="1">
