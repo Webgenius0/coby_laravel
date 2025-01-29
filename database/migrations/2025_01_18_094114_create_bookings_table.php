@@ -39,7 +39,7 @@ return new class extends Migration
             $table->float('total_price', 8, 2)->default(0.00);
             $table->enum('status', ['active', 'inactive'])->default('inactive');
             $table->string('transaction_id')->nullable();
-            $table->enum('payment_status', ['pending', 'paid', 'failed'])->default('pending');
+            $table->enum('payment_status', ['pending', 'paid', 'failed', 'saved'])->default('pending');
             $table->string('unique_id');
             $table->enum('currency', ['USD', 'GBP'])->default('GBP');
             $table->timestamps();

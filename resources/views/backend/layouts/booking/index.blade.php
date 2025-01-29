@@ -35,7 +35,8 @@
                         <div class="card-header border-bottom">
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <a href="{{ route('insurance.booking.index', 'paid') }}" class="btn btn-primary {{ request()->routeIs('insurance.booking.index', 'paid') ? 'active' : '' }}">Paid</a>
-                                <a href="{{ route('insurance.booking.index', 'pending') }}" class="btn btn-primary {{ request()->routeIs('insurance.booking.index', 'unpaid') ? 'active' : '' }}">Unpaid / Saved</a>
+                                <a href="{{ route('insurance.booking.index', 'pending') }}" class="btn btn-primary {{ request()->routeIs('insurance.booking.index', 'unpaid') ? 'active' : '' }}">Unpaid</a>
+                                <a href="{{ route('insurance.booking.index', 'saved') }}" class="btn btn-primary {{ request()->routeIs('insurance.booking.index', 'saved') ? 'active' : '' }}">Saved</a>
                             </div>
                         </div>
                         <div class="card-body">
