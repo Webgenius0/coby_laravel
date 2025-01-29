@@ -194,9 +194,56 @@
         });
     }
 
+    // delete Confirm
+    function showDeleteConfirm(id) {
+        event.preventDefault();
+        Swal.fire({
+            title: 'Are you sure you want to delete this record?',
+            text: 'If you delete this, it will be gone forever.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                deleteItem(id);
+            }
+        });
+    }
+
+    // Delete Button
+    function deleteItem(id) {
+        NProgress.start();
+        let url = "{{ route('insurance.booking.destroy', ':id') }}";
+        let csrfToken = '{{ csrf_token() }}';
+        $.ajax({
+            type: "DELETE",
+            url: url.replace(':id', id),
+            headers: {
+                'X-CSRF-TOKEN': csrfToken
+            },
+            success: function(resp) {
+                NProgress.done();
+                toastr.success(resp.message);
+                $('#datatable').DataTable().ajax.reload();
+            },
+            error: function(error) {
+                NProgress.done();
+                toastr.error(error.message);
+            }
+        });
+    }
+
     //edit
     function goToShow(id) {
         let url = "{{ route('insurance.booking.show', ':id') }}";
+        window.location.href = url.replace(':id', id);
+    }
+
+    //edit
+    function goToEdit(id) {
+        let url = "{{ route('insurance.booking.edit', ':id') }}";
         window.location.href = url.replace(':id', id);
     }
 </script>

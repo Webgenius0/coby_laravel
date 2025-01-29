@@ -49,6 +49,11 @@ class InsuranceBookingController extends Controller
                                 <a href="#" type="button" onclick="goToShow(' . $data->id . ')" class="btn btn-primary fs-14 text-white delete-icn" title="Delete">
                                     <i class="fe fe-eye"></i>
                                 </a>
+
+                                <a href="#" type="button" onclick="goToEdit(' . $data->id . ')" class="btn btn-primary fs-14 text-white delete-icn" title="Delete">
+                                    <i class="fe fe-edit"></i>
+                                </a>
+
                             </div>';
                 })
                 ->rawColumns(['total_price', 'status', 'action'])

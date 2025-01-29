@@ -84,6 +84,9 @@ Route::controller(PageController::class)->prefix('page')->name('page.')->group(f
 Route::controller(InsuranceBookingController::class)->prefix('insurance/booking')->name('insurance.booking.')->group(function () {
     Route::get('/{status?}', 'index')->name('index');
     Route::get('/show/{id}', 'show')->name('show');
+    Route::get('/edit/{id}', 'edit')->name('edit');
+    Route::post('/update/{id}', 'update')->name('update');
+    Route::delete('/delete/{id}', 'destroy')->name('destroy');
     Route::get('/status/{id}', 'status')->name('status');
 });
 
