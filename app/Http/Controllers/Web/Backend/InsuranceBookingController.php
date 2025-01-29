@@ -54,6 +54,10 @@ class InsuranceBookingController extends Controller
                                     <i class="fe fe-edit"></i>
                                 </a>
 
+                                <a href="#" type="button" onclick="showDeleteConfirm(' . $data->id . ')" class="btn btn-danger fs-14 text-white delete-icn" title="Delete">
+                                    <i class="fe fe-trash"></i>
+                                </a>
+
                             </div>';
                 })
                 ->rawColumns(['total_price', 'status', 'action'])
