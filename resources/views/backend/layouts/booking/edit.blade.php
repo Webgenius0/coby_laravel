@@ -92,129 +92,129 @@
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
+                                    </div>
+                                </div>
 
-
-                                        <div class="card">
-                                            <div class="card-body border-0">
-                                                <div class="form-group">
-                                                    <label for="insurance_type" class="form-label">Insurance Type:</label>
-                                                    <select class="form-control @error('insurance_type') is-invalid @enderror" name="insurance_type" id="insurance_type">
-                                                        <option value="" selected disabled hidden>Select</option>
-                                                        <option value="multi-trip" {{ old('insurance_type', $booking->insurance_type) == 'multi-trip' ? 'selected' : '' }}>multi-trip</option>
-                                                        <option value="single-trip" {{ old('insurance_type', $booking->insurance_type) == 'single-trip' ? 'selected' : '' }}>single-trip</option>
-                                                    </select>
-                                                    @error('insurance_type')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="policy_type" class="form-label">Multi Trip Policy Type:</label>
-                                                    <select class="form-control @error('policy_type') is-invalid @enderror" name="policy_type" id="policy_type">
-                                                        <option value="" selected disabled hidden>Select</option>
-                                                        <option value="standard" {{ old('policy_type', $booking->policy_type) == 'standard' ? 'selected' : '' }}>standard</option>
-                                                        <option value="extended" {{ old('policy_type', $booking->policy_type) == 'extended' ? 'selected' : '' }}>extended</option>
-                                                    </select>
-                                                    @error('policy_type')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="coverage_type" class="form-label">Multi Trip Coverage Type:</label>
-                                                    <select class="form-control @error('coverage_type') is-invalid @enderror" name="coverage_type" id="coverage_type">
-                                                        <option value="" selected disabled hidden>Select</option>
-                                                        <option value="standard" {{ old('coverage_type', $booking->coverage_type) == 'standard' ? 'selected' : '' }}>standard</option>
-                                                        <option value="increased" {{ old('coverage_type', $booking->coverage_type) == 'increased' ? 'selected' : '' }}>increased</option>
-                                                    </select>
-                                                    @error('coverage_type')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="start_date" class="form-label">Start Date:</label>
-                                                    <input type="date" class="form-control @error('start_date') is-invalid @enderror" name="start_date" placeholder="mm/dd/yyyy" id="" value="{{ $booking->start_date ?? old('start_date') }}">
-                                                    @error('start_date')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="end_date" class="form-label">End Date:</label>
-                                                    <input type="date" class="form-control @error('end_date') is-invalid @enderror" name="end_date" placeholder="mm/dd/yyyy" id="" value="{{ $booking->end_date ?? old('end_date') }}">
-                                                    @error('end_date')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="card">
-                                            <div class="card-body border-0">
-                                                <div class="form-group">
-                                                    <label for="address_one" class="form-label">Address One:</label>
-                                                    <input type="text" class="form-control @error('address_one') is-invalid @enderror" name="address_one" placeholder="address" id="address_one" value="{{ $booking->address_one ?? old('address_one') }}">
-                                                    @error('address_one')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="address_two" class="form-label">Address Two:</label>
-                                                    <input type="text" class="form-control @error('address_two') is-invalid @enderror" name="address_two" placeholder="address" id="address_two" value="{{ $booking->address_two ?? old('address_two') }}">
-                                                    @error('address_two')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="city" class="form-label">City:</label>
-                                                    <input type="text" class="form-control @error('city') is-invalid @enderror" name="city" placeholder="city" id="city" value="{{ $booking->city ?? old('city') }}">
-                                                    @error('city')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="zip_code" class="form-label">Zip Code:</label>
-                                                    <input type="text" class="form-control @error('zip_code') is-invalid @enderror" name="zip_code" placeholder="zip_code" id="zip_code" value="{{ $booking->zip_code ?? old('zip_code') }}">
-                                                    @error('zip_code')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="telephone" class="form-label">Telephone:</label>
-                                                    <input type="text" class="form-control @error('telephone') is-invalid @enderror" name="telephone" placeholder="telephone" id="telephone" value="{{ $booking->telephone ?? old('telephone') }}">
-                                                    @error('telephone')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="telephone" class="form-label">Email:</label>
-                                                    <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="email" id="email" value="{{ $booking->email ?? old('email') }}">
-                                                    @error('email')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="country" class="form-label">Country:</label>
-                                                    <input type="text" class="form-control @error('country') is-invalid @enderror" name="country" placeholder="country" id="country" value="{{ $booking->country ?? old('country') }}">
-                                                    @error('country')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </div>
-                                            </div>
+                                <div class="card">
+                                    <div class="card-body border-0">
+                                        <div class="form-group">
+                                            <label for="insurance_type" class="form-label">Insurance Type:</label>
+                                            <select class="form-control @error('insurance_type') is-invalid @enderror" name="insurance_type" id="insurance_type">
+                                                <option value="" selected disabled hidden>Select</option>
+                                                <option value="multi-trip" {{ old('insurance_type', $booking->insurance_type) == 'multi-trip' ? 'selected' : '' }}>multi-trip</option>
+                                                <option value="single-trip" {{ old('insurance_type', $booking->insurance_type) == 'single-trip' ? 'selected' : '' }}>single-trip</option>
+                                            </select>
+                                            @error('insurance_type')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
 
                                         <div class="form-group">
-                                            <button class="btn btn-primary" type="submit">Submit</button>
+                                            <label for="policy_type" class="form-label">Multi Trip Policy Type:</label>
+                                            <select class="form-control @error('policy_type') is-invalid @enderror" name="policy_type" id="policy_type">
+                                                <option value="" selected disabled hidden>Select</option>
+                                                <option value="standard" {{ old('policy_type', $booking->policy_type) == 'standard' ? 'selected' : '' }}>standard</option>
+                                                <option value="extended" {{ old('policy_type', $booking->policy_type) == 'extended' ? 'selected' : '' }}>extended</option>
+                                            </select>
+                                            @error('policy_type')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
 
+                                        <div class="form-group">
+                                            <label for="coverage_type" class="form-label">Multi Trip Coverage Type:</label>
+                                            <select class="form-control @error('coverage_type') is-invalid @enderror" name="coverage_type" id="coverage_type">
+                                                <option value="" selected disabled hidden>Select</option>
+                                                <option value="standard" {{ old('coverage_type', $booking->coverage_type) == 'standard' ? 'selected' : '' }}>standard</option>
+                                                <option value="increased" {{ old('coverage_type', $booking->coverage_type) == 'increased' ? 'selected' : '' }}>increased</option>
+                                            </select>
+                                            @error('coverage_type')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="start_date" class="form-label">Start Date:</label>
+                                            <input type="date" class="form-control @error('start_date') is-invalid @enderror" name="start_date" placeholder="mm/dd/yyyy" id="" value="{{ $booking->start_date ?? old('start_date') }}">
+                                            @error('start_date')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="end_date" class="form-label">End Date:</label>
+                                            <input type="date" class="form-control @error('end_date') is-invalid @enderror" name="end_date" placeholder="mm/dd/yyyy" id="" value="{{ $booking->end_date ?? old('end_date') }}">
+                                            @error('end_date')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
+
+                                <div class="card">
+                                    <div class="card-body border-0">
+                                        <div class="form-group">
+                                            <label for="address_one" class="form-label">Address One:</label>
+                                            <input type="text" class="form-control @error('address_one') is-invalid @enderror" name="address_one" placeholder="address" id="address_one" value="{{ $booking->address_one ?? old('address_one') }}">
+                                            @error('address_one')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="address_two" class="form-label">Address Two:</label>
+                                            <input type="text" class="form-control @error('address_two') is-invalid @enderror" name="address_two" placeholder="address" id="address_two" value="{{ $booking->address_two ?? old('address_two') }}">
+                                            @error('address_two')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="city" class="form-label">City:</label>
+                                            <input type="text" class="form-control @error('city') is-invalid @enderror" name="city" placeholder="city" id="city" value="{{ $booking->city ?? old('city') }}">
+                                            @error('city')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="zip_code" class="form-label">Zip Code:</label>
+                                            <input type="text" class="form-control @error('zip_code') is-invalid @enderror" name="zip_code" placeholder="zip_code" id="zip_code" value="{{ $booking->zip_code ?? old('zip_code') }}">
+                                            @error('zip_code')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="telephone" class="form-label">Telephone:</label>
+                                            <input type="text" class="form-control @error('telephone') is-invalid @enderror" name="telephone" placeholder="telephone" id="telephone" value="{{ $booking->telephone ?? old('telephone') }}">
+                                            @error('telephone')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="telephone" class="form-label">Email:</label>
+                                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="email" id="email" value="{{ $booking->email ?? old('email') }}">
+                                            @error('email')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="country" class="form-label">Country:</label>
+                                            <input type="text" class="form-control @error('country') is-invalid @enderror" name="country" placeholder="country" id="country" value="{{ $booking->country ?? old('country') }}">
+                                            @error('country')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                </div>
+
+
 
                             </div>
 
