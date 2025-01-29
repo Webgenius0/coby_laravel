@@ -134,6 +134,19 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="tax" class="form-label">Tax:</label>
+                                        <span class="text-muted">Insurance premium tax</span>
+                                        <input type="number" class="form-control @error('tax') is-invalid @enderror"
+                                            name="tax" placeholder="tax" id="tax"
+                                            value="{{ $logic->tax ?? old('tax') ?? '' }}"
+                                            min="1"
+                                            step="0.01">
+                                        @error('tax')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group">
                                         <button class="btn btn-primary" type="submit">Update</button>
                                     </div>
                                 </div>

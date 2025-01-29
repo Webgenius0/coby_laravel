@@ -79,7 +79,7 @@ class FormController extends Controller
 
 
         do {
-            $unique_id = uniqid('bk_', true);
+            $unique_id = uniqid('policy_', true);
         } while (Booking::where('unique_id', $unique_id)->exists());
 
         $validatedData['unique_id'] = $unique_id;
