@@ -22,9 +22,8 @@
             </div>
             <form class="form-horizontal" method="post" action="{{ route('insurance.booking.update', $booking->id) }}" enctype="multipart/form-data">
                 @csrf
+                @method('POST')
                 <div class="row" id="user-profile">
-
-                    @method('POST')
                     <div class="col-lg-8">
 
                         <div class="tab-content">
@@ -124,13 +123,7 @@
                                                 @enderror
                                             </div>
 
-                                            <div class="form-group">
-                                                <label for="number_of_adults" class="form-label">Number of Adults:</label>
-                                                <input type="number" class="form-control @error('number_of_adults') is-invalid @enderror" name="number_of_adults" placeholder="1" id="" value="{{ $booking->number_of_adults ?? old('number_of_adults') }}" min="1">
-                                                @error('number_of_adults')
-                                                <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
+                                            
 
                                             <div class="form-group">
                                                 <label for="travel_type" class="form-label">Travel Type:</label>
@@ -265,27 +258,26 @@
                             <div class="tab-pane active show" id="editProfile">
                                 <div class="card">
                                     <div class="card-body border-0">
-                                        dddd
+                                        <div class="form-group">
+                                            <label for="number_of_adults" class="form-label">Number of Adults:</label>
+                                            <input type="number" class="form-control @error('number_of_adults') is-invalid @enderror" name="number_of_adults" placeholder="1" id="" value="{{ $booking->number_of_adults ?? old('number_of_adults') }}" min="1">
+                                            @error('number_of_adults')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="number_of_adults" class="form-label">Number of Adults:</label>
+                                            <input type="number" class="form-control @error('number_of_adults') is-invalid @enderror" name="number_of_adults" placeholder="1" id="" value="{{ $booking->number_of_adults ?? old('number_of_adults') }}" min="1">
+                                            @error('number_of_adults')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                         </div>
                     </div>
-                    <div class="col-lg-4">
-
-                        <div class="tab-content">
-                            <div class="tab-pane active show" id="editProfile">
-                                <div class="card">
-                                    <div class="card-body border-0">
-                                        dddd
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
                 </div>
             </form>
         </div>
