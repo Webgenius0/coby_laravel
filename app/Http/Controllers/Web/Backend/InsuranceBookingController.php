@@ -45,7 +45,7 @@ class InsuranceBookingController extends Controller
                                 </a>
                             </div>';
                 })
-                ->rawColumns(['status', 'action'])
+                ->rawColumns(['total_price', 'status', 'action'])
                 ->make();
         }
         return view("backend.layouts.booking.index");
