@@ -50,7 +50,7 @@ class InsuranceBookingController extends Controller
                                     <i class="fe fe-eye"></i>
                                 </a>
 
-                                <a href="#" type="button" onclick="goToEdit(' . $data->id . ')" class="btn btn-primary fs-14 text-white delete-icn" title="Delete">
+                                <a href="#" type="button" onclick="goToEdit(' . $data->id . ')" class="btn btn-success fs-14 text-white delete-icn" title="Delete">
                                     <i class="fe fe-edit"></i>
                                 </a>
 
@@ -70,6 +70,33 @@ class InsuranceBookingController extends Controller
     {
         $booking = Booking::findOrFail($id);
         return view('backend.layouts.booking.show', compact('booking'));
+    }
+
+    public function edit(Booking $booking, $id)
+    {
+        $booking = Booking::findOrFail($id);
+        return view('backend.layouts.booking.edit', compact('booking'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, $id)
+    {
+        $validate = $request->validate([
+            'name' => 'required',
+        ]);
+
+        try {
+            $booking = Booking::findOrFail($id);
+
+            $booking->update($validate);
+            session()->put('t-success', 'Booking updated successfully');
+        } catch (Exception $e) {
+            session()->put('t-error', $e->getMessage());
+        }
+
+        return redirect()->route('booking.index');
     }
 
     public function destroy(string $id)
@@ -107,4 +134,5 @@ class InsuranceBookingController extends Controller
             'message' => 'Your action was successful!',
         ]);
     }
+
 }
