@@ -51,7 +51,7 @@
                                                 <select class="form-control @error('country_of_residence') is-invalid @enderror" name="country_of_residence" id="country_of_residence">
                                                     <option value="" selected disabled hidden>Select</option>
                                                     @foreach ($countries as $country)
-                                                        <option value="{{ $value->country }}" {{ old('country_of_residence', $booking->country_of_residence) == $country->name ? 'selected' : '' }}>{{ $country->name }}</option>
+                                                        <option value="{{ $country->name }}" {{ old('country_of_residence', $booking->country_of_residence) == $country->name ? 'selected' : '' }}>{{ $country->name }}</option>
                                                     @endforeach
                                                 </select>
                                                 @error('country_of_residence')
