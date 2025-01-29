@@ -124,6 +124,14 @@
                                             </div>
 
                                             <div class="form-group">
+                                                <label for="number_of_adults" class="form-label">Number of Adults:</label>
+                                                <input type="number" class="form-control @error('number_of_adults') is-invalid @enderror" name="number_of_adults" placeholder="1" id="" value="{{ $booking->number_of_adults }}" min="1">
+                                                @error('number_of_adults')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+                                            <div class="form-group">
                                                 <button class="btn btn-primary" type="submit">Submit</button>
                                             </div>
 
