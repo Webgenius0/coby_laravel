@@ -272,6 +272,19 @@
 
                         </div>
                     </div>
+                    <div class="col-lg-4">
+
+                        <div class="tab-content">
+                            <div class="tab-pane active show" id="editProfile">
+                                <div class="card">
+                                    <div class="card-body border-0">
+                                        dddd
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
 
                 </div>
             </form>
