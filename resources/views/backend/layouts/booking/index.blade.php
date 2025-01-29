@@ -34,8 +34,8 @@
                     <div class="card product-sales-main">
                         <div class="card-header border-bottom">
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <button onclick="window.location.reload({{ route('insurance.booking.index', 'paid') }})" type="button" class="btn btn-primary">Paid</button>
-                                <button onclick="window.location.reload({{ route('insurance.booking.index', 'unpaid') }})" type="button" class="btn btn-primary">Unpaid</button>
+                                <a href="{{ route('insurance.booking.index', 'paid') }}" class="btn btn-primary {{ request()->routeIs('insurance.booking.index', 'paid') ? 'active' : '' }}">Paid</a>
+                                <a href="{{ route('insurance.booking.index', 'unpaid') }}" class="btn btn-primary {{ request()->routeIs('insurance.booking.index', 'unpaid') ? 'active' : '' }}">Unpaid</a>
                             </div>
                         </div>
                         <div class="card-body">
