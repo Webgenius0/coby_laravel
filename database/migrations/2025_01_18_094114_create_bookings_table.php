@@ -36,7 +36,7 @@ return new class extends Migration
             $table->string('country');
             $table->string('how_know');
             $table->longText('comments')->nullable();
-            $table->float('total_price', 8, 2)->default(0);
+            $table->float('total_price', 8, 2)->default(0.00);
             $table->enum('status', ['active', 'inactive'])->default('inactive');
             $table->string('transaction_id')->nullable();
             $table->enum('payment_status', ['pending', 'paid', 'failed'])->default('pending');

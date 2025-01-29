@@ -21,6 +21,9 @@ class InsuranceBookingController extends Controller
             $data = Booking::where('payment_status', 'paid')->get();
             return DataTables::of($data)
                 ->addIndexColumn()
+                ->addColumn('total_price', function ($data) {
+                    return floatval($data->total_price);
+                })
                 ->addColumn('status', function ($data) {
                     $backgroundColor = $data->status == "active" ? '#4CAF50' : '#ccc';
                     $sliderTranslateX = $data->status == "active" ? '26px' : '2px';
@@ -51,7 +54,6 @@ class InsuranceBookingController extends Controller
     public function show(Booking $booking, $id)
     {
         $booking = Booking::findOrFail($id);
-        dd($booking);
         return view('backend.layouts.booking.show', compact('booking'));
     }
 
