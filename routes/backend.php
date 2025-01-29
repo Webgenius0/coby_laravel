@@ -39,10 +39,6 @@ Route::controller(DashboardController::class)->group(function () {
     Route::get('dashboard', 'index')->name('dashboard');
 });
 
-Route::resource('users', UserController::class);
-Route::resource('permissions', PermissionController::class);
-Route::resource('roles', RoleController::class);
-
 Route::controller(PricingController::class)->prefix('pricing')->name('pricing.')->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/create', 'create')->name('create');
@@ -284,16 +280,11 @@ Route::controller(ContactController::class)->prefix('contact')->name('contact.')
     Route::get('/single/{id}', 'single')->name('single');
 });
 
-
-
 //Users
+Route::resource('users', UserController::class);
+Route::resource('permissions', PermissionController::class);
+Route::resource('roles', RoleController::class);
 Route::controller(UserController::class)->prefix('users')->name('users.')->group(function () {
-    Route::get('/', 'index')->name('index');
-    Route::get('/status/{id}', 'status')->name('status');
-    Route::get('/create', 'create')->name('create');
-    Route::post('/store', 'store')->name('store');
-    Route::get('/edit/{id}', 'edit')->name('edit');
-    Route::patch('/update/{id}', 'update')->name('update');
     Route::get('/new', 'new')->name('new.index');
     Route::get('/ajax/new/count', 'newCount')->name('ajax.new.count');
 });

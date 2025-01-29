@@ -58,21 +58,6 @@
                 <li>
                     <h3>Components</h3>
                 </li>
-                <!-- <li class="slide">
-                    <a class="side-menu__item" data-bs-toggle="slide" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 512 512" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32">
-                            <rect width="416" height="416" rx="48" ry="48" />
-                            <path d="m192 256 128 0" />
-                        </svg>
-                        <span class="side-menu__label">User Access</span><i class="angle fa fa-angle-right"></i>
-                    </a>
-
-                    <ul class="slide-menu">
-                        <li><a href="{{ route('users.index') }}" class="slide-item">User</a></li>
-                        <li><a href="{{ route('permissions.index') }}" class="slide-item">Permission</a></li>
-                        <li><a href="{{ route('roles.index') }}" class="slide-item">Roll</a></li>
-                    </ul>
-                </li> -->
                 
                 <li class="slide">
                     <a class="side-menu__item {{  request()->routeIs('pricing') ? 'has-link' : '' }}" href="{{ route('pricing.index') }}">
@@ -110,6 +95,23 @@
                         <li><a href="{{ route('setting.google.map.index') }}" class="slide-item">Google Map Settings</a></li> -->
                     </ul>
                 </li>
+                
+                <li class="slide">
+                    <a class="side-menu__item" data-bs-toggle="slide" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 512 512" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32">
+                            <rect width="416" height="416" rx="48" ry="48" />
+                            <path d="m192 256 128 0" />
+                        </svg>
+                        <span class="side-menu__label">User Access</span><i class="angle fa fa-angle-right"></i>
+                    </a>
+
+                    <ul class="slide-menu">
+                        <li><a href="{{ route('users.index') }}" class="slide-item">User</a></li>
+                        <li><a href="{{ route('permissions.index') }}" class="slide-item">Permission</a></li>
+                        <li><a href="{{ route('roles.index') }}" class="slide-item">Roll</a></li>
+                    </ul>
+                </li>
+                
                 <li>
                     <h3>CMS</h3>
                 </li>
