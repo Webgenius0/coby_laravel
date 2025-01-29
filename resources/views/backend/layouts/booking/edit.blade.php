@@ -20,10 +20,10 @@
                     </ol>
                 </div>
             </div>
+            <form class="form-horizontal" method="post" action="{{ route('insurance.booking.update', $booking->id) }}" enctype="multipart/form-data">
+                @csrf
+                <div class="row" id="user-profile">
 
-            <div class="row" id="user-profile">
-                <form class="form-horizontal" method="post" action="{{ route('insurance.booking.update', $booking->id) }}" enctype="multipart/form-data">
-                    @csrf
                     @method('POST')
                     <div class="col-lg-8">
 
@@ -272,9 +272,9 @@
 
                         </div>
                     </div>
-                </form>
-            </div>
 
+                </div>
+            </form>
         </div>
     </div>
 </div>
