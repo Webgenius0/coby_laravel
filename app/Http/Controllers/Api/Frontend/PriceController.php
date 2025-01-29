@@ -25,11 +25,11 @@ class PriceController extends Controller
         }
 
         $priceQuery = Pricing::where('is_annual', $request->is_annual)->where('destination', $request->destination);
-       
+
         $maxDuration = $request->max_duration;
 
         switch (true) {
-            case $maxDuration == 0 || $maxDuration == "0" :
+            case $maxDuration == 0 || $maxDuration == "0":
                 $priceQuery->where('max_duration', 0)->orWhere('max_duration', '0');
                 break;
             case $maxDuration >= 1 && $maxDuration <= 7:
@@ -63,7 +63,7 @@ class PriceController extends Controller
         $rate = $data['rates']['USD'];
 
         $data = [
-            'price_in_pound' => $price->base_premium, 
+            'price_in_pound' => $price->base_premium,
             'price_in_dollar' => $price->base_premium * $rate //GBP to USD
         ];
 

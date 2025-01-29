@@ -92,12 +92,9 @@ class InsuranceBookingController extends Controller
             'policy_type' => 'nullable|in:standard,extended',
             'coverage_type' => 'nullable|in:standard,increased',
             'area_of_travel' => 'required|in:europe,ex_usa,worldwide',
-
             'age' => 'required|string|max:50',
-
             'start_date' => 'required|date|before_or_equal:end_date',
             'end_date' => 'required|date|after_or_equal:start_date',
-
             'number_of_adults' => 'required|integer|min:1',
             'adults' => 'required|array|min:1',
             'adults.*.name' => 'required|string|max:255',
@@ -105,7 +102,6 @@ class InsuranceBookingController extends Controller
             'adults.*.surname' => 'required|string|max:100',
             'adults.*.birth_day' => 'required|string',
             'adults.*.nationality' => 'required|string|max:50',
-
             'number_of_children' => 'nullable|integer|min:0',
             'children' => 'nullable|array',
             'children.*.name' => 'required_with:children|string|max:255',
@@ -113,9 +109,7 @@ class InsuranceBookingController extends Controller
             'children.*.surname' => 'required_with:children|string|max:100',
             'children.*.birth_day' => 'required|string',
             'children.*.nationality' => 'required_with:children|string|max:50',
-
             'travel_type' => 'nullable|array',
-            
             'address_one' => 'required|string|max:255',
             'address_two' => 'nullable|string|max:255',
             'city' => 'required|string|max:100',
