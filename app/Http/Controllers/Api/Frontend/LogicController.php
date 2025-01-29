@@ -24,6 +24,7 @@ class LogicController extends Controller
             'adventure_sprots_multi' => $logic->adventure_sprots_multi ? number_format(($logic->adventure_sprots_multi + 100) / 100, 2) : 0,
             'adventure_sprots_single' => $logic->adventure_sprots_single ? number_format(($logic->adventure_sprots_single + 100) / 100, 2) : 0,
             'charge' => $logic->charge ? number_format($logic->charge, 2) : 0,
+            'tax' => $logic->tax ? number_format($logic->tax, 2) : 0
         ];
         return Helper::jsonResponse(true, 'Logic', 200, $data);
     }
