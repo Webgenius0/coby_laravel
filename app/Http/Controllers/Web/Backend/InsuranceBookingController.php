@@ -18,9 +18,9 @@ class InsuranceBookingController extends Controller
     public function index(Request $request, $status = null)
     {
         if ($request->ajax()) {
-            
+
             $data = Booking::query();
-            if ($status) {
+            if ($status != null && $status != '') {
                 $data = $data->where('payment_status', '=', $status);
             }
             $data = $data->get();
