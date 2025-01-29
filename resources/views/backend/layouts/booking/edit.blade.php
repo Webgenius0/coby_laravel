@@ -47,7 +47,7 @@
 
 
                                             <div class="form-group">
-                                                <label for="country_of_residence" class="form-label">Country:</label>
+                                                <label for="country_of_residence" class="form-label">Country of Residence:</label>
                                                 <select class="form-control @error('country_of_residence') is-invalid @enderror" name="country_of_residence" id="country_of_residence">
                                                     <option value="" selected disabled hidden>Select</option>
                                                     @foreach ($countries as $country)
