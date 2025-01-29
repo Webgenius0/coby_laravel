@@ -69,6 +69,30 @@
                                                 <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
+
+                                            <div class="form-group">
+                                                <label for="policy_type" class="form-label">Multi Trip Policy Type:</label>
+                                                <select class="form-control @error('policy_type') is-invalid @enderror" name="policy_type" id="policy_type">
+                                                    <option value="" selected disabled hidden>Select</option>
+                                                    <option value="standard" {{ old('policy_type', $booking->policy_type) == 'standard' ? 'selected' : '' }}>standard</option>
+                                                    <option value="extended" {{ old('policy_type', $booking->policy_type) == 'extended' ? 'selected' : '' }}>extended</option>
+                                                </select>
+                                                @error('policy_type')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="coverage_type" class="form-label">Multi Trip Coverage Type:</label>
+                                                <select class="form-control @error('coverage_type') is-invalid @enderror" name="coverage_type" id="coverage_type">
+                                                    <option value="" selected disabled hidden>Select</option>
+                                                    <option value="standard" {{ old('coverage_type', $booking->coverage_type) == 'standard' ? 'selected' : '' }}>standard</option>
+                                                    <option value="increased" {{ old('coverage_type', $booking->coverage_type) == 'increased' ? 'selected' : '' }}>increased</option>
+                                                </select>
+                                                @error('coverage_type')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
                                         
                                             <div class="form-group">
                                                 <label for="country_of_residence" class="form-label">Country of Residence:</label>
