@@ -88,7 +88,6 @@ class InsuranceBookingController extends Controller
         $validate = $request->validate([
             'policy_currency' => 'required|in:British Pounds,USA Dollers',
             'country_of_residence' => 'required|string|max:100',
-
             'insurance_type' => 'required|in:single-trip,multi-trip',
             'policy_type' => 'nullable|string|max:50',
             'coverage_type' => 'nullable|string|max:50',

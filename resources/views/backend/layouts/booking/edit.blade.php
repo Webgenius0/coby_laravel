@@ -45,7 +45,6 @@
                                                 @enderror
                                             </div>
 
-
                                             <div class="form-group">
                                                 <label for="country_of_residence" class="form-label">Country of Residence:</label>
                                                 <select class="form-control @error('country_of_residence') is-invalid @enderror" name="country_of_residence" id="country_of_residence">
@@ -55,6 +54,18 @@
                                                     @endforeach
                                                 </select>
                                                 @error('country_of_residence')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="insurance_type" class="form-label">Insurance Type:</label>
+                                                <select class="form-control @error('insurance_type') is-invalid @enderror" name="insurance_type" id="insurance_type">
+                                                    <option value="" selected disabled hidden>Select</option>
+                                                    <option value="single-trip" {{ old('insurance_type', $booking->insurance_type) == 'single-trip' ? 'selected' : '' }}>single-trip</option>
+                                                    <option value="single-trip" {{ old('insurance_type', $booking->insurance_type) == 'single-trip' ? 'selected' : '' }}>single-trip</option>
+                                                </select>
+                                                @error('insurance_type')
                                                 <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
