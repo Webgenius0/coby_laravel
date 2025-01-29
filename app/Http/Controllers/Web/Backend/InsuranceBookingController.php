@@ -51,6 +51,7 @@ class InsuranceBookingController extends Controller
     public function show(Booking $booking, $id)
     {
         $booking = Booking::findOrFail($id);
+        dd($booking);
         return view('backend.layouts.booking.show', compact('booking'));
     }
 
