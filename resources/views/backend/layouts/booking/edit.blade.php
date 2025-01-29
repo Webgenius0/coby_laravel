@@ -44,13 +44,25 @@
                                                 <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
-                                        
-                                        
+
+
+                                            <div class="form-group">
+                                                <label for="country_of_residence" class="form-label">Country:</label>
+                                                <select class="form-control @error('country_of_residence') is-invalid @enderror" name="country_of_residence" id="country_of_residence">
+                                                    <option value="" selected disabled hidden>Select</option>
+                                                    @foreach ($country as $value)
+                                                        <option value="{{ $value->id }}" {{ old('country_of_residence', $booking->country_of_residence) == $value->id ? 'selected' : '' }}>{{ $value->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('country_of_residence')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
                                         
                                             <div class="form-group">
-                                                <label for="username" class="form-label">Name:</label>
-                                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Name" id="" value="{{ $booking->name }}">
-                                                @error('name')
+                                                <label for="country_of_residence" class="form-label">Country of Residence:</label>
+                                                <input type="text" class="form-control @error('country_of_residence') is-invalid @enderror" name="country_of_residence" placeholder="Country of Residence" id="" value="{{ $booking->country_of_residence }}">
+                                                @error('country_of_residence')
                                                 <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>

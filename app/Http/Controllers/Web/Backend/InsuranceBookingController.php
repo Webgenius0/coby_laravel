@@ -6,6 +6,7 @@ use App\Helpers\Helper;
 use App\Models\Booking;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Country;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Yajra\DataTables\Facades\DataTables;
@@ -75,7 +76,8 @@ class InsuranceBookingController extends Controller
     public function edit(Booking $booking, $id)
     {
         $booking = Booking::findOrFail($id);
-        return view('backend.layouts.booking.edit', compact('booking'));
+        $country = Country::all();
+        return view('backend.layouts.booking.edit', compact('booking', 'country'));
     }
 
     /**
@@ -86,6 +88,7 @@ class InsuranceBookingController extends Controller
         $validate = $request->validate([
             'policy_currency' => 'required|in:British Pounds,USA Dollers',
             'country_of_residence' => 'required|string|max:100',
+            
             'insurance_type' => 'required|in:single-trip,multi-trip',
             'policy_type' => 'nullable|string|max:50',
             'coverage_type' => 'nullable|string|max:50',
