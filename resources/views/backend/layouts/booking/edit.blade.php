@@ -133,17 +133,17 @@
 
                                             <div class="form-group">
                                                 <label for="travel_type" class="form-label">Travel Type:</label>
-                                                <div>
-                                                    <label class="form-check-label">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="form-check mr-3">
                                                         <input type="checkbox" class="form-check-input @error('travel_type') is-invalid @enderror" name="travel_type[]" value="adventure" {{ is_array(old('travel_type', json_decode($booking->travel_type))) && in_array('adventure', old('travel_type', json_decode($booking->travel_type))) ? 'checked' : '' }}>
-                                                        Winter Sports?
-                                                    </label>
+                                                    </div>
+                                                    <label class="form-check-label">Winter Sports?</label>
                                                 </div>
-                                                <div>
-                                                    <label class="form-check-label">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="form-check mr-3">
                                                         <input type="checkbox" class="form-check-input @error('travel_type') is-invalid @enderror" name="travel_type[]" value="leisure" {{ is_array(old('travel_type', json_decode($booking->travel_type))) && in_array('leisure', old('travel_type', json_decode($booking->travel_type))) ? 'checked' : '' }}>
-                                                        Adventure Sports?
-                                                    </label>
+                                                    </div>
+                                                    <label class="form-check-label">Adventure Sports?</label>
                                                 </div>
                                                 @error('travel_type')
                                                 <span class="text-danger">{{ $message }}</span>
