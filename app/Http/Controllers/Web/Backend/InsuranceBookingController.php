@@ -113,8 +113,9 @@ class InsuranceBookingController extends Controller
             'children.*.surname' => 'required_with:children|string|max:100',
             'children.*.birth_day' => 'required|string',
             'children.*.nationality' => 'required_with:children|string|max:50',
-            
+
             'travel_type' => 'nullable|array',
+            
             'address_one' => 'required|string|max:255',
             'address_two' => 'nullable|string|max:255',
             'city' => 'required|string|max:100',
