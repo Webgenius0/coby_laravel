@@ -34,6 +34,20 @@
                                         <div class="row mb-4">
 
                                             <div class="form-group">
+                                                <label for="policy_currency" class="form-label">Policy Currency:</label>
+                                                <select class="form-control @error('policy_currency') is-invalid @enderror" name="policy_currency" id="policy_currency">
+                                                    <option value="" selected disabled hidden>Select</option>
+                                                    <option value="British Pounds" {{ old('policy_currency', $pricing->policy_currency) == 'British Pounds' ? 'selected' : '' }}>British Pounds</option>
+                                                    <option value="USA Dollers" {{ old('policy_currency', $pricing->policy_currency) == 'USA Dollers' ? 'selected' : '' }}>USA Dollers</option>
+                                                </select>
+                                                @error('policy_currency')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        
+                                        
+                                        
+                                            <div class="form-group">
                                                 <label for="username" class="form-label">Name:</label>
                                                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Name" id="" value="{{ $booking->name }}">
                                                 @error('name')
