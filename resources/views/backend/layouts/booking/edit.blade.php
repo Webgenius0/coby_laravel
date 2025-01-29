@@ -22,15 +22,16 @@
             </div>
 
             <div class="row" id="user-profile">
-                <div class="col-lg-8">
+                <form class="form-horizontal" method="post" action="{{ route('insurance.booking.update', $booking->id) }}" enctype="multipart/form-data">
+                    @csrf
+                    @method('POST')
+                    <div class="col-lg-8">
 
-                    <div class="tab-content">
-                        <div class="tab-pane active show" id="editProfile">
-                            <div class="card">
-                                <div class="card-body border-0">
-                                    <form class="form-horizontal" method="post" action="{{ route('insurance.booking.update', $booking->id) }}" enctype="multipart/form-data">
-                                        @csrf
-                                        @method('POST')
+                        <div class="tab-content">
+                            <div class="tab-pane active show" id="editProfile">
+                                <div class="card">
+                                    <div class="card-body border-0">
+
                                         <div class="row mb-4">
 
                                             <div class="form-group">
@@ -50,7 +51,7 @@
                                                 <select class="form-control @error('country_of_residence') is-invalid @enderror" name="country_of_residence" id="country_of_residence">
                                                     <option value="" selected disabled hidden>Select</option>
                                                     @foreach ($countries as $country)
-                                                        <option value="{{ $country->name }}" {{ old('country_of_residence', $booking->country_of_residence) == $country->name ? 'selected' : '' }}>{{ $country->name }}</option>
+                                                    <option value="{{ $country->name }}" {{ old('country_of_residence', $booking->country_of_residence) == $country->name ? 'selected' : '' }}>{{ $country->name }}</option>
                                                     @endforeach
                                                 </select>
                                                 @error('country_of_residence')
@@ -106,7 +107,7 @@
                                                 <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
-                                        
+
                                             <div class="form-group">
                                                 <label for="start_date" class="form-label">Start Date:</label>
                                                 <input type="date" class="form-control @error('start_date') is-invalid @enderror" name="start_date" placeholder="mm/dd/yyyy" id="" value="{{ $booking->start_date ?? old('start_date') }}">
@@ -220,7 +221,7 @@
                                                         <label for="comment" class="form-label">Comment:</label>
                                                         <textarea class="form-control @error('comment') is-invalid @enderror" name="comment" id="comment" placeholder="Comment" rows="3">{{ old('comment', $booking->comment) }}</textarea>
                                                         @error('comment')
-                                                            <span class="text-danger">{{ $message }}</span>
+                                                        <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>
                                                 </div>
@@ -251,26 +252,27 @@
                                             </div>
 
                                         </div>
-                                    </form>
+
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
-
                     </div>
-                </div>
-                <div class="col-lg-4">
+                    <div class="col-lg-4">
 
-                    <div class="tab-content">
-                        <div class="tab-pane active show" id="editProfile">
-                            <div class="card">
-                                <div class="card-body border-0">
-                                    dddd
+                        <div class="tab-content">
+                            <div class="tab-pane active show" id="editProfile">
+                                <div class="card">
+                                    <div class="card-body border-0">
+                                        dddd
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
 
         </div>
@@ -279,5 +281,5 @@
 <!-- CONTAINER CLOSED -->
 @endsection
 @push('scripts')
-    
+
 @endpush
