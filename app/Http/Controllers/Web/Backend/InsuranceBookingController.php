@@ -92,7 +92,9 @@ class InsuranceBookingController extends Controller
             'policy_type' => 'nullable|in:standard,extended',
             'coverage_type' => 'nullable|in:standard,increased',
             'area_of_travel' => 'required|in:europe,ex_usa,worldwide',
+
             'age' => 'required|string|max:50',
+            
             'start_date' => 'required|date|before_or_equal:end_date',
             'end_date' => 'required|date|after_or_equal:start_date',
             'number_of_adults' => 'required|integer|min:1',

@@ -108,9 +108,17 @@
                                             </div>
                                         
                                             <div class="form-group">
-                                                <label for="country_of_residence" class="form-label">Country of Residence:</label>
-                                                <input type="text" class="form-control @error('country_of_residence') is-invalid @enderror" name="country_of_residence" placeholder="Country of Residence" id="" value="{{ $booking->country_of_residence }}">
-                                                @error('country_of_residence')
+                                                <label for="start_date" class="form-label">Start Date:</label>
+                                                <input type="date" class="form-control @error('start_date') is-invalid @enderror" name="start_date" placeholder="mm/dd/yyyy" id="" value="{{ $booking->start_date }}">
+                                                @error('start_date')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="end_date" class="form-label">End Date:</label>
+                                                <input type="date" class="form-control @error('end_date') is-invalid @enderror" name="end_date" placeholder="mm/dd/yyyy" id="" value="{{ $booking->end_date }}">
+                                                @error('end_date')
                                                 <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
