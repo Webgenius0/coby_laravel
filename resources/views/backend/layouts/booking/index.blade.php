@@ -33,7 +33,10 @@
                 <div class="col-12 col-sm-12">
                     <div class="card product-sales-main">
                         <div class="card-header border-bottom">
-                            <h3 class="card-title mb-0">Booking List</h3>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <button onclick="window.location.reload({{ route('booking.index', 'paid') }})" type="button" class="btn btn-primary">Paid</button>
+                                <button onclick="window.location.reload({{ route('booking.index', 'unpaid') }})" type="button" class="btn btn-primary">Unpaid</button>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="">

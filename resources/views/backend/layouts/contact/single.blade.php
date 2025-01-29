@@ -22,43 +22,56 @@
             </div>
 
             <div class="row" id="user-profile">
-                <div class="col-lg-12">
-
+                <div class="col-lg-4">
                     <div class="tab-content">
                         <div class="tab-pane active show" id="editProfile">
-                            <div class="card">
-                                <div class="card-body border-0">
+                            <div class="card shadow-sm">
+                                <div class="card-body">
                                     <div class="contact-info">
-                                        <h2 class="contact-info__title">Contact Information</h2>
-                                        <div class="contact-info__item">
+                                        <h2 class="contact-info__title text-center mb-4">Contact Information</h2>
+                                        <div class="contact-info__item d-flex align-items-center mb-3">
+                                            <div class="contact-info__icon me-3">
+                                                <i class="fas fa-user fa-lg text-primary"></i>
+                                            </div>
                                             <div>
-                                                <p class="contact-info__label">Name:</p>
-                                                <p class="contact-info__text">{{ $contact->name ?? '' }}</p>
+                                                <p class="contact-info__label text-muted mb-1">Name:</p>
+                                                <p class="contact-info__text fw-bold">{{ $contact->name ?? 'N/A' }}</p>
                                             </div>
                                         </div>
-                                        <div class="contact-info__item">
+
+                                        <div class="contact-info__item d-flex align-items-center mb-3">
+                                            <div class="contact-info__icon me-3">
+                                                <i class="fas fa-envelope fa-lg text-primary"></i>
+                                            </div>
                                             <div>
-                                                <p class="contact-info__label">Email:</p>
-                                                <p class="contact-info__text">{{ $contact->email ?? '' }}</p>
+                                                <p class="contact-info__label text-muted mb-1">Email:</p>
+                                                <p class="contact-info__text fw-bold">{{ $contact->email ?? 'N/A' }}</p>
                                             </div>
                                         </div>
-                                        <div class="contact-info__item">
+
+                                        <div class="contact-info__item d-flex align-items-center mb-3">
+                                            <div class="contact-info__icon me-3">
+                                                <i class="fas fa-phone fa-lg text-primary"></i>
+                                            </div>
                                             <div>
-                                                <p class="contact-info__label">Phone:</p>
-                                                <p class="contact-info__text">{{ $contact->phone ?? '' }}</p>
+                                                <p class="contact-info__label text-muted mb-1">Phone:</p>
+                                                <p class="contact-info__text fw-bold">{{ $contact->phone ?? 'N/A' }}</p>
                                             </div>
                                         </div>
-                                        <div class="contact-info__item">
+
+                                        <div class="contact-info__item d-flex align-items-start mb-3">
+                                            <div class="contact-info__icon me-3">
+                                                <i class="fas fa-comment fa-lg text-primary"></i>
+                                            </div>
                                             <div>
-                                                <p class="contact-info__label">Message:</p>
-                                                <p class="contact-info__text">{{ $contact->message ?? '' }}</p>
+                                                <p class="contact-info__label text-muted mb-1">Message:</p>
+                                                <p class="contact-info__text fw-bold">{{ $contact->message ?? 'N/A' }}</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -69,5 +82,5 @@
 <!-- CONTAINER CLOSED -->
 @endsection
 @push('scripts')
-    
+
 @endpush

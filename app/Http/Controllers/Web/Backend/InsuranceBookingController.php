@@ -15,10 +15,16 @@ class InsuranceBookingController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index(Request $request, $status = null)
     {
         if ($request->ajax()) {
-            $data = Booking::where('payment_status', 'paid')->get();
+            
+            $data = Booking::query();
+            if ($status) {
+                $data = $data->where('payment_status', '=', $status);
+            }
+            $data = $data->get();
+
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('total_price', function ($data) {

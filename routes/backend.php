@@ -82,7 +82,7 @@ Route::controller(PageController::class)->prefix('page')->name('page.')->group(f
 });
 
 Route::controller(InsuranceBookingController::class)->prefix('insurance/booking')->name('insurance.booking.')->group(function () {
-    Route::get('/', 'index')->name('index');
+    Route::get('/{status?}', 'index')->name('index');
     Route::get('/show/{id}', 'show')->name('show');
     Route::get('/status/{id}', 'status')->name('status');
 });

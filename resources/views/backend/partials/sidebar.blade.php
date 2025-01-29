@@ -31,19 +31,19 @@
                     </a>
                 </li>
                 <li class="slide">
-                    <a class="side-menu__item {{  request()->routeIs('insurance') ? 'has-link' : '' }}" href="{{ route('insurance.booking.index') }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="side-menu__icon" viewBox="0 0 16 16">
-                            <path d="M15 14l-5-5-5 5v-3l10 -10z" />
-                        </svg>
-                        <span class="side-menu__label">Insurance Application</span>
-                    </a>
-                </li>
-                <li class="slide">
                     <a class="side-menu__item {{  request()->routeIs('contact') ? 'has-link' : '' }}" href="{{ route('contact.index') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="side-menu__icon" viewBox="0 0 16 16">
                             <path d="M15 14l-5-5-5 5v-3l10 -10z" />
                         </svg>
                         <span class="side-menu__label">Contact</span>
+                    </a>
+                </li>
+                <li class="slide">
+                    <a class="side-menu__item {{  request()->routeIs('insurance') ? 'has-link' : '' }}" href="{{ route('insurance.booking.index') }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="side-menu__icon" viewBox="0 0 16 16">
+                            <path d="M15 14l-5-5-5 5v-3l10 -10z" />
+                        </svg>
+                        <span class="side-menu__label">Insurance Application</span>
                     </a>
                 </li>
                 <!-- <li class="slide">
