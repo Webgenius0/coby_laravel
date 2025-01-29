@@ -37,8 +37,8 @@
                                                 <label for="policy_currency" class="form-label">Policy Currency:</label>
                                                 <select class="form-control @error('policy_currency') is-invalid @enderror" name="policy_currency" id="policy_currency">
                                                     <option value="" selected disabled hidden>Select</option>
-                                                    <option value="British Pounds" {{ old('policy_currency', $pricing->policy_currency) == 'British Pounds' ? 'selected' : '' }}>British Pounds</option>
-                                                    <option value="USA Dollers" {{ old('policy_currency', $pricing->policy_currency) == 'USA Dollers' ? 'selected' : '' }}>USA Dollers</option>
+                                                    <option value="British Pounds" {{ old('policy_currency', $booking->policy_currency) == 'British Pounds' ? 'selected' : '' }}>British Pounds</option>
+                                                    <option value="USA Dollers" {{ old('policy_currency', $booking->policy_currency) == 'USA Dollers' ? 'selected' : '' }}>USA Dollers</option>
                                                 </select>
                                                 @error('policy_currency')
                                                 <span class="text-danger">{{ $message }}</span>
