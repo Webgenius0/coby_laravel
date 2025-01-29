@@ -72,6 +72,25 @@ class InsuranceBookingController extends Controller
         return view('backend.layouts.booking.show', compact('booking'));
     }
 
+    public function destroy(string $id)
+    {
+        try {
+            $data = Booking::findOrFail($id);
+            $data->delete();
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Your action was successful!'
+            ]);
+            
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Your action was successful!'
+            ]);
+        }
+    }
+
+
     public function status(int $id): JsonResponse
     {
         $data = Booking::findOrFail($id);
