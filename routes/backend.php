@@ -18,6 +18,7 @@ use App\Http\Controllers\Web\Backend\CMS\Home\HomeMarqueeController;
 use App\Http\Controllers\Web\Backend\CMS\Home\HomeQouteController;
 use App\Http\Controllers\Web\Backend\CMS\Home\HomeTestimonialController;
 use App\Http\Controllers\Web\Backend\ContactController;
+use App\Http\Controllers\Web\Backend\CounteryController;
 use App\Http\Controllers\Web\Backend\NotificationController;
 use App\Http\Controllers\Web\Backend\Settings\FirebaseController;
 use App\Http\Controllers\Web\Backend\Settings\ProfileController;
@@ -43,6 +44,15 @@ Route::resource('permissions', PermissionController::class);
 Route::resource('roles', RoleController::class);
 
 Route::controller(PricingController::class)->prefix('pricing')->name('pricing.')->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/create', 'create')->name('create');
+    Route::post('/store', 'store')->name('store');
+    Route::get('/edit/{id}', 'edit')->name('edit');
+    Route::post('/update/{id}', 'update')->name('update');
+    Route::delete('/delete/{id}', 'destroy')->name('destroy');
+});
+
+Route::controller(CounteryController::class)->prefix('country')->name('country.')->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/create', 'create')->name('create');
     Route::post('/store', 'store')->name('store');

@@ -1,4 +1,4 @@
-@extends('backend.app', ['title' => 'Booking'])
+@extends('backend.app', ['title' => 'Country'])
 
 @push('styles')
 <link href="{{ asset('default/datatable.css') }}" rel="stylesheet" />  
@@ -17,11 +17,11 @@
             <!-- PAGE-HEADER -->
             <div class="page-header">
                 <div>
-                    <h1 class="page-title">Booking</h1>
+                    <h1 class="page-title">Country</h1>
                 </div>
                 <div class="ms-auto pageheader-btn">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0);">Booking</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0);">Country</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Index</li>
                     </ol>
                 </div>
@@ -33,7 +33,10 @@
                 <div class="col-12 col-sm-12">
                     <div class="card product-sales-main">
                         <div class="card-header border-bottom">
-                            <h3 class="card-title mb-0">Booking List</h3>
+                            <h3 class="card-title mb-0">Task List</h3>
+                            <div class="card-options ms-auto">
+                                <a href="{{ route('country.create') }}" class="btn btn-primary btn-sm">Add Task</a>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="">
@@ -41,11 +44,10 @@
                                     <thead>
                                         <tr>
                                             <th class="bg-transparent border-bottom-0 wp-15">ID</th>
-                                            <th class="bg-transparent border-bottom-0 wp-15">Telephone</th>
-                                            <th class="bg-transparent border-bottom-0">Email</th>
-                                            <th class="bg-transparent border-bottom-0">Unique ID</th>
-                                            <th class="bg-transparent border-bottom-0">Total Price</th>
-                                            <th class="bg-transparent border-bottom-0">Status</th>
+                                            <th class="bg-transparent border-bottom-0 wp-15">Name</th>
+                                            <th class="bg-transparent border-bottom-0">Code</th>
+                                            <th class="bg-transparent border-bottom-0">Nationality</th>
+                                            <th class="bg-transparent border-bottom-0">Continent</th>
                                             <th class="bg-transparent border-bottom-0">Action</th>
                                         </tr>
                                     </thead>
@@ -100,7 +102,7 @@
                 pagingType: "full_numbers",
                 dom: "<'row justify-content-between table-topbar'<'col-md-4 col-sm-3'l><'col-md-5 col-sm-5 px-0'f>>tipr",
                 ajax: {
-                    url: "{{ route('insurance.booking.index') }}",
+                    url: "{{ route('country.index') }}",
                     type: "GET",
                 },
 
@@ -111,34 +113,28 @@
                         searchable: false
                     },
                     {
-                        data: 'telephone',
-                        name: 'telephone',
+                        data: 'name',
+                        name: 'name',
                         orderable: true,
                         searchable: true
                     },
                     {
-                        data: 'email',
-                        name: 'email',
+                        data: 'code',
+                        name: 'code',
                         orderable: true,
                         searchable: true
                     },
                     {
-                        data: 'unique_id',
-                        name: 'unique_id',
+                        data: 'nationality',
+                        name: 'nationality',
                         orderable: true,
                         searchable: true
                     },
                     {
-                        data: 'total_price',
-                        name: 'total_price',
+                        data: 'continent',
+                        name: 'continent',
                         orderable: true,
                         searchable: true
-                    },
-                    {
-                        data: 'status',
-                        name: 'status',
-                        orderable: false,
-                        searchable: false
                     },
                     {
                         data: 'action',
@@ -152,31 +148,35 @@
         }
     });
 
-    // Status Change Confirm Alert
-    function showStatusChangeAlert(id) {
+    // delete Confirm
+    function showDeleteConfirm(id) {
         event.preventDefault();
-
         Swal.fire({
-            title: 'Are you sure?',
-            text: 'You want to update the status?',
-            icon: 'info',
+            title: 'Are you sure you want to delete this record?',
+            text: 'If you delete this, it will be gone forever.',
+            icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Yes',
-            cancelButtonText: 'No',
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!',
         }).then((result) => {
             if (result.isConfirmed) {
-                statusChange(id);
+                deleteItem(id);
             }
         });
     }
 
-    // Status Change
-    function statusChange(id) {
+    // Delete Button
+    function deleteItem(id) {
         NProgress.start();
-        let url = "{{ route('insurance.booking.status', ':id') }}";
+        let url = "{{ route('country.destroy', ':id') }}";
+        let csrfToken = '{{ csrf_token() }}';
         $.ajax({
-            type: "GET",
+            type: "DELETE",
             url: url.replace(':id', id),
+            headers: {
+                'X-CSRF-TOKEN': csrfToken
+            },
             success: function(resp) {
                 NProgress.done();
                 toastr.success(resp.message);
@@ -190,8 +190,8 @@
     }
 
     //edit
-    function goToShow(id) {
-        let url = "{{ route('insurance.booking.show', ':id') }}";
+    function goToEdit(id) {
+        let url = "{{ route('country.edit', ':id') }}";
         window.location.href = url.replace(':id', id);
     }
 </script>
