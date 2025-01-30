@@ -11,7 +11,7 @@ class DashboardController extends Controller
     public function index()
     {
         $booking_count = Booking::where('payment_status', 'paid')->count();
-        $booking_price = Booking::where('payment_status', 'paid')->sum('total_price');
+        $booking_price = number_format(Booking::where('payment_status', 'paid')->sum('total_price'), 2);
 
         $all_months = [
             'january', 'february', 'march', 'april', 'may', 'june', 
