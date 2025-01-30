@@ -48,7 +48,7 @@
                                             <th class="bg-transparent border-bottom-0 wp-15">ID</th>
                                             <th class="bg-transparent border-bottom-0 wp-15">Telephone</th>
                                             <th class="bg-transparent border-bottom-0">Email</th>
-                                            <th class="bg-transparent border-bottom-0">Unique ID</th>
+                                            <th class="bg-transparent border-bottom-0">Policy ID</th>
                                             <th class="bg-transparent border-bottom-0">Total Price</th>
                                             <th class="bg-transparent border-bottom-0">Status</th>
                                             <th class="bg-transparent border-bottom-0">Action</th>
