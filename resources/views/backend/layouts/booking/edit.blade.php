@@ -92,7 +92,7 @@
                                             @enderror
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="form-group" id="multi_trip_policy_div">
                                             <label for="policy_type" class="form-label">Multi Trip Policy Type:</label>
                                             <select class="form-control @error('policy_type') is-invalid @enderror" name="policy_type" id="policy_type">
                                                 <option value="" selected disabled hidden>Select</option>
@@ -104,7 +104,7 @@
                                             @enderror
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="form-group" id="multi_trip_coverage_div">
                                             <label for="coverage_type" class="form-label">Multi Trip Coverage Type:</label>
                                             <select class="form-control @error('coverage_type') is-invalid @enderror" name="coverage_type" id="coverage_type">
                                                 <option value="" selected disabled hidden>Select</option>
@@ -123,7 +123,7 @@
                                             @enderror
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="form-group" id="end_date_div">
                                             <label for="end_date" class="form-label">End Date:</label>
                                             <input type="date" class="form-control @error('end_date') is-invalid @enderror" name="end_date" placeholder="mm/dd/yyyy" id="" value="{{ $booking->end_date ?? old('end_date') }}">
                                             @error('end_date')
@@ -228,6 +228,37 @@
 
                                 <div class="card">
                                     <div class="card-body border-0">
+
+                                        <div class="form-group">
+                                            <label for="payment_status" class="form-label">Payment Status:</label>
+                                            <select class="form-control @error('payment_status') is-invalid @enderror" name="payment_status" id="payment_status">
+                                                <option value="" selected disabled hidden>Select</option>
+                                                <option value="pending" {{ old('payment_status', $booking->payment_status) == 'pending' ? 'selected' : '' }}>Pending</option>
+                                                <option value="paid" {{ old('payment_status', $booking->payment_status) == 'paid' ? 'selected' : '' }}>Paid</option>
+                                                <option value="failed" {{ old('payment_status', $booking->payment_status) == 'failed' ? 'selected' : '' }}>Failed</option>
+                                            </select>
+                                            @error('payment_status')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="status" class="form-label">Status:</label>
+                                            <select class="form-control @error('status') is-invalid @enderror" name="status" id="status">
+                                                <option value="" selected disabled hidden>Select</option>
+                                                <option value="active" {{ old('status', $booking->status) == 'active' ? 'selected' : '' }}>Active</option>
+                                                <option value="inactive" {{ old('status', $booking->status) == 'inactive' ? 'selected' : '' }}>Inactive</option>
+                                            </select>
+                                            @error('policy_currency')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-body border-0">
                                         <div class="form-group">
                                             <label for="policy_currency" class="form-label">Policy Currency:</label>
                                             <select class="form-control @error('policy_currency') is-invalid @enderror" name="policy_currency" id="policy_currency">
@@ -264,7 +295,7 @@
                                     <div class="card-body border-0">
                                         <div class="form-group">
                                             <label for="number_of_adults" class="form-label">Number of Adults:</label>
-                                            <input type="number" class="form-control @error('number_of_adults') is-invalid @enderror" name="number_of_adults" placeholder="1" id="" value="{{ $booking->number_of_adults ?? old('number_of_adults') }}" min="1">
+                                            <input type="number" class="form-control @error('number_of_adults') is-invalid @enderror" name="number_of_adults" placeholder="1" id="number_of_adults" value="{{ $booking->number_of_adults ?? old('number_of_adults') }}" min="1">
                                             @error('number_of_adults')
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -272,17 +303,22 @@
                                     </div>
                                 </div>
 
+
+                                <div id="append_adults_div"></div>
+
                                 <div class="card">
                                     <div class="card-body border-0">
                                         <div class="form-group">
                                             <label for="number_of_children" class="form-label">Number of Children:</label>
-                                            <input type="number" class="form-control @error('number_of_children') is-invalid @enderror" name="number_of_children" placeholder="1" id="" value="{{ $booking->number_of_children ?? old('number_of_children') }}" min="1">
+                                            <input type="number" class="form-control @error('number_of_children') is-invalid @enderror" name="number_of_children" placeholder="1" id="number_of_children" value="{{ $booking->number_of_children ?? old('number_of_children') }}" min="1">
                                             @error('number_of_children')
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
                                 </div>
+
+                                <div id="append_children_div"></div>
 
                             </div>
                         </div>
@@ -297,5 +333,136 @@
 <!-- CONTAINER CLOSED -->
 @endsection
 @push('scripts')
+<script>
+    $(document).ready(function() {
+        const adults = JSON.parse(@json($booking -> adults));
+        const children = JSON.parse(@json($booking -> children));
 
+        function getDummyData() {
+            return {
+                name: '',
+                forename: '',
+                surname: '',
+                birth_day: '',
+                nationality: ''
+            };
+        }
+
+        function insuranceType() {
+            const insurance_type = $('#insurance_type').val();
+            if (insurance_type === 'multi-trip') {
+                $('#multi_trip_policy_div, #multi_trip_coverage_div, #end_date_div').show();
+            } else {
+                $('#multi_trip_policy_div, #multi_trip_coverage_div, #end_date_div').hide();
+            }
+        };
+        insuranceType();
+
+        $('#insurance_type').on('change', function() {
+            insuranceType();
+        });
+
+
+        function adultAppend() {
+            let html = '';
+            let numberOfAdults = $('#number_of_adults').val();
+
+            for (let i = 1; i <= numberOfAdults; i++) {
+                let adultData = adults[i - 1] || getDummyData();
+
+                html += `
+                <div class="card mt-3">
+                    <div class="card-body border-0">
+                        <div class="form-group">
+                            <label for="adult_name_${i}" class="form-label">Name:</label>
+                            <input type="text" class="form-control" name="adults[${i}][name]" id="adult_name_${i}" 
+                                placeholder="Enter name" value="${adultData.name || ''}">
+                        </div>
+                        <div class="form-group">
+                            <label for="adult_forename_${i}" class="form-label">Forename:</label>
+                            <input type="text" class="form-control" name="adults[${i}][forename]" id="adult_forename_${i}" 
+                                placeholder="Enter forename" value="${adultData.forename || ''}">
+                        </div>
+                        <div class="form-group">
+                            <label for="adult_surname_${i}" class="form-label">Surname:</label>
+                            <input type="text" class="form-control" name="adults[${i}][surname]" id="adult_surname_${i}" 
+                                placeholder="Enter surname" value="${adultData.surname || ''}">
+                        </div>
+                        <div class="form-group">
+                            <label for="adult_birthdate_${i}" class="form-label">Birth Day:</label>
+                            <input type="date" class="form-control" name="adults[${i}][birthdate]" id="adult_birthdate_${i}" 
+                                value="${adultData.birth_day ? formatDate(adultData.birth_day) : ''}">
+                        </div>
+                        <div class="form-group">
+                            <label for="adult_nationality_${i}" class="form-label">Nationality:</label>
+                            <input type="text" class="form-control" name="adults[${i}][nationality]" id="adult_nationality_${i}" 
+                                placeholder="Enter nationality" value="${adultData.nationality || ''}">
+                        </div>
+                    </div>
+                </div>
+                `;
+            }
+
+            $('#append_adults_div').html(html);
+        }
+
+        adultAppend();
+
+        $('#number_of_adults').on('input', function() {
+            adultAppend();
+        });
+
+        function childrenAppend() {
+            let html = '';
+            let numberOfChildren = $('#number_of_children').val();
+
+            for (let i = 1; i <= numberOfChildren; i++) {
+                let childrenData = children[i - 1] || getDummyData();
+                html += `
+                <div class="card mt-3">
+                    <div class="card-body border-0">
+                        <div class="form-group">
+                            <label for="child_name_${i}" class="form-label">Name:</label>
+                            <input type="text" class="form-control" name="children[${i}][name]" id="child_name_${i}" placeholder="Enter name" value="${children[i - 1]?.name || ''}">
+                        </div>   
+                        <div class="form-group">
+                            <label for="child_forename_${i}" class="form-label">Forename:</label>
+                            <input type="text" class="form-control" name="children[${i}][forename]" id="child_forename_${i}" placeholder="Enter forename" value="${children[i - 1]?.forename || ''}">
+                        </div>
+                        <div class="form-group">
+                            <label for="child_surname_${i}" class="form-label">Surname:</label>
+                            <input type="text" class="form-control" name="children[${i}][surname]" id="child_surname_${i}" placeholder="Enter surname" value="${children[i - 1]?.surname || ''}">
+                        </div>
+                        <div class="form-group">
+                            <label for="child_birthdate_${i}" class="form-label">Birth Day:</label>
+                            <input type="date" class="form-control" name="children[${i}][birthdate]" id="child_birthdate_${i}" value="${children[i - 1]?.birth_day ? formatDate(children[i - 1].birth_day) : ''}">
+                        </div>
+                        <div class="form-group">
+                            <label for="child_nationality_${i}" class="form-label">Nationality:</label>
+                            <input type="text" class="form-control" name="children[${i}][nationality]" id="child_nationality_${i}" placeholder="Enter nationality" value="${children[i - 1]?.nationality || ''}">
+                        </div>
+                    </div>
+                </div>
+            `;
+            }
+
+            $('#append_children_div').html(html);
+        }
+        childrenAppend();
+
+        $('#number_of_children').on('input', function() {
+            childrenAppend();
+        });
+
+    });
+
+
+    function formatDate(dateStr) {
+        if (!dateStr || typeof dateStr !== 'string') return "";
+        const parts = dateStr.split("/");
+        if (parts.length !== 3) return "";
+        const [day, month, year] = parts.map(str => str.padStart(2, '0'));
+        return `${year}-${month}-${day}`;
+    }
+</script>
 @endpush
