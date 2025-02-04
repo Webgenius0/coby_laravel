@@ -39,11 +39,19 @@
                     </a>
                 </li>
                 <li class="slide">
+                    <a class="side-menu__item {{  request()->routeIs('broker') ? 'has-link' : '' }}" href="{{ route('broker.index') }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="side-menu__icon" viewBox="0 0 16 16">
+                            <path d="M15 14l-5-5-5 5v-3l10 -10z" />
+                        </svg>
+                        <span class="side-menu__label">Broker</span>
+                    </a>
+                </li>
+                <li class="slide">
                     <a class="side-menu__item {{  request()->routeIs('insurance') ? 'has-link' : '' }}" href="{{ route('insurance.booking.index') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="side-menu__icon" viewBox="0 0 16 16">
                             <path d="M15 14l-5-5-5 5v-3l10 -10z" />
                         </svg>
-                        <span class="side-menu__label">Insurance Application</span>
+                        <span class="side-menu__label">Policy</span>
                     </a>
                 </li>
                 <!-- <li class="slide">
@@ -90,6 +98,7 @@
                         <li><a href="{{ route('setting.profile.index') }}" class="slide-item">Profile Settings</a></li>
                         <!-- <li><a href="{{ route('setting.mail.index') }}" class="slide-item">Mail Settings</a></li> -->
                         <li><a href="{{ route('setting.stripe.index') }}" class="slide-item">Stripe Settings</a></li>
+                        <li><a href="{{ route('setting.sftp.index') }}" class="slide-item">SFTP Settings</a></li>
                         <!-- <li><a href="{{ route('setting.firebase.index') }}" class="slide-item">Firebase Settings</a></li>
                         <li><a href="{{ route('setting.social.index') }}" class="slide-item">Social Settings</a></li>
                         <li><a href="{{ route('setting.google.map.index') }}" class="slide-item">Google Map Settings</a></li> -->

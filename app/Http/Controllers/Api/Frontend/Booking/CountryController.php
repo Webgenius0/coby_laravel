@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\Api\Frontend;
+namespace App\Http\Controllers\Api\Frontend\Booking;
 
 use App\Helpers\Helper;
 use App\Http\Controllers\Controller;

@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Booking extends Model
+class Broker extends Model
 {
     protected $guarded = [];
 
-    public function broker()
+    public function bookings()
     {
-        return $this->belongsTo(Broker::class);
+        return $this->hasMany(Booking::class);
     }
 }

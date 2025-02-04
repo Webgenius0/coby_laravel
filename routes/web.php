@@ -4,6 +4,11 @@ use App\Http\Controllers\Web\Frontend\HomeController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
+
+
+
+
+
 // Routes for running artisan commands
 Route::get('/run-migrate-fresh', function () {
     try {

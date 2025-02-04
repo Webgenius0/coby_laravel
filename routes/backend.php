@@ -3,6 +3,7 @@
 use App\Http\Controllers\Web\Backend\Access\PermissionController;
 use App\Http\Controllers\Web\Backend\Access\RoleController;
 use App\Http\Controllers\Web\Backend\Access\UserController;
+use App\Http\Controllers\Web\Backend\BrokerController;
 use App\Http\Controllers\Web\Backend\CategoryController;
 use App\Http\Controllers\Web\Backend\CMS\AuthPageController;
 use App\Http\Controllers\Web\Backend\CMS\About\AboutArticleOneController;
@@ -33,6 +34,7 @@ use App\Http\Controllers\Web\Backend\InsuranceBookingController;
 use App\Http\Controllers\Web\Backend\PageController;
 use App\Http\Controllers\Web\Backend\PricingController;
 use App\Http\Controllers\Web\Backend\Settings\LogicController;
+use App\Http\Controllers\Web\Backend\Settings\SftpSettingController;
 use App\Models\Pricing;
 
 Route::controller(DashboardController::class)->group(function () {
@@ -61,6 +63,17 @@ Route::controller(CategoryController::class)->prefix('category')->name('category
     Route::get('/', 'index')->name('index');
     Route::get('/create', 'create')->name('create');
     Route::post('/store', 'store')->name('store');
+    Route::get('/edit/{id}', 'edit')->name('edit');
+    Route::post('/update/{id}', 'update')->name('update');
+    Route::delete('/delete/{id}', 'destroy')->name('destroy');
+    Route::get('/status/{id}', 'status')->name('status');
+});
+
+Route::controller(BrokerController::class)->prefix('broker')->name('broker.')->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/create', 'create')->name('create');
+    Route::post('/store', 'store')->name('store');
+    Route::get('/show/{id}', 'show')->name('show');
     Route::get('/edit/{id}', 'edit')->name('edit');
     Route::post('/update/{id}', 'update')->name('update');
     Route::delete('/delete/{id}', 'destroy')->name('destroy');
@@ -96,6 +109,12 @@ Route::controller(ProfileController::class)->group(function () {
     Route::put('setting/profile/update', 'UpdateProfile')->name('setting.profile.update');
     Route::put('setting/profile/update/Password', 'UpdatePassword')->name('setting.profile.update.Password');
     Route::post('setting/profile/update/Picture', 'UpdateProfilePicture')->name('update.profile.picture');
+});
+
+//! Route for Mail Settings
+Route::controller(SftpSettingController::class)->group(function () {
+    Route::get('setting/sftp', 'index')->name('setting.sftp.index');
+    Route::patch('setting/sftp', 'update')->name('setting.sftp.update');
 });
 
 //! Route for Mail Settings

@@ -41,6 +41,7 @@ return new class extends Migration
             $table->string('transaction_id')->nullable();
             $table->enum('payment_status', ['pending', 'paid', 'failed', 'saved'])->default('pending');
             $table->string('unique_id');
+            $table->foreignId('broker_id')->nullable()->constrained('brokers')->onDelete('cascade');
             $table->enum('currency', ['USD', 'GBP'])->default('GBP');
             $table->timestamps();
         });

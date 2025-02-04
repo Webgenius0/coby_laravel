@@ -29,7 +29,7 @@ class InsuranceBookingController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('total_price', function ($data) {
-                    return floatval($data->total_price);
+                    return floatval($data->total_price).' '.$data->currency;
                 })
                 ->addColumn('status', function ($data) {
                     $backgroundColor = $data->status == "active" ? '#4CAF50' : '#ccc';
