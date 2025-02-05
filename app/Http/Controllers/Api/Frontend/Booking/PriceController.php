@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Frontend\Booking;
 use App\Http\Controllers\Controller;
 use App\Models\Pricing;
 use GuzzleHttp\Client;
+use App\Models\Logic;
 use Illuminate\Http\Request;
 use App\Helpers\Helper;
 
@@ -57,10 +58,13 @@ class PriceController extends Controller
             return Helper::jsonResponse(false, 'Price not found', 404);
         }
 
-        $client = new Client();
+        /* $client = new Client();
         $response = $client->get('https://api.exchangerate-api.com/v4/latest/GBP');
         $data = json_decode($response->getBody(), true);
-        $rate = $data['rates']['USD'];
+        $rate = $data['rates']['USD']; */
+
+        $logic = Logic::latest()->first();
+        $rate = $logic->usd;
 
         $data = [
             'price_in_pound' => $price->base_premium,

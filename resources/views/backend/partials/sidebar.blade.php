@@ -35,15 +35,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="side-menu__icon" viewBox="0 0 16 16">
                             <path d="M15 14l-5-5-5 5v-3l10 -10z" />
                         </svg>
-                        <span class="side-menu__label">Contact</span>
-                    </a>
-                </li>
-                <li class="slide">
-                    <a class="side-menu__item {{  request()->routeIs('broker') ? 'has-link' : '' }}" href="{{ route('broker.index') }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="side-menu__icon" viewBox="0 0 16 16">
-                            <path d="M15 14l-5-5-5 5v-3l10 -10z" />
-                        </svg>
-                        <span class="side-menu__label">Broker</span>
+                        <span class="side-menu__label">Contact's List</span>
                     </a>
                 </li>
                 <li class="slide">
@@ -51,7 +43,15 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="side-menu__icon" viewBox="0 0 16 16">
                             <path d="M15 14l-5-5-5 5v-3l10 -10z" />
                         </svg>
-                        <span class="side-menu__label">Policy</span>
+                        <span class="side-menu__label">Policy Booking</span>
+                    </a>
+                </li>
+                <li class="slide">
+                    <a class="side-menu__item {{  request()->routeIs('broker') ? 'has-link' : '' }}" href="{{ route('broker.index') }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="side-menu__icon" viewBox="0 0 16 16">
+                            <path d="M15 14l-5-5-5 5v-3l10 -10z" />
+                        </svg>
+                        <span class="side-menu__label">Broker Management</span>
                     </a>
                 </li>
                 <!-- <li class="slide">
@@ -72,7 +72,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="side-menu__icon" viewBox="0 0 16 16">
                             <path d="M15 14l-5-5-5 5v-3l10 -10z" />
                         </svg>
-                        <span class="side-menu__label">Pricing</span>
+                        <span class="side-menu__label">Pricing List</span>
                     </a>
                 </li>
 
@@ -81,7 +81,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="side-menu__icon" viewBox="0 0 16 16">
                             <path d="M15 14l-5-5-5 5v-3l10 -10z" />
                         </svg>
-                        <span class="side-menu__label">Country</span>
+                        <span class="side-menu__label">Country List</span>
                     </a>
                 </li>
                 
@@ -93,7 +93,7 @@
                         <span class="side-menu__label">Settings</span><i class="angle fa fa-angle-right"></i>
                     </a>
                     <ul class="slide-menu">
-                        <li><a href="{{ route('setting.logic.index') }}" class="slide-item">logic Settings</a></li>
+                        <li><a href="{{ route('setting.logic.index') }}" class="slide-item">Loading Settings</a></li>
                         <li><a href="{{ route('setting.general.index') }}" class="slide-item">General Settings</a></li>
                         <li><a href="{{ route('setting.profile.index') }}" class="slide-item">Profile Settings</a></li>
                         <!-- <li><a href="{{ route('setting.mail.index') }}" class="slide-item">Mail Settings</a></li> -->

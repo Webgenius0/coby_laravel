@@ -1,4 +1,4 @@
-@extends('backend.app', ['title' => 'General Logic'])
+@extends('backend.app', ['title' => 'General Loading'])
 
 @section('content')
 <!--app-content open-->
@@ -11,12 +11,12 @@
             {{-- PAGE-HEADER --}}
             <div class="page-header">
                 <div>
-                    <h1 class="page-title">General Logic</h1>
+                    <h1 class="page-title">General Loading</h1>
                 </div>
                 <div class="ms-auto pageheader-btn">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0);">Logic</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">General Logic</li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0);">Loading</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">General Loading</li>
                     </ol>
                 </div>
             </div>
@@ -166,14 +166,14 @@
 
                                     <div class="form-group">
                                         <div class="input-group mb-3">
-                                            <label for="usd_to_gbp" class="input-group-text">USD to GBP:</label>
-                                            <input type="number" class="form-control @error('usd_to_gbp') is-invalid @enderror"
-                                                name="usd_to_gbp" placeholder="usd to gbp" id="usd_to_gbp"
-                                                value="{{ $logic->usd_to_gbp ?? old('usd_to_gbp') ?? '' }}"
+                                            <label for="usd" class="input-group-text">GDP = 1 to USD = :</label>
+                                            <input type="number" class="form-control @error('usd') is-invalid @enderror"
+                                                name="usd" placeholder="usd to gbp" id="usd_to_gbp"
+                                                value="{{ $logic->usd ?? old('usd') ?? '' }}"
                                                 min="1"
                                                 step="0.01">
                                         </div>
-                                        @error('usd_to_gbp')
+                                        @error('usd')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>

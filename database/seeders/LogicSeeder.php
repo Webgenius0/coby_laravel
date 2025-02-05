@@ -23,7 +23,8 @@ class LogicSeeder extends Seeder
                 'adventure_sprots_multi' => 2,
                 'adventure_sprots_single' => 2,
                 'charge' => 2,
-                'usd_to_gbp' => 0.8
+                'gbp' => 1,
+                'usd' => 0.8
             ]
         ]);
     }

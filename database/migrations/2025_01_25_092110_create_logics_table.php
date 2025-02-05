@@ -22,7 +22,8 @@ return new class extends Migration
             $table->integer('adventure_sprots_single')->default(2)->comment("(as + 100) / 100");
             $table->float('charge')->default(2)->comment("(100 * c) / 100");
             $table->float('tax')->default(2)->comment("(100 * c) / 100");
-            $table->float('usd_to_gbp')->default(2)->comment(".8");
+            $table->float('gbp')->default(1)->comment("1");
+            $table->float('usd')->default(0.8)->comment(".8");
             $table->timestamps();
         });
     }

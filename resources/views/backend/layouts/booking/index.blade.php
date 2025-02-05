@@ -1,7 +1,7 @@
 @extends('backend.app', ['title' => 'Booking'])
 
 @push('styles')
-<link href="{{ asset('default/datatable.css') }}" rel="stylesheet" />  
+<link href="{{ asset('default/datatable.css') }}" rel="stylesheet" />
 @endpush
 
 
@@ -39,6 +39,9 @@
                                 <a href="{{ route('insurance.booking.index', 'pending') }}" class="btn btn-primary {{ request()->routeIs('insurance.booking.index', 'unpaid') ? 'active' : '' }}">Unpaid</a>
                                 <a href="{{ route('insurance.booking.index', 'failed') }}" class="btn btn-primary {{ request()->routeIs('insurance.booking.index', 'failed') ? 'active' : '' }}">Failed</a>
                             </div>
+                            <div class="card-options ms-auto">
+                                <a href="{{ route('insurance.booking.create') }}" class="btn btn-primary btn-sm">+</a>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="">
@@ -74,6 +77,17 @@
 
 
 @push('scripts')
+<!-- DataTables and Button Scripts -->
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/rickshaw/1.6.1/rickshaw.min.js"></script>
+
+<!-- DataTables and Button Scripts -->
+<script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js"></script>
 <script>
     $(document).ready(function() {
 
@@ -103,7 +117,10 @@
                     loadingIndicator: false
                 },
                 pagingType: "full_numbers",
-                dom: "<'row justify-content-between table-topbar'<'col-md-4 col-sm-3'l><'col-md-5 col-sm-5 px-0'f>>tipr",
+                dom: "<'row justify-content-between table-topbar'<'col-md-4 col-sm-3'l><'col-md-5 col-sm-5 px-0'f>>Btipr",
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ],
                 ajax: {
                     url: "{{ route('insurance.booking.index', request()->status ?? 'paid') }}",
                     type: "GET",
