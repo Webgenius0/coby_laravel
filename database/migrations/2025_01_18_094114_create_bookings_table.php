@@ -24,7 +24,7 @@ return new class extends Migration
             $table->integer('number_of_adults')->nullable();
             $table->string('age')->nullable();
             $table->json('adults')->nullable();
-            $table->integer('number_of_children');
+            $table->integer('number_of_children')->nullable();
             $table->json('travel_type')->nullable();
             $table->json('children')->nullable();
             $table->string('address_one')->nullable();

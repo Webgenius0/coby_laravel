@@ -85,5 +85,42 @@ class BookingController extends Controller
 
         return redirect()->route('payment.stripe.checkout', $data->id);
     }
+    public function quote(Request $request)
+    {
+        $validatedData = $request->validate([
+            'policy_currency' => 'required|in:British Pounds,USA Dollers',
+            'country_of_residence' => 'required|string|max:100',
+            'insurance_type' => 'nullable|in:single-trip,multi-trip',
+            'policy_type' => 'nullable|string|max:50',
+            'coverage_type' => 'nullable|string|max:50',
+            'area_of_travel' => 'required|in:europe,ex_usa,worldwide',
+            'start_date' => 'required|date|before_or_equal:end_date',
+            'end_date' => 'nullable|date|after_or_equal:start_date',
+            'currency' => 'required|in:USD,GBP',
+        ]);
+        $validatedData['created_at'] = date('Y-m-d H:i:s');
+
+        do {
+            $unique_id = "PID-" . str_pad(mt_rand(0, 99999), 5, '0', STR_PAD_LEFT);
+        } while (Booking::where('unique_id', $unique_id)->exists());
+
+        $validatedData['unique_id'] = $unique_id;
+
+        $validatedData['status'] = 'inactive';
+        $validatedData['payment_status'] = 'saved';
+
+        $data = Booking::create($validatedData);
+
+        return Helper::jsonResponse(true, 'Quote created successfully', 200, $data);
+    }
+
+    public function show($id)
+    {
+        $booking = Booking::where('payment_status', 'saved')->find($id);
+        if (!$booking) {
+            return Helper::jsonResponse(false, 'Quote not found', 404);
+        }
+        return Helper::jsonResponse(true, 'Quote details', 200, $booking);
+    }
 
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\Frontend\AffiliateController;
 use App\Http\Controllers\Api\Frontend\Booking\BookingController;
+use App\Http\Controllers\Api\Frontend\Booking\BrokerController;
 use App\Http\Controllers\Api\Frontend\Booking\PriceController;
 use App\Http\Controllers\Api\Frontend\Booking\LogicController;
 use App\Http\Controllers\Api\Frontend\Booking\CountryController;
@@ -31,11 +32,17 @@ Route::middleware('api')->group(function () {
     // Contact
     Route::post('/contact/send', [ContactController::class, 'messageSend']);
     
+    // Affiliate
     Route::get('/affiliate/{code}', [AffiliateController::class, 'getData'])->name('affiliate');
+
+    //Broker
+    Route::get('/broker/{code}', [BrokerController::class, 'show'])->name('broker');
     
     // Booking
     Route::get('/country/list', [CountryController::class, 'index']);
     Route::get('/logic/get', [LogicController::class, 'getLogic']);
     Route::post('/price/list', [PriceController::class, 'getPrice']);
     Route::post('/booking/form/submit', [BookingController::class, 'store']);
+    Route::get('/booking/form/show/{id}', [BookingController::class, 'show']);
+    Route::get('/booking/form/quote', [BookingController::class, 'quote']);
 });
