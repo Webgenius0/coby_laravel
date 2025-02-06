@@ -323,7 +323,7 @@
                                     <div class="card-body border-0">
                                         <div class="form-group">
                                             <label for="number_of_children" class="form-label">Number of Children:</label>
-                                            <input type="number" class="form-control @error('number_of_children') is-invalid @enderror" name="number_of_children" placeholder="1" id="number_of_children" value="{{ $booking->number_of_children ?? old('number_of_children') }}" min="0">
+                                            <input type="number" class="form-control @error('number_of_children') is-invalid @enderror" name="number_of_children" placeholder="0" id="number_of_children" value="{{ $booking->number_of_children ?? old('number_of_children') }}" min="0">
                                             @error('number_of_children')
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror

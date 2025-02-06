@@ -381,25 +381,22 @@
             let numberOfAdults = $('#number_of_adults').val();
 
             for (let i = 1; i <= numberOfAdults; i++) {
-                let adultData = adults[i - 1] || getDummyData();
+                let adultData = (adults !== null && adults[i - 1] !== undefined) ? adults[i - 1] : getDummyData();
 
                 html += `
                 <div class="card mt-3">
                     <div class="card-body border-0">
                         <div class="form-group">
                             <label for="adult_name_${i}" class="form-label">Name:</label>
-                            <input type="text" class="form-control" name="adults[${i-1}][name]" id="adult_name_${i}" 
-                                placeholder="Enter name" value="${adultData.name || ''}">
+                            <input type="text" class="form-control" name="adults[${i-1}][name]" id="adult_name_${i}" placeholder="Enter name" value="${adultData.name || ''}">
                         </div>
                         <div class="form-group">
                             <label for="adult_forename_${i}" class="form-label">Forename:</label>
-                            <input type="text" class="form-control" name="adults[${i-1}][forename]" id="adult_forename_${i}" 
-                                placeholder="Enter forename" value="${adultData.forename || ''}">
+                            <input type="text" class="form-control" name="adults[${i-1}][forename]" id="adult_forename_${i}" placeholder="Enter forename" value="${adultData.forename || ''}">
                         </div>
                         <div class="form-group">
                             <label for="adult_surname_${i}" class="form-label">Surname:</label>
-                            <input type="text" class="form-control" name="adults[${i-1}][surname]" id="adult_surname_${i}" 
-                                placeholder="Enter surname" value="${adultData.surname || ''}">
+                            <input type="text" class="form-control" name="adults[${i-1}][surname]" id="adult_surname_${i}" placeholder="Enter surname" value="${adultData.surname || ''}">
                         </div>
                         <div class="form-group">
                             <label for="adult_birthdate_${i}" class="form-label">Birth Day:</label>
@@ -407,8 +404,7 @@
                         </div>
                         <div class="form-group">
                             <label for="adult_nationality_${i}" class="form-label">Nationality:</label>
-                            <input type="text" class="form-control" name="adults[${i-1}][nationality]" id="adult_nationality_${i}" 
-                                placeholder="Enter nationality" value="${adultData.nationality || ''}">
+                            <input type="text" class="form-control" name="adults[${i-1}][nationality]" id="adult_nationality_${i}" placeholder="Enter nationality" value="${adultData.nationality || ''}">
                         </div>
                     </div>
                 </div>
@@ -429,29 +425,30 @@
             let numberOfChildren = $('#number_of_children').val();
 
             for (let i = 1; i <= numberOfChildren; i++) {
-                let childrenData = children[i - 1] || getDummyData();
+                let childrenData = (children !== null && children[i - 1] !== undefined) ? children[i - 1] : getDummyData();
+
                 html += `
                 <div class="card mt-3">
                     <div class="card-body border-0">
                         <div class="form-group">
                             <label for="child_name_${i}" class="form-label">Name:</label>
-                            <input type="text" class="form-control" name="children[${i-1}][name]" id="child_name_${i}" placeholder="Enter name" value="${children[i - 1]?.name || ''}">
-                        </div>   
+                            <input type="text" class="form-control" name="children[${i-1}][name]" id="child_name_${i}" placeholder="Enter name" value="${childrenData.name || ''}">
+                        </div>
                         <div class="form-group">
                             <label for="child_forename_${i}" class="form-label">Forename:</label>
-                            <input type="text" class="form-control" name="children[${i-1}][forename]" id="child_forename_${i}" placeholder="Enter forename" value="${children[i - 1]?.forename || ''}">
+                            <input type="text" class="form-control" name="children[${i-1}][forename]" id="child_forename_${i}" placeholder="Enter forename" value="${childrenData.forename || ''}">
                         </div>
                         <div class="form-group">
                             <label for="child_surname_${i}" class="form-label">Surname:</label>
-                            <input type="text" class="form-control" name="children[${i-1}][surname]" id="child_surname_${i}" placeholder="Enter surname" value="${children[i - 1]?.surname || ''}">
+                            <input type="text" class="form-control" name="children[${i-1}][surname]" id="child_surname_${i}" placeholder="Enter surname" value="${childrenData.surname || ''}">
                         </div>
                         <div class="form-group">
                             <label for="child_birthdate_${i}" class="form-label">Birth Day:</label>
-                            <input type="text" class="form-control" name="children[${i-1}][birth_day]" id="child_birthdate_${i}" value="${children[i - 1]?.birth_day ? children[i - 1].birth_day.split('-').reverse().join('/') : ''}">
+                            <input type="text" class="form-control" name="children[${i-1}][birth_day]" id="child_birthdate_${i}" placeholder="dd/mm/yyyy" value="${childrenData.birth_day ? childrenData.birth_day.split('-').reverse().join('/') : ''}">
                         </div>
                         <div class="form-group">
                             <label for="child_nationality_${i}" class="form-label">Nationality:</label>
-                            <input type="text" class="form-control" name="children[${i-1}][nationality]" id="child_nationality_${i}" placeholder="Enter nationality" value="${children[i - 1]?.nationality || ''}">
+                            <input type="text" class="form-control" name="children[${i-1}][nationality]" id="child_nationality_${i}" placeholder="Enter nationality" value="${childrenData.nationality || ''}">
                         </div>
                     </div>
                 </div>
