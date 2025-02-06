@@ -60,7 +60,7 @@ class BookingController extends Controller
             'comments' => 'nullable|string|max:1000',
             'total_price' => 'required|numeric|min:0',
             'currency' => 'required|in:USD,GBP',
-            'broker_id' => 'required|exists:brokers,id',
+            'broker_id' => 'nullable|exists:brokers,id',
         ]);
 
         $validatedData['created_at'] = date('Y-m-d H:i:s');
