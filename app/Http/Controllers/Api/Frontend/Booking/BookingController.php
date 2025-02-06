@@ -88,6 +88,8 @@ class BookingController extends Controller
     public function quote(Request $request)
     {
         $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
             'policy_currency' => 'required|in:British Pounds,USA Dollers',
             'country_of_residence' => 'required|string|max:100',
             'insurance_type' => 'nullable|in:single-trip,multi-trip',

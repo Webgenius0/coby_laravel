@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
             $table->enum('policy_currency', ['British Pounds', 'USA Dollers'])->default('British Pounds');
             $table->string('country_of_residence')->nullable();
             $table->enum('insurance_type', ['multi-trip', 'single-trip'])->default('single-trip');
