@@ -25,7 +25,7 @@ class BookingServices
         }
 
         $path = $directoryPath . $data->unique_id . '.pdf';
-        $pdf = PDF::loadView('pdf.sample', ['data' => $data]);
+        $pdf = PDF::loadView('pdf.certificate', ['data' => $data]);
         $pdf->save($path);
 
         return true;

@@ -44,5 +44,5 @@ Route::middleware('api')->group(function () {
     Route::post('/price/list', [PriceController::class, 'getPrice']);
     Route::post('/booking/form/submit', [BookingController::class, 'store']);
     Route::get('/booking/form/show/{id}', [BookingController::class, 'show']);
-    Route::get('/booking/form/quote', [BookingController::class, 'quote']);
+    Route::post('/booking/form/quote', [BookingController::class, 'quote']);
 });
