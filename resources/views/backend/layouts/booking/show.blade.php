@@ -22,8 +22,7 @@
             </div>
 
             <div class="row" id="user-profile">
-                <div class="col-lg-12">
-
+                <div class="col-lg-8">
                     <div class="tab-content">
                         <div class="tab-pane active show" id="editProfile">
                             <div class="card">
@@ -74,86 +73,16 @@
                                             <td>{{ $booking->number_of_adults ?? "N/A" }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Adults</th>
-                                            <td>
-                                                @if(isset(json_decode($booking->adults)[0]))
-                                                    @foreach(json_decode($booking->adults) as $adult)
-                                                    <div class="card shadow-sm">
-                                                        <ul class="list-group list-group-flush">
-                                                            <li class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
-                                                                <span class="d-block d-sm-inline-block">Name:</span>
-                                                                <span class="ms-auto ms-sm-0 d-block d-sm-inline-block">{{ $adult->name ?? "N/A" }}</span>
-                                                            </li>
-                                                            <li class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
-                                                                <span class="d-block d-sm-inline-block">Fore-name:</span>
-                                                                <span class="ms-auto ms-sm-0 d-block d-sm-inline-block">{{ $adult->forename ?? "N/A" }}</span>
-                                                            </li>
-                                                            <li class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
-                                                                <span class="d-block d-sm-inline-block">Sur-name:</span>
-                                                                <span class="ms-auto ms-sm-0 d-block d-sm-inline-block">{{ $adult->surname ?? "N/A" }}</span>
-                                                            </li>
-                                                            <li class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
-                                                                <span class="d-block d-sm-inline-block">Birth Day:</span>
-                                                                <span class="ms-auto ms-sm-0 d-block d-sm-inline-block">{{ $adult->birth_day ?? "N/A" }}</span>
-                                                            </li>
-                                                            <li class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
-                                                                <span class="d-block d-sm-inline-block">Nationality:</span>
-                                                                <span class="ms-auto ms-sm-0 d-block d-sm-inline-block">{{ $adult->nationality ?? "N/A" }}</span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    @endforeach
-                                                @else
-                                                    N/A
-                                                @endif
-                                            </td>
-                                        </tr>
-                                        <tr>
                                             <th>Number Of Children</th>
                                             <td>{{ $booking->number_of_children ?? "N/A" }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Children</th>
-                                            <td>
-                                                @if(isset(json_decode($booking->children)[0]))
-                                                    @foreach(json_decode($booking->children) as $child)
-                                                    <div class="card shadow-sm">
-                                                        <ul class="list-group list-group-flush">
-                                                            <li class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
-                                                                <span class="d-block d-sm-inline-block">Name:</span>
-                                                                <span class="ms-auto ms-sm-0 d-block d-sm-inline-block">{{ $child->name ?? "N/A" }}</span>
-                                                            </li>
-                                                            <li class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
-                                                                <span class="d-block d-sm-inline-block">Fore-name:</span>
-                                                                <span class="ms-auto ms-sm-0 d-block d-sm-inline-block">{{ $child->forename ?? "N/A" }}</span>
-                                                            </li>
-                                                            <li class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
-                                                                <span class="d-block d-sm-inline-block">Sur-name:</span>
-                                                                <span class="ms-auto ms-sm-0 d-block d-sm-inline-block">{{ $child->surname ?? "N/A" }}</span>
-                                                            </li>
-                                                            <li class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
-                                                                <span class="d-block d-sm-inline-block">Birth Day:</span>
-                                                                <span class="ms-auto ms-sm-0 d-block d-sm-inline-block">{{ $child->birth_day ?? "N/A" }}</span>
-                                                            </li>
-                                                            <li class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
-                                                                <span class="d-block d-sm-inline-block">Nationality:</span>
-                                                                <span class="ms-auto ms-sm-0 d-block d-sm-inline-block">{{ $child->nationality ?? "N/A" }}</span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    @endforeach
-                                                @else
-                                                    N/A
-                                                @endif
-                                            </td>
                                         </tr>
                                         <tr>
                                             <th>Travel Type</th>
                                             <td>
                                                 @if(json_decode($booking->travel_type))
-                                                    {{ json_decode($booking->travel_type)[0] ?? "N/A" }}
+                                                {{ json_decode($booking->travel_type)[0] ?? "N/A" }}
                                                 @else
-                                                    {{ $booking->travel_type ?? "N/A" }}
+                                                {{ $booking->travel_type ?? "N/A" }}
                                                 @endif
                                             </td>
                                         </tr>
@@ -217,7 +146,88 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="tab-content">
+                        <div class="tab-pane active show" id="editProfile">
+                            <div class="card">
+                                <div class="card-body border-0">
+                                    <h2>Adults - {{ $booking->number_of_adults ?? "N/A" }}</h2>
+                                </div>
+                            </div>
 
+                            @if(isset(json_decode($booking->adults)[0]))
+                            @foreach(json_decode($booking->adults) as $adult)
+                            <div class="card shadow-sm">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+                                        <span class="d-block d-sm-inline-block">Name:</span>
+                                        <span class="ms-auto ms-sm-0 d-block d-sm-inline-block">{{ $adult->name ?? "N/A" }}</span>
+                                    </li>
+                                    <li class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+                                        <span class="d-block d-sm-inline-block">Fore-name:</span>
+                                        <span class="ms-auto ms-sm-0 d-block d-sm-inline-block">{{ $adult->forename ?? "N/A" }}</span>
+                                    </li>
+                                    <li class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+                                        <span class="d-block d-sm-inline-block">Sur-name:</span>
+                                        <span class="ms-auto ms-sm-0 d-block d-sm-inline-block">{{ $adult->surname ?? "N/A" }}</span>
+                                    </li>
+                                    <li class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+                                        <span class="d-block d-sm-inline-block">Birth Day:</span>
+                                        <span class="ms-auto ms-sm-0 d-block d-sm-inline-block">{{ $adult->birth_day ?? "N/A" }}</span>
+                                    </li>
+                                    <li class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+                                        <span class="d-block d-sm-inline-block">Nationality:</span>
+                                        <span class="ms-auto ms-sm-0 d-block d-sm-inline-block">{{ $adult->nationality ?? "N/A" }}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            @endforeach
+                            @else
+                            <div class="card">
+                                <h3 class="text-center p-3">N/A</h3>
+                            </div>
+                            @endif
+
+                            <div class="card">
+                                <div class="card-body border-0">
+                                    <h2>Children - {{ $booking->number_of_children ?? "N/A" }}</h2>
+                                </div>
+                            </div>
+                            @if(isset(json_decode($booking->children)[0]))
+                            @foreach(json_decode($booking->children) as $child)
+                            <div class="card shadow-sm">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+                                        <span class="d-block d-sm-inline-block">Name:</span>
+                                        <span class="ms-auto ms-sm-0 d-block d-sm-inline-block">{{ $child->name ?? "N/A" }}</span>
+                                    </li>
+                                    <li class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+                                        <span class="d-block d-sm-inline-block">Fore-name:</span>
+                                        <span class="ms-auto ms-sm-0 d-block d-sm-inline-block">{{ $child->forename ?? "N/A" }}</span>
+                                    </li>
+                                    <li class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+                                        <span class="d-block d-sm-inline-block">Sur-name:</span>
+                                        <span class="ms-auto ms-sm-0 d-block d-sm-inline-block">{{ $child->surname ?? "N/A" }}</span>
+                                    </li>
+                                    <li class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+                                        <span class="d-block d-sm-inline-block">Birth Day:</span>
+                                        <span class="ms-auto ms-sm-0 d-block d-sm-inline-block">{{ $child->birth_day ?? "N/A" }}</span>
+                                    </li>
+                                    <li class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+                                        <span class="d-block d-sm-inline-block">Nationality:</span>
+                                        <span class="ms-auto ms-sm-0 d-block d-sm-inline-block">{{ $child->nationality ?? "N/A" }}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            @endforeach
+                            @else
+                            <div class="card">
+                                <h3 class="text-center p-3">N/A</h3>
+                            </div>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
