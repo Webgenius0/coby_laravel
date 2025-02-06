@@ -25,7 +25,8 @@ class BookingServices
         }
 
         $path = $directoryPath . $data->unique_id . '.pdf';
-        $pdf = PDF::loadView('pdf.certificate', ['data' => $data]);
+        $icon = base64_encode(file_get_contents(public_path('default/logo.png')));
+        $pdf = PDF::loadView('pdf.certificate', ['data' => $data, 'icon' => $icon]);
         $pdf->save($path);
 
         return true;

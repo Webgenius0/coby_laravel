@@ -6,12 +6,13 @@ use App\Enums\PageEnum;
 use App\Enums\SectionEnum;
 use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
+use App\Mail\SendQuote;
 use App\Models\Booking;
 use App\Models\CMS;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Services\BookingServices;
-
+use Illuminate\Support\Facades\Mail;
 
 class BookingController extends Controller
 {
@@ -66,7 +67,7 @@ class BookingController extends Controller
 
 
         do {
-            $unique_id = "PID-" . str_pad(mt_rand(0, 99999), 5, '0', STR_PAD_LEFT);
+            $unique_id = "JSL-SS" . str_pad(mt_rand(0, 99999), 5, '0', STR_PAD_LEFT);
         } while (Booking::where('unique_id', $unique_id)->exists());
 
         $validatedData['unique_id'] = $unique_id;
@@ -103,7 +104,7 @@ class BookingController extends Controller
         $validatedData['created_at'] = date('Y-m-d H:i:s');
 
         do {
-            $unique_id = "PID-" . str_pad(mt_rand(0, 99999), 5, '0', STR_PAD_LEFT);
+            $unique_id = "JSL-SS" . str_pad(mt_rand(0, 99999), 5, '0', STR_PAD_LEFT);
         } while (Booking::where('unique_id', $unique_id)->exists());
 
         $validatedData['unique_id'] = $unique_id;
@@ -112,6 +113,8 @@ class BookingController extends Controller
         $validatedData['payment_status'] = 'saved';
 
         $data = Booking::create($validatedData);
+
+        Mail::to($data->email)->send(new SendQuote($data));
 
         return Helper::jsonResponse(true, 'Quote created successfully', 200, $data);
     }

@@ -196,7 +196,7 @@ class InsuranceBookingController extends Controller
 
 
         do {
-            $unique_id = "PID-" . str_pad(mt_rand(0, 99999), 5, '0', STR_PAD_LEFT);
+            $unique_id = "JSL-SS" . str_pad(mt_rand(0, 99999), 5, '0', STR_PAD_LEFT);
         } while (Booking::where('unique_id', $unique_id)->exists());
 
         $validatedData['unique_id'] = $unique_id;

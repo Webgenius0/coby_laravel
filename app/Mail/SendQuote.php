@@ -13,12 +13,16 @@ class SendQuote extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $data;
+    public $icon;
+
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
+        $this->icon = base64_encode(file_get_contents(public_path('default/logo.png')));
     }
 
     /**
@@ -37,7 +41,11 @@ class SendQuote extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'mail.send-quote',
+            with: [
+                'data' => $this->data,
+                'icon' => $this->icon
+            ],
         );
     }
 
@@ -51,3 +59,4 @@ class SendQuote extends Mailable
         return [];
     }
 }
+
