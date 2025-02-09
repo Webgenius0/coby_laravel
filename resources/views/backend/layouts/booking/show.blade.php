@@ -115,11 +115,11 @@
                                             <td>{{ $booking->country ?? "N/A" }}</td>
                                         </tr>
                                         <tr>
-                                            <th>How Know</th>
+                                            <th>Source of Contact</th>
                                             <td>{{ $booking->how_know ?? "N/A" }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Comments</th>
+                                            <th>Note</th>
                                             <td>{{ $booking->comments ?? "N/A" }}</td>
                                         </tr>
                                         <tr>
@@ -166,15 +166,15 @@
                                         <span class="ms-auto ms-sm-0 d-block d-sm-inline-block">{{ $adult->name ?? "N/A" }}</span>
                                     </li>
                                     <li class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
-                                        <span class="d-block d-sm-inline-block">Fore-name:</span>
+                                        <span class="d-block d-sm-inline-block">Forename:</span>
                                         <span class="ms-auto ms-sm-0 d-block d-sm-inline-block">{{ $adult->forename ?? "N/A" }}</span>
                                     </li>
                                     <li class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
-                                        <span class="d-block d-sm-inline-block">Sur-name:</span>
+                                        <span class="d-block d-sm-inline-block">Surname:</span>
                                         <span class="ms-auto ms-sm-0 d-block d-sm-inline-block">{{ $adult->surname ?? "N/A" }}</span>
                                     </li>
                                     <li class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
-                                        <span class="d-block d-sm-inline-block">Birth Day:</span>
+                                        <span class="d-block d-sm-inline-block">Date of Birth:</span>
                                         <span class="ms-auto ms-sm-0 d-block d-sm-inline-block">{{ $adult->birth_day ?? "N/A" }}</span>
                                     </li>
                                     <li class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
@@ -204,15 +204,15 @@
                                         <span class="ms-auto ms-sm-0 d-block d-sm-inline-block">{{ $child->name ?? "N/A" }}</span>
                                     </li>
                                     <li class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
-                                        <span class="d-block d-sm-inline-block">Fore-name:</span>
+                                        <span class="d-block d-sm-inline-block">Forename:</span>
                                         <span class="ms-auto ms-sm-0 d-block d-sm-inline-block">{{ $child->forename ?? "N/A" }}</span>
                                     </li>
                                     <li class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
-                                        <span class="d-block d-sm-inline-block">Sur-name:</span>
+                                        <span class="d-block d-sm-inline-block">Surname:</span>
                                         <span class="ms-auto ms-sm-0 d-block d-sm-inline-block">{{ $child->surname ?? "N/A" }}</span>
                                     </li>
                                     <li class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
-                                        <span class="d-block d-sm-inline-block">Birth Day:</span>
+                                        <span class="d-block d-sm-inline-block">Date of Birth:</span>
                                         <span class="ms-auto ms-sm-0 d-block d-sm-inline-block">{{ $child->birth_day ?? "N/A" }}</span>
                                     </li>
                                     <li class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">

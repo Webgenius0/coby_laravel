@@ -44,6 +44,7 @@ return new class extends Migration
             $table->string('unique_id');
             $table->foreignId('broker_id')->nullable()->constrained('brokers')->onDelete('cascade');
             $table->enum('currency', ['USD', 'GBP'])->default('GBP');
+            $table->boolean('if_contact')->nullable();
             $table->timestamps();
         });
     }

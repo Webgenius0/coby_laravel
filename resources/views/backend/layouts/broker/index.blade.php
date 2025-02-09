@@ -33,9 +33,9 @@
                 <div class="col-12 col-sm-12">
                     <div class="card product-sales-main">
                         <div class="card-header border-bottom">
-                            <h3 class="card-title mb-0">Task List</h3>
+                            <h3 class="card-title mb-0">Broker List</h3>
                             <div class="card-options ms-auto">
-                                <a href="{{ route('broker.create') }}" class="btn btn-primary btn-sm">Add Task</a>
+                                <a href="{{ route('broker.create') }}" class="btn btn-primary btn-sm">Add Broker</a>
                             </div>
                         </div>
                         <div class="card-body">

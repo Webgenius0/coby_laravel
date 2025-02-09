@@ -53,7 +53,6 @@
                                             <th class="bg-transparent border-bottom-0">Email</th>
                                             <th class="bg-transparent border-bottom-0">Policy ID</th>
                                             <th class="bg-transparent border-bottom-0">Total Price</th>
-                                            <th class="bg-transparent border-bottom-0">Status</th>
                                             <th class="bg-transparent border-bottom-0">Action</th>
                                         </tr>
                                     </thead>
@@ -117,7 +116,7 @@
                     loadingIndicator: false
                 },
                 pagingType: "full_numbers",
-                dom: "<'row justify-content-between table-topbar'<'col-md-4 col-sm-3'l><'col-md-5 col-sm-5 px-0'f>>Btipr",
+                dom: "<'row justify-content-between table-topbar'<'col-md-4 col-sm-3'l><'col-md-5 col-sm-5 px-0'f>>tipr",
                 buttons: [
                     'copy', 'csv', 'excel', 'pdf', 'print'
                 ],
@@ -155,12 +154,6 @@
                         name: 'total_price',
                         orderable: true,
                         searchable: true
-                    },
-                    {
-                        data: 'status',
-                        name: 'status',
-                        orderable: false,
-                        searchable: false
                     },
                     {
                         data: 'action',

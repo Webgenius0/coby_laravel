@@ -46,7 +46,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="broker_id" class="form-label">Broker Refrence:</label>
+                                            <label for="broker_id" class="form-label">Reference:</label>
                                             <select class="form-control @error('broker_id') is-invalid @enderror" name="broker_id" id="broker_id">
                                                 <option value="" selected disabled hidden>Select</option>
                                                 @foreach ($brokers as $broker)
@@ -59,7 +59,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="how_know" class="form-label">How to Know:</label>
+                                            <label for="how_know" class="form-label">Source of Contact:</label>
                                             <input type="text" class="form-control @error('how_know') is-invalid @enderror" name="how_know" placeholder="How know" id="how_know" value="{{ $booking->how_know ?? old('how_know') }}">
                                             @error('how_know')
                                             <span class="text-danger">{{ $message }}</span>
@@ -67,8 +67,8 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="comment" class="form-label">Comment:</label>
-                                            <textarea class="form-control @error('comment') is-invalid @enderror" name="comment" id="comment" placeholder="Comment" rows="3">{{ old('comment', $booking->comment) }}</textarea>
+                                            <label for="comment" class="form-label">Note:</label>
+                                            <textarea class="form-control @error('comment') is-invalid @enderror" name="comment" id="comment" placeholder="Note" rows="3">{{ old('comment', $booking->comment) }}</textarea>
                                             @error('comment')
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -399,7 +399,7 @@
                             <input type="text" class="form-control" name="adults[${i-1}][surname]" id="adult_surname_${i}" placeholder="Enter surname" value="${adultData.surname || ''}">
                         </div>
                         <div class="form-group">
-                            <label for="adult_birthdate_${i}" class="form-label">Birth Day:</label>
+                            <label for="adult_birthdate_${i}" class="form-label">Date of Birth:</label>
                             <input type="text" class="form-control" name="adults[${i-1}][birth_day]" id="adult_birthdate_${i}" placeholder="dd/mm/yyyy" value="${adultData.birth_day ? adultData.birth_day.split('-').reverse().join('/') : ''}">
                         </div>
                         <div class="form-group">
@@ -443,7 +443,7 @@
                             <input type="text" class="form-control" name="children[${i-1}][surname]" id="child_surname_${i}" placeholder="Enter surname" value="${childrenData.surname || ''}">
                         </div>
                         <div class="form-group">
-                            <label for="child_birthdate_${i}" class="form-label">Birth Day:</label>
+                            <label for="child_birthdate_${i}" class="form-label">Date of Birth:</label>
                             <input type="text" class="form-control" name="children[${i-1}][birth_day]" id="child_birthdate_${i}" placeholder="dd/mm/yyyy" value="${childrenData.birth_day ? childrenData.birth_day.split('-').reverse().join('/') : ''}">
                         </div>
                         <div class="form-group">

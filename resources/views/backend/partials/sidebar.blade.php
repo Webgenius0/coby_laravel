@@ -30,7 +30,7 @@
                         <span class="side-menu__label">Dashboard</span>
                     </a>
                 </li>
-                <li class="slide">
+                <li class="slide d-none">
                     <a class="side-menu__item {{  request()->routeIs('contact') ? 'has-link' : '' }}" href="{{ route('contact.index') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="side-menu__icon" viewBox="0 0 16 16">
                             <path d="M15 14l-5-5-5 5v-3l10 -10z" />
@@ -43,7 +43,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="side-menu__icon" viewBox="0 0 16 16">
                             <path d="M15 14l-5-5-5 5v-3l10 -10z" />
                         </svg>
-                        <span class="side-menu__label">Policy Booking</span>
+                        <span class="side-menu__label">Manage Policies</span>
                     </a>
                 </li>
                 <li class="slide">
@@ -51,7 +51,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="side-menu__icon" viewBox="0 0 16 16">
                             <path d="M15 14l-5-5-5 5v-3l10 -10z" />
                         </svg>
-                        <span class="side-menu__label">Broker Management</span>
+                        <span class="side-menu__label">Manage Brokers</span>
                     </a>
                 </li>
                 <!-- <li class="slide">
@@ -67,7 +67,7 @@
                     <h3>Components</h3>
                 </li>
                 
-                <li class="slide">
+                <li class="slide d-none">
                     <a class="side-menu__item {{  request()->routeIs('pricing') ? 'has-link' : '' }}" href="{{ route('pricing.index') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="side-menu__icon" viewBox="0 0 16 16">
                             <path d="M15 14l-5-5-5 5v-3l10 -10z" />
@@ -94,7 +94,7 @@
                     </a>
                     <ul class="slide-menu">
                         <li><a href="{{ route('setting.logic.index') }}" class="slide-item">Loading Settings</a></li>
-                        <li><a href="{{ route('setting.general.index') }}" class="slide-item">General Settings</a></li>
+                        <!-- <li><a href="{{ route('setting.general.index') }}" class="slide-item">General Settings</a></li> -->
                         <li><a href="{{ route('setting.profile.index') }}" class="slide-item">Profile Settings</a></li>
                         <!-- <li><a href="{{ route('setting.mail.index') }}" class="slide-item">Mail Settings</a></li> -->
                         <li><a href="{{ route('setting.stripe.index') }}" class="slide-item">Stripe Settings</a></li>
@@ -116,12 +116,12 @@
 
                     <ul class="slide-menu">
                         <li><a href="{{ route('users.index') }}" class="slide-item">User</a></li>
-                        <li><a href="{{ route('permissions.index') }}" class="slide-item">Permission</a></li>
-                        <li><a href="{{ route('roles.index') }}" class="slide-item">Roll</a></li>
+                        <!-- <li><a href="{{ route('permissions.index') }}" class="slide-item">Permission</a></li>
+                        <li><a href="{{ route('roles.index') }}" class="slide-item">Roll</a></li> -->
                     </ul>
                 </li>
                 
-                <li>
+                <!-- <li>
                     <h3>CMS</h3>
                 </li>
                 <li class="slide">
@@ -204,7 +204,7 @@
                     <ul class="slide-menu">
                         <li><a href="{{ route('cms.form.pdf.index') }}" class="slide-item">Form PDF</a></li>
                     </ul>
-                </li>
+                </li> -->
             </ul>
             <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg"
                     fill="#7b8191" width="24" height="24" viewBox="0 0 24 24">

@@ -100,6 +100,7 @@ class BookingController extends Controller
             'start_date' => 'required|date|before_or_equal:end_date',
             'end_date' => 'nullable|date|after_or_equal:start_date',
             'currency' => 'required|in:USD,GBP',
+            'if_contact' => 'required|boolean',
         ]);
         $validatedData['created_at'] = date('Y-m-d H:i:s');
 
