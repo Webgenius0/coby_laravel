@@ -256,5 +256,11 @@
         let url = "{{ route('insurance.booking.edit', ':id') }}";
         window.location.href = url.replace(':id', id);
     }
+
+    //pdf
+    function openToPdf(id) {
+        let url = "{{ route('insurance.booking.pdf', ':id') }}";
+        window.location.href = url.replace(':id', id);
+    }
 </script>
 @endpush

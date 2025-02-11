@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Broker;
 use App\Models\Country;
+use App\Models\Logic;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Yajra\DataTables\Facades\DataTables;
@@ -46,14 +48,19 @@ class InsuranceBookingController extends Controller
                     return $status;
                 })
                 ->addColumn('action', function ($data) {
+                    $pdf = $data->payment_status == 'paid' ? '' : 'd-none';
                     return '<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
 
-                                <a href="#" type="button" onclick="goToShow(' . $data->id . ')" class="btn btn-primary fs-14 text-white delete-icn" title="Delete">
+                                <a href="#" type="button" onclick="goToShow(' . $data->id . ')" class="btn btn-primary fs-14 text-white delete-icn" title="View">
                                     <i class="fe fe-eye"></i>
                                 </a>
 
-                                <a href="#" type="button" onclick="goToEdit(' . $data->id . ')" class="btn btn-success fs-14 text-white delete-icn" title="Delete">
+                                <a href="#" type="button" onclick="goToEdit(' . $data->id . ')" class="btn btn-success fs-14 text-white delete-icn" title="Edit">
                                     <i class="fe fe-edit"></i>
+                                </a>
+
+                                <a href="#" type="button" onclick="openToPdf(' . $data->id . ')" class="btn btn-warning fs-14 text-white delete-icn '. $pdf .'" title="PDF">
+                                    <i class="fe fe-file"></i>
                                 </a>
 
                                 <a href="#" type="button" onclick="showDeleteConfirm(' . $data->id . ')" class="btn btn-danger fs-14 text-white delete-icn" title="Delete">
@@ -123,7 +130,7 @@ class InsuranceBookingController extends Controller
             'total_price' => 'required|numeric|min:0',
             'currency' => 'required|in:USD,GBP',
             'broker_id' => 'required|exists:brokers,id',
-            'status' => 'required|in:active,inactive',
+            'status' => 'nullable|in:active,inactive',
             'payment_status' => 'required|in:paid,pending,failed,saved',
         ]);
 
@@ -188,7 +195,7 @@ class InsuranceBookingController extends Controller
             'total_price' => 'required|numeric|min:0',
             'currency' => 'required|in:USD,GBP',
             'broker_id' => 'required|exists:brokers,id',
-            'status' => 'required|in:active,inactive',
+            'status' => 'nullable|in:active,inactive',
             'payment_status' => 'required|in:paid,pending,failed,saved',
         ]);
 
@@ -231,7 +238,6 @@ class InsuranceBookingController extends Controller
         }
     }
 
-
     public function status(int $id): JsonResponse
     {
         $data = Booking::findOrFail($id);
@@ -247,6 +253,26 @@ class InsuranceBookingController extends Controller
             'status' => 'success',
             'message' => 'Your action was successful!',
         ]);
+    }
+
+    public function pdf($id)
+    {
+        $data = Booking::where('payment_status', 'paid')->findOrFail($id);
+
+        if (!$data) {
+            return response()->json([
+                'status' => 't-error',
+                'message' => 'Item not found.',
+            ]);
+        }
+
+        $icon = base64_encode(file_get_contents(public_path('default/logo.png')));
+        $pdf = PDF::loadView('pdf.certificate', [
+            'data' => $data,
+            'charge' => Logic::first()->charge, 
+            'icon' => $icon
+        ]);
+        return $pdf->stream('certificate.pdf');
     }
 
 }

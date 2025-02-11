@@ -139,49 +139,41 @@
 
     <div class="payment-details">
       <p><strong>Payment Details:</strong></p>
-      <p>The Basic Premium $100.00</p>
-      <p>administration charge $50.00</p>
-      <p><strong>Total Price $150.00</strong></p>
-      <a href="#" class="retrieve-quote-btn">Retrieve Quote</a>
+      <p>The Basic Premium {{ $total_price = $data->total_price }} ({{ $data->currency }})</p>
+      <p>Administration Charge: {{ $total_charge = ($data->total_price * $charge)/100 }} ({{ $data->currency }})</p>
+      <p><strong>Total Price {{ $total_price + $total_charge }} ({{ $data->currency }})</strong></p>
+      <a href="{{ $link }}" class="retrieve-quote-btn">Retrieve Quote</a>
     </div>
 
     <div class="policy-details">
       <p class="policy-heading">Policy Details:</p>
       <div class="policy-row">
         <span>Full Name:</span>
-        <span>John Doe</span>
+        <span>{{ $data->name ?? 'N/A' }}</span>
       </div>
       <div class="policy-row">
         <span>Country of Residence:</span>
-        <span>USA</span>
+        <span>{{ $data->country_of_residence ?? 'N/A' }}</span>
       </div>
       <div class="policy-row">
         <span>Insurance Type:</span>
-        <span>Annual multi trip</span>
+        <span>{{ $data->insurance_type ?? 'N/A' }}</span>
       </div>
       <div class="policy-row">
         <span>Are of travel:</span>
-        <span>Worldwide</span>
+        <span>{{ $data->area_of_travel ?? 'N/A' }}</span>
       </div>
       <div class="policy-row">
         <span>Start Date:</span>
-        <span>20th February 2025</span>
+        <span>{{ $data->start_date ?? 'N/A' }}</span>
       </div>
       <div class="policy-row">
         <span>End Date:</span>
-        <span>20th February 2026</span>
+        <span>{{ $data->end_date ?? 'N/A' }}</span>
       </div>
       <div class="policy-row">
         <span>Adults:</span>
         <span>1</span>
-      </div>
-      <div class="policy-row">
-        <span>Winter sports:</span>
-        <span>No</span>
-      </div>
-      <div class="policy-row">
-        <span>Adventure sports:</span>
-        <span>No</span>
       </div>
     </div>
 
@@ -193,4 +185,5 @@
     </div>
   </div>
 </body>
+
 </html>

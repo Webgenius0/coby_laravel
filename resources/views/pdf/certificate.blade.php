@@ -113,7 +113,7 @@
         <p>Email: <a href="mailto:sales@journeymanservices.com">sales@journeymanservices.com</a> | Website: <a href="https://www.journeymanservices.com">journeymanservices.com</a></p>
     </div>
     <div class="certificate-title">Validation Certificate - Single Trip</div>
-    <p style="text-align: center; font-weight: 600">Certificate No. JSL/SS12402</p>
+    <p style="text-align: center; font-weight: 600">Certificate No. {{ $data->unique_id }}</p>
     <div class="important-note">
         <strong>IMPORTANT:</strong> Please keep this Validation Certificate as evidence of your insurance. You will be required to produce it in the event of a claim. We recommend that you print and carry this certificate and the policy details with you on your trip.
     </div>
@@ -123,39 +123,77 @@
             <th>Cover Details</th>
         </tr>
         <tr>
-            <td>
-                Mr Shawn Kuizema<br />
-                Address: 49 Schweid Court<br />
-                Fair Lawn<br />
-                Bergen<br />
-                07410<br />
-                United States of America
+            <td style="vertical-align: top;">
+                <ul style="list-style-type: none; margin: 0; padding: 0;">
+                    <li>{{ json_decode($data->adults)[0]->name ?? 'N/A' }}</li>
+                    <li>{{ $data->address_one ?? 'N/A' }}</li>
+                    <li>{{ $data->city ?? 'N/A' }}</li>
+                    <li>{{ $data->zip_code ?? 'N/A' }}</li>
+                </ul>
             </td>
-            <td>
-                Issue Date: 29th January 2025<br />
-                Start Date: 18th March 2025<br />
-                End Date: 23rd March 2025<br />
-                Adventure sports: Yes<br />
-                Coverage: Worldwide excluding USA<br />
-                Policy currency: USD ($)
-            </td>
+            <td style="vertical-align: top;">
+                <ul style="list-style-type: none; margin: 0; padding: 0;">
+                    <li>Issue Date: {{ \Carbon\Carbon::parse($data->created_at)->format('d M Y') ?? 'N/A' }}</li>
+                    <li>Start Date: {{ \Carbon\Carbon::parse($data->start_date)->format('jS F Y') ?? 'N/A' }}</li>
+                    <li>End Date: {{ \Carbon\Carbon::parse($data->end_date)->format('jS F Y') ?? 'N/A' }}</li>
+                    <li>Travel Type:
+                        @forelse (json_decode($data->travel_type) as $type)
+                        {{ $type }}{{ !$loop->last ? ', ' : '' }}
+                        @empty
+                        N/A
+                        @endforelse
+                    </li>
+                    <li>Coverage: {{ $data->coverage_type ?? 'N/A' }}</li>
+                    <li>Policy currency: {{ $data->currency ?? 'N/A' }}</li>
+                </ul>
         </tr>
     </table>
-    <table>
-        <tr>
-            <th>No</th>
-            <th>Name</th>
-            <th>DoB</th>
-            <th>Nationality</th>
+    <table style="border-collapse: collapse; width: 100%; border: 1px solid black;">
+        <tr style="background-color: #005050; color: white;">
+            <th colspan="4" style="text-align: center; padding: 8px;">Adults</th>
         </tr>
         <tr>
-            <td>1</td>
-            <td>Mr Shawn Kuizema</td>
-            <td>6th October 1992</td>
-            <td>United States of America</td>
+            <th style="border: 1px solid black; padding: 8px;">No</th>
+            <th style="border: 1px solid black; padding: 8px;">Name</th>
+            <th style="border: 1px solid black; padding: 8px;">DoB</th>
+            <th style="border: 1px solid black; padding: 8px;">Nationality</th>
         </tr>
+        @if(json_decode($data->adults))
+        @foreach (json_decode($data->adults) as $adult)
+        <tr>
+            <td style="border: 1px solid black; padding: 8px;">{{ $loop->iteration }}</td>
+            <td style="border: 1px solid black; padding: 8px;">{{ $adult->name ?? 'N/A' }}</td>
+            <td style="border: 1px solid black; padding: 8px;">{{ $adult->birth_day ?? 'N/A' }}</td>
+            <td style="border: 1px solid black; padding: 8px;">{{ $adult->nationality ?? 'N/A' }}</td>
+        </tr>
+        @endforeach
+        @endif
     </table>
-    <p><strong>Premium:</strong> $240.00 | <strong>Admin Fee:</strong> $8.64 | <strong>Total:</strong> $248.64</p>
+    <table style="border-collapse: collapse; width: 100%; border: 1px solid black;">
+        <tr style="background-color: #005050; color: white;">
+            <th colspan="4" style="text-align: center; padding: 8px;">Children</th>
+        </tr>
+        <tr>
+            <th style="border: 1px solid black; padding: 8px;">No</th>
+            <th style="border: 1px solid black; padding: 8px;">Name</th>
+            <th style="border: 1px solid black; padding: 8px;">DoB</th>
+            <th style="border: 1px solid black; padding: 8px;">Nationality</th>
+        </tr>
+        @if(json_decode($data->children))
+        @foreach (json_decode($data->children) as $child)
+        <tr>
+            <td style="border: 1px solid black; padding: 8px;">{{ $loop->iteration }}</td>
+            <td style="border: 1px solid black; padding: 8px;">{{ $child->name ?? 'N/A' }}</td>
+            <td style="border: 1px solid black; padding: 8px;">{{ $child->birth_day ?? 'N/A' }}</td>
+            <td style="border: 1px solid black; padding: 8px;">{{ $child->nationality ?? 'N/A' }}</td>
+        </tr>
+        @endforeach
+        @endif
+    </table>
+    @php
+        $currency_symble = $data->currency == 'USD' ? '$' : '£'; 
+    @endphp
+    <p><strong>Premium:</strong> {{ $currency_symble }}{{ $total_price = $data->total_price }} | <strong>Admin Fee:</strong> {{ $currency_symble }}{{ $total_charge = ($data->total_price * $charge)/100 }} | <strong>Total:</strong> {{ $currency_symble }}{{ $total_price + $total_charge }}</p>
     <div class="footer">
         <div class="contact">
             For assistance worldwide:<br />

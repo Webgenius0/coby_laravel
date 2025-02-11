@@ -99,6 +99,8 @@ Route::controller(InsuranceBookingController::class)->prefix('insurance/booking'
     Route::post('/update/{id}', 'update')->name('update');
     Route::delete('/delete/{id}', 'destroy')->name('destroy');
     Route::get('/status/{id}', 'status')->name('status');
+
+    Route::get('/pdf/{id}', 'pdf')->name('pdf');
 });
 
 /*

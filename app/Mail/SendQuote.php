@@ -2,6 +2,8 @@
 
 namespace App\Mail;
 
+use App\Enums\QuoteEnum;
+use App\Models\Logic;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -14,7 +16,9 @@ class SendQuote extends Mailable
     use Queueable, SerializesModels;
 
     public $data;
+    public $logic = Logic::class;
     public $icon;
+    public $link;
 
     /**
      * Create a new message instance.
@@ -23,6 +27,7 @@ class SendQuote extends Mailable
     {
         $this->data = $data;
         $this->icon = base64_encode(file_get_contents(public_path('default/logo.png')));
+        $this->link = QuoteEnum::URL->value . $data->id;
     }
 
     /**
@@ -44,7 +49,9 @@ class SendQuote extends Mailable
             view: 'mail.send-quote',
             with: [
                 'data' => $this->data,
-                'icon' => $this->icon
+                'charge' => $this->logic::first()->charge,
+                'icon' => $this->icon,
+                'link' => $this->link
             ],
         );
     }
