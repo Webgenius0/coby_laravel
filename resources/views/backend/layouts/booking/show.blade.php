@@ -126,10 +126,10 @@
                                             <th>Total Price</th>
                                             <td>{{ $booking->total_price ? floatval($booking->total_price) : "N/A" }} {{ $booking->currency ?? "N/A" }}</td>
                                         </tr>
-                                        <tr>
+                                        <!-- <tr>
                                             <th>Status</th>
                                             <td>{{ $booking->status ?? "N/A" }}</td>
-                                        </tr>
+                                        </tr> -->
                                         <tr>
                                             <th>Transaction ID</th>
                                             <td>{{ $booking->transaction_id ?? "N/A" }}</td>

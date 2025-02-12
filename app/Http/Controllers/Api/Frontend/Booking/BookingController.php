@@ -81,8 +81,8 @@ class BookingController extends Controller
 
         $data = Booking::create($validatedData);
 
-        /* $this->BookingServices->jsonFileSave($data);
-        $this->BookingServices->PdfFileSave($data); */
+        $this->BookingServices->jsonFileSave($data->id);
+        $this->BookingServices->PdfFileSave($data->id);
 
         return redirect()->route('payment.stripe.checkout', $data->id);
     }

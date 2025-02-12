@@ -255,7 +255,7 @@
                                             @enderror
                                         </div>
 
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <label for="status" class="form-label">Status:</label>
                                             <select class="form-control @error('status') is-invalid @enderror" name="status" id="status">
                                                 <option value="" selected disabled hidden>Select</option>
@@ -265,7 +265,7 @@
                                             @error('policy_currency')
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
-                                        </div>
+                                        </div> -->
 
                                     </div>
                                 </div>
