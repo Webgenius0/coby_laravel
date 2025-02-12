@@ -95,7 +95,7 @@ class InsuranceBookingController extends Controller
     public function update(Request $request, $id)
     {
         $validate = $request->validate([
-            'policy_currency' => 'required|in:British Pounds,USA Dollers',
+            'policy_currency' => 'required|in:British Pounds,US Dollar',
             'country_of_residence' => 'required|string|max:100',
             'insurance_type' => 'required|in:single-trip,multi-trip',
             'policy_type' => 'nullable|string|max:50',
@@ -160,7 +160,7 @@ class InsuranceBookingController extends Controller
     {
         
         $validatedData = $request->validate([
-            'policy_currency' => 'required|in:British Pounds,USA Dollers',
+            'policy_currency' => 'required|in:British Pounds,US Dollar',
             'country_of_residence' => 'required|string|max:100',
             'insurance_type' => 'required|in:single-trip,multi-trip',
             'policy_type' => 'nullable|string|max:50',

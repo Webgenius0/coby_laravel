@@ -25,7 +25,7 @@ class BookingController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'policy_currency' => 'required|in:British Pounds,USA Dollers',
+            'policy_currency' => 'required|in:British Pounds,US Dollar',
             'country_of_residence' => 'required|string|max:100',
             'insurance_type' => 'nullable|in:single-trip,multi-trip',
             'policy_type' => 'nullable|string|max:50',
@@ -91,7 +91,7 @@ class BookingController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'policy_currency' => 'required|in:British Pounds,USA Dollers',
+            'policy_currency' => 'required|in:British Pounds,US Dollar',
             'country_of_residence' => 'required|string|max:100',
             'insurance_type' => 'nullable|in:single-trip,multi-trip',
             'policy_type' => 'nullable|string|max:50',
