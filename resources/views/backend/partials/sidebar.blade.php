@@ -121,7 +121,7 @@
                     </ul>
                 </li>
                 
-                <!-- <li>
+                <li>
                     <h3>CMS</h3>
                 </li>
                 <li class="slide">
@@ -204,7 +204,7 @@
                     <ul class="slide-menu">
                         <li><a href="{{ route('cms.form.pdf.index') }}" class="slide-item">Form PDF</a></li>
                     </ul>
-                </li> -->
+                </li>
             </ul>
             <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg"
                     fill="#7b8191" width="24" height="24" viewBox="0 0 24 24">
