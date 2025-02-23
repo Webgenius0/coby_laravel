@@ -88,6 +88,7 @@ class HomeTestimonialController extends Controller
             $metadata = json_encode(['rating' => $validatedData['rating']]);
             $validatedData['metadata'] = $metadata;
             unset($validatedData['rating']);
+            
             CMS::create($validatedData);
 
             return redirect()->route('cms.home.testimonial.index')->with('t-success', 'Created successfully');
