@@ -81,6 +81,7 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
             <!-- ROW-2 END -->
 
@@ -726,7 +727,6 @@
 @endsection
 
 @push('scripts')
-
 <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.36.3/dist/apexcharts.min.js"></script>
 
 <script>
